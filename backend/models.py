@@ -1,30 +1,57 @@
-from sqlalchemy import Column, Integer, String, Float, JSON, DateTime, ForeignKey
-from sqlalchemy.orm import relationship
-from database import Base
+"""
+Firestore data models for CrowdRakshak.
+
+These are plain Python dicts/Pydantic models — Firestore is schemaless,
+so we don't need SQLAlchemy ORM models anymore.
+
+Collections:
+  - temples       (doc id = temple id, e.g. "T1")
+  - crowd_data    (auto-generated doc ids, temple_id field for queries)
+"""
+
+from pydantic import BaseModel
+from typing import Any, Optional
 import datetime
 
-class Temple(Base):
-    __tablename__ = "temples"
 
-    id = Column(String, primary_key=True, index=True)
-    name = Column(String)
-    latitude = Column(Float)
-    longitude = Column(Float)
-    state = Column(String)
-    imageLink = Column(String)
-    zones_config = Column(JSON)
-    exit_routes_config = Column(JSON)
+class TempleCreate(BaseModel):
+    id: str
+    name: str
+    latitude: float
+    longitude: float
+    state: str
+    imageLink: str
+    zones_config: Any
+    exit_routes_config: Any
 
-    crowd_data = relationship("CrowdData", back_populates="temple")
 
-class CrowdData(Base):
-    __tablename__ = "crowd_data"
+class CrowdDataCreate(BaseModel):
+    temple_id: str
+    total_count: int
+    status: str
+    zones: Any
 
-    id = Column(Integer, primary_key=True, index=True)
-    temple_id = Column(String, ForeignKey("temples.id"))
-    timestamp = Column(DateTime, default=datetime.datetime.utcnow)
-    count = Column(Integer)
-    status = Column(String)
-    zone_data = Column(JSON)
 
-    temple = relationship("Temple", back_populates="crowd_data")
+def temple_to_dict(temple: TempleCreate) -> dict:
+    """Convert a TempleCreate model to a Firestore-friendly dict."""
+    import json
+    return {
+        "name": temple.name,
+        "latitude": temple.latitude,
+        "longitude": temple.longitude,
+        "state": temple.state,
+        "imageLink": temple.imageLink,
+        "zones_config": json.dumps(temple.zones_config),
+        "exit_routes_config": json.dumps(temple.exit_routes_config),
+    }
+
+
+def crowd_data_to_dict(data: dict) -> dict:
+    """Convert crowd data payload to a Firestore-friendly dict."""
+    return {
+        "temple_id": data["temple_id"],
+        "timestamp": datetime.datetime.utcnow(),
+        "count": data["total_count"],
+        "status": data["status"],
+        "zone_data": data["zones"],
+    }
