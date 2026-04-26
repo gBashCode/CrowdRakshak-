@@ -149,14 +149,8 @@ export default function App() {
         // API returned more data — use it
         initializeData(data);
       }
-    }).catch(() => {
-      console.info('Backend not available — using bundled temple data (253 temples).');
-      const data = FALLBACK_TEMPLES.map(t => ({
-        ...t,
-        lat: t.latitude,
-        lng: t.longitude
-      }));
-      initializeData(data);
+    }).catch((err) => {
+      console.info('Backend not available — using bundled offline data.', err.message);
     });
   }, []);
 
