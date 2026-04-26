@@ -295,7 +295,8 @@ export default function App() {
         <div style={{
           position: 'absolute', 
           top: 16, 
-          left: isMobile ? 70 : 352, 
+          right: isMobile ? 'auto' : 352,
+          left: isMobile ? 70 : 'auto',
           zIndex: 1100,
           display: 'flex', alignItems: 'center', gap: 6,
           padding: '6px 12px', borderRadius: 99,

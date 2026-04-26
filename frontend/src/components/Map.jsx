@@ -426,6 +426,75 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      {/* ── SOS Top Left Buttons ── */}
+      <div style={{
+        position: 'absolute',
+        top: isMobile ? 80 : 20,
+        left: isMobile ? 16 : 336,
+        zIndex: 1001,
+        display: 'flex',
+        gap: 8,
+      }}>
+        {activeSOS ? (
+          <button
+            onClick={() => setActiveSOS(null)}
+            style={{
+              background: '#ef4444',
+              border: '2px solid #fca5a5',
+              borderRadius: 12, padding: '10px 20px',
+              color: 'white', fontWeight: 900, fontSize: 13,
+              cursor: 'pointer', boxShadow: '0 4px 20px rgba(239,68,68,0.5)',
+              animation: 'pulse-sos 1.5s infinite',
+              display: 'flex', alignItems: 'center', gap: 8,
+            }}
+          >
+            <X size={18} /> END EMERGENCY SOS
+          </button>
+        ) : (
+          <>
+            <button
+              onClick={() => setPendingSOS('Medical')}
+              style={{
+                background: 'rgba(225, 29, 72, 0.9)', border: '1px solid #fb7185',
+                color: 'white', borderRadius: 10, padding: '8px 14px', fontSize: 11, fontWeight: 800,
+                cursor: 'pointer', backdropFilter: 'blur(10px)', boxShadow: '0 4px 15px rgba(225,29,72,0.3)',
+                display: 'flex', alignItems: 'center', gap: 6, transition: 'transform 0.2s'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            >
+              🚑 MEDICAL
+            </button>
+            <button
+              onClick={() => setPendingSOS('Fire')}
+              style={{
+                background: 'rgba(234, 88, 12, 0.9)', border: '1px solid #fdba74',
+                color: 'white', borderRadius: 10, padding: '8px 14px', fontSize: 11, fontWeight: 800,
+                cursor: 'pointer', backdropFilter: 'blur(10px)', boxShadow: '0 4px 15px rgba(234,88,12,0.3)',
+                display: 'flex', alignItems: 'center', gap: 6, transition: 'transform 0.2s'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            >
+              🔥 FIRE
+            </button>
+            <button
+              onClick={() => setPendingSOS('Stampede')}
+              style={{
+                background: 'rgba(147, 51, 234, 0.9)', border: '1px solid #d8b4fe',
+                color: 'white', borderRadius: 10, padding: '8px 14px', fontSize: 11, fontWeight: 800,
+                cursor: 'pointer', backdropFilter: 'blur(10px)', boxShadow: '0 4px 15px rgba(147,51,234,0.3)',
+                display: 'flex', alignItems: 'center', gap: 6, transition: 'transform 0.2s'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+            >
+              🏃 STAMPEDE
+            </button>
+          </>
+        )}
+      </div>
+
       <MapContainer
         center={[selected.lat, selected.lng]}
         zoom={16}
@@ -529,8 +598,9 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         alignItems: 'flex-end', 
         gap: 16,
       }}>
-        {/* SOS Controls */}
+        {/* Bottom Left Utility Buttons */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+<<<<<<< HEAD
           {activeSOS ? (
             <button
               onClick={() => setActiveSOS(null)}
@@ -554,7 +624,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
             <button
               onClick={() => setShowSOSMenu(true)}
               style={{
-                width: 44, height: 44, borderRadius: '50%', background: 'rgba(220, 38, 38, 0.9)',
+                width: 48, height: 48, borderRadius: '50%', background: 'rgba(220, 38, 38, 0.9)',
                 border: '2px solid rgba(248, 113, 113, 0.8)', color: 'white',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 boxShadow: '0 4px 20px rgba(220,38,38,0.4)', cursor: 'pointer',
@@ -712,31 +782,6 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         </div>
         )}
       </div>
-
-      {/* Download button */}
-      {!isMobile && (
-        <button
-          onClick={handleDownload}
-          disabled={downloading}
-          style={{
-            position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)',
-            zIndex: 1000,
-            display: 'flex', alignItems: 'center', gap: 8,
-            padding: '10px 20px', borderRadius: 99,
-            background: 'rgba(8,15,35,0.72)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(168,85,247,0.3)',
-            color: downloading ? '#475569' : '#c4b5fd',
-            fontFamily: 'Inter,sans-serif', fontSize: 12, fontWeight: 600,
-            cursor: downloading ? 'not-allowed' : 'pointer',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-            transition: 'all 0.2s',
-          }}
-        >
-          <Download size={14} />
-          {downloading ? 'Capturing...' : 'Download Offline Map'}
-        </button>
-      )}
 
       {/* Building Map Modal Overlay */}
       {showBuildingMap && (
