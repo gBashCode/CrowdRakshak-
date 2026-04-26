@@ -313,8 +313,8 @@ export default function App() {
         <div style={{
           position: 'absolute', 
           top: 16, 
-          right: isMobile ? 'auto' : 352,
-          left: isMobile ? 70 : 'auto',
+          right: isMobile ? 16 : 352,
+          left: 'auto',
           zIndex: 1100,
           display: 'flex', alignItems: 'center', gap: 6,
           padding: '6px 12px', borderRadius: 99,
