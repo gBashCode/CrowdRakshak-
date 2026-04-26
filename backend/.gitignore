@@ -7,3 +7,4 @@ __pycache__/
 .env
 crowdrakshak.db
 serviceAccountKey.json
+seed_log.txt 
