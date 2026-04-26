@@ -495,6 +495,56 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         )}
       </div>
 
+      {/* ── Top Floating SOS Button ── */}
+      <div style={{
+        position: 'absolute',
+        top: 16,
+        left: isMobile ? 70 : 340, // Next to hamburger on mobile, next to sidebar on desktop
+        zIndex: 1500,
+      }}>
+        {activeSOS ? (
+          <button
+            onClick={() => setActiveSOS(null)}
+            style={{
+              background: 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)',
+              backdropFilter: 'blur(16px)',
+              border: '2px solid rgba(255,255,255,0.4)',
+              borderRadius: 14, padding: isMobile ? '8px 12px' : '10px 18px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+              color: '#fff', cursor: 'pointer',
+              transition: 'all 0.2s',
+              boxShadow: '0 8px 32px rgba(239,68,68,0.5)',
+              fontWeight: 900, fontSize: 11, letterSpacing: '0.1em',
+              animation: 'pulse-sos 1.5s infinite',
+            }}
+          >
+            <X size={16} />
+            END EMERGENCY
+          </button>
+        ) : (
+          <button
+            onClick={() => setPendingSOS('Emergency')}
+            style={{
+              width: isMobile ? 44 : 52, 
+              height: isMobile ? 44 : 52, 
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)',
+              border: '2px solid rgba(255,255,255,0.4)', color: 'white',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 8px 32px rgba(239,68,68,0.5), inset 0 2px 4px rgba(255,255,255,0.3)',
+              cursor: 'pointer',
+              fontWeight: 900, fontSize: isMobile ? 11 : 13,
+              animation: 'pulse-sos 1.5s infinite',
+              backdropFilter: 'blur(16px)',
+              position: 'relative', overflow: 'hidden'
+            }}
+          >
+            <span className="shimmer-sweep" />
+            SOS
+          </button>
+        )}
+      </div>
+
       <MapContainer
         center={[selected.lat, selected.lng]}
         zoom={16}
@@ -599,46 +649,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         gap: 16,
       }}>
         {/* Bottom Left Utility Buttons */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {activeSOS ? (
-            <button
-              onClick={() => setActiveSOS(null)}
-              style={{
-                background: 'rgba(220, 38, 38, 0.9)',
-                backdropFilter: 'blur(16px)',
-                border: '2px solid rgba(248, 113, 113, 0.8)',
-                borderRadius: 14, padding: '16px 20px',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                color: '#fff', cursor: 'pointer',
-                transition: 'all 0.2s',
-                boxShadow: '0 4px 24px rgba(220,38,38,0.6)',
-                fontWeight: 800, fontSize: 13, letterSpacing: '0.05em',
-                animation: 'pulse-sos 1.5s infinite',
-              }}
-            >
-              <X size={18} />
-              END SOS
-            </button>
-          ) : (
-            <button
-              onClick={() => setPendingSOS('Emergency')}
-              style={{
-                width: 52, height: 52, borderRadius: '50%',
-                background: 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)',
-                border: '2px solid rgba(255,255,255,0.4)', color: 'white',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 8px 32px rgba(239,68,68,0.5), inset 0 2px 4px rgba(255,255,255,0.3)',
-                cursor: 'pointer',
-                fontWeight: 900, fontSize: 13,
-                animation: 'pulse-sos 1.5s infinite',
-                backdropFilter: 'blur(16px)',
-                position: 'relative', overflow: 'hidden'
-              }}
-            >
-              <span className="shimmer-sweep" />
-              SOS
-            </button>
-          )}
+        {/* Redundant utility block removed */}
 
           <style>{`
             @keyframes pulse-sos {
