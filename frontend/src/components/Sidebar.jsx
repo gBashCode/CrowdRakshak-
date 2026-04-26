@@ -71,7 +71,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
               <h1 style={{ fontSize: 16, fontWeight: 900, color: '#f1f5f9', letterSpacing: '-0.02em' }}>
                 CrowdRakshak
               </h1>
-              <p style={{ fontSize: 10, color: '#64748b', fontWeight: 500 }}>Real-time crowd intelligence</p>
+              <p style={{ fontSize: 10, color: '#e2e8f0', fontWeight: 500 }}>Real-time crowd intelligence</p>
             </div>
           </div>
 
@@ -106,7 +106,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
 
       {/* ── Temple section label ── */}
       <div style={{ padding: '14px 18px 6px', flexShrink: 0 }}>
-        <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+        <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
           Temples
         </p>
       </div>
@@ -151,7 +151,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
         ).map(([state, stateTemples]) => (
           <div key={state} style={{ marginBottom: 16 }}>
             <div style={{ padding: '0 8px 8px' }}>
-              <span style={{ fontSize: 10, fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{state}</span>
+              <span style={{ fontSize: 10, fontWeight: 800, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{state}</span>
             </div>
             {stateTemples.map((temple) => {
               const data    = crowdData[temple.id];
@@ -221,8 +221,8 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
                     borderRadius: 10, padding: '8px 10px',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-                      <Users size={10} color="#475569" />
-                      <span style={{ fontSize: 8, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>People</span>
+                      <Users size={10} color="#e2e8f0" />
+                      <span style={{ fontSize: 8, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.08em' }}>People</span>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
                       <span style={{ fontSize: 20, fontWeight: 900, color: cfg.color, letterSpacing: '-0.03em' }}>{count}</span>
@@ -235,23 +235,23 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
                     borderRadius: 10, padding: '8px 10px',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-                      <MapPin size={10} color="#475569" />
-                      <span style={{ fontSize: 8, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Location</span>
+                      <MapPin size={10} color="#e2e8f0" />
+                      <span style={{ fontSize: 8, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Location</span>
                     </div>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: '#64748b' }}>Varanasi</span>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: '#e2e8f0' }}>Varanasi</span>
                   </div>
                 </div>
 
                 {/* Zone density bar — mirrors right card */}
                 {data?.zones && (
                   <div>
-                    <p style={{ fontSize: 8, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>
+                    <p style={{ fontSize: 8, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>
                       Zone Density
                     </p>
                     {data.zones.map((zone) => (
                       <div key={zone.id} style={{ marginBottom: 5 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, marginBottom: 3 }}>
-                          <span style={{ color: '#64748b', fontWeight: 500 }}>Zone {zone.id}</span>
+                          <span style={{ color: '#e2e8f0', fontWeight: 500 }}>Zone {zone.id}</span>
                           <span style={{ color: cfg.color, fontWeight: 700 }}>{zone.count} ppl</span>
                         </div>
                         <div style={{ height: 3, width: '100%', background: 'rgba(100,116,139,0.15)', borderRadius: 99, overflow: 'hidden' }}>
@@ -282,8 +282,8 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
         flexShrink: 0,
         display: 'flex', alignItems: 'center', gap: 6,
       }}>
-        <Info size={12} color="#334155" />
-        <p style={{ fontSize: 10, color: '#334155' }}>
+        <Info size={12} color="#e2e8f0" />
+        <p style={{ fontSize: 10, color: '#e2e8f0' }}>
           Updates every ~12s · Varanasi, UP
         </p>
       </div>

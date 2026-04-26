@@ -19,8 +19,8 @@ function StatBox({ icon: Icon, label, value, color }) {
       WebkitBackdropFilter: 'blur(8px)',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-        <Icon size={13} color="#64748b" />
-        <span style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</span>
+        <Icon size={13} color="#e2e8f0" />
+        <span style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</span>
       </div>
       <p style={{ fontSize: 28, fontWeight: 900, color, letterSpacing: '-0.03em' }}>{value}</p>
     </div>
@@ -123,7 +123,7 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
               </span>
               <span style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.1em', textTransform: 'uppercase' }}>LIVE</span>
               {time && (
-                <span style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 9, color: '#475569' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 9, color: '#e2e8f0' }}>
                   <Clock size={9} />
                   {time}
                 </span>
@@ -175,13 +175,13 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
         {/* Zone bars */}
         {data?.zones && (
           <div style={{ marginBottom: 14 }}>
-            <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
+            <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
               Zone Density
             </p>
             {data.zones.map((zone) => (
               <div key={zone.id} style={{ marginBottom: 10 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, marginBottom: 4 }}>
-                  <span style={{ color: '#94a3b8', fontWeight: 500 }}>Zone {zone.id}</span>
+                  <span style={{ color: '#e2e8f0', fontWeight: 500 }}>Zone {zone.id}</span>
                   <span style={{ color: cfg.color, fontWeight: 700 }}>{zone.count} ppl</span>
                 </div>
                 <div style={{ height: 4, background: 'rgba(100,116,139,0.15)', borderRadius: 99, overflow: 'hidden' }}>

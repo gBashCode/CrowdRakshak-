@@ -394,7 +394,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
               boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
             }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
-                <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Emergency</p>
+                <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Emergency</p>
                 {isMobile && <X size={14} color="#94a3b8" cursor="pointer" onClick={() => setShowSOSMenu(false)} />}
               </div>
               <button
@@ -500,7 +500,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
             boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
-              <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Map Legend</p>
+              <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Map Legend</p>
               {isMobile && <X size={14} color="#94a3b8" cursor="pointer" onClick={() => setShowLegend(false)} />}
             </div>
           {[
