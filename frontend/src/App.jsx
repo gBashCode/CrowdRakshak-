@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import MapView from './components/Map';
 import Sidebar from './components/Sidebar';
 import CrowdStats from './components/CrowdStats';
+import SplashScreen from './components/SplashScreen';
 import { createDataEngine } from './dataEngine';
 import { Bell, X, AlertTriangle, Menu } from 'lucide-react';
 import axios from 'axios';
@@ -72,6 +73,7 @@ export default function App() {
   const [activeSOS, setActiveSOS] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showSidebarMobile, setShowSidebarMobile] = useState(false);
+  const [splashDone, setSplashDone] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -165,8 +167,8 @@ export default function App() {
     setTimeout(() => setNotifs((p) => p.filter((n) => n.id !== id)), 6000);
   }, []);
 
-  if (!selected) {
-    return <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', background: '#0f172a', color: 'white'}}>Loading...</div>;
+  if (!selected || !splashDone) {
+    return <SplashScreen onComplete={() => setSplashDone(true)} />;
   }
 
   return (
