@@ -4,71 +4,100 @@
  * Cost = Euclidean Distance + (Crowd Density Weight)
  */
 
-export function findOptimizedPath(start, end, zones, crowdData) {
-  // 1. Create a simplified graph of the temple area
-  // We'll use the entry points and zone centers as nodes
-  const nodes = [
-    { id: 'start', lat: start[0], lng: start[1] },
-    { id: 'end', lat: end[0], lng: end[1] },
-    ...zones.map(z => ({ id: z.id, lat: z.lat, lng: z.lng, radius: z.radius }))
-  ];
+export function findOptimizedPath(start, end, zones = [], crowdData = { zones: [] }) {
+  try {
+    if (!start || !end || !Array.isArray(start) || !Array.isArray(end)) return null;
 
-  // 2. Build adjacency list (connect everything to everything for simplicity in this small scale)
-  // In a real scenario, we'd only connect adjacent areas
-  const edges = [];
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const dist = getDistance(nodes[i], nodes[j]);
+    // 1. Create nodes
+    const nodes = [
+      { id: 'start', lat: start[0], lng: start[1] },
+      { id: 'end', lat: end[0], lng: end[1] },
+      ...zones.map(z => ({ id: String(z.id), lat: z.lat, lng: z.lng, radius: z.radius }))
+    ];
+
+    const endNode = nodes[1];
+
+    // 2. Build edges
+    const edges = [];
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const n1 = nodes[i];
+        const n2 = nodes[j];
+        const dist = getDistance(n1, n2);
+        
+        let crowdWeight = 0;
+        // Check if this path segment is obstructed by a high-density zone
+        zones.forEach(z => {
+          if (isPointNearNode(n1, n2, z)) {
+            const zData = crowdData.zones.find(dz => String(dz.id) === String(z.id));
+            const count = zData?.count || 0;
+            // Higher penalty for crowded zones
+            crowdWeight += count * 5; 
+          }
+        });
+
+        const cost = dist + crowdWeight;
+        edges.push({ from: n1.id, to: n2.id, cost });
+        edges.push({ from: n2.id, to: n1.id, cost });
+      }
+    }
+
+    // 3. A* Algorithm
+    const openSet = ['start'];
+    const cameFrom = {};
+    const gScore = { start: 0 };
+    const fScore = { start: getDistance(nodes[0], endNode) };
+
+    let iterations = 0;
+    while (openSet.length > 0 && iterations < 500) {
+      iterations++;
       
-      // Calculate crowd weight for this edge
-      // If the edge passes through a zone, add its crowd count to the cost
-      let crowdWeight = 0;
-      const zone = nodes.find(n => n.radius && isPointNearNode(nodes[i], nodes[j], n));
-      if (zone) {
-        const density = crowdData.zones.find(z => z.id === zone.id)?.count || 0;
-        crowdWeight = density * 2; // Weight factor: 2 meters per person delay
+      // Get node with lowest fScore
+      let currentId = openSet[0];
+      let minF = fScore[currentId] ?? Infinity;
+      
+      for (let i = 1; i < openSet.length; i++) {
+        const id = openSet[i];
+        const f = fScore[id] ?? Infinity;
+        if (f < minF) {
+          minF = f;
+          currentId = id;
+        }
       }
 
-      edges.push({ from: nodes[i].id, to: nodes[j].id, cost: dist + crowdWeight });
-      edges.push({ from: nodes[j].id, to: nodes[i].id, cost: dist + crowdWeight });
-    }
-  }
+      if (currentId === 'end') {
+        return reconstructPath(cameFrom, currentId, nodes);
+      }
 
-  // 3. A* Algorithm
-  const openSet = ['start'];
-  const cameFrom = {};
-  const gScore = { start: 0 };
-  const fScore = { start: getDistance(nodes[0], nodes[1]) };
+      openSet.splice(openSet.indexOf(currentId), 1);
 
-  while (openSet.length > 0) {
-    // Get node with lowest fScore
-    let currentId = openSet.reduce((a, b) => (fScore[a] < fScore[b] ? a : b));
+      const neighbors = edges.filter(e => e.from === currentId);
+      for (const edge of neighbors) {
+        const neighborId = edge.to;
+        const tentativeGScore = gScore[currentId] + edge.cost;
 
-    if (currentId === 'end') {
-      return reconstructPath(cameFrom, currentId, nodes);
-    }
-
-    openSet.splice(openSet.indexOf(currentId), 1);
-
-    const neighbors = edges.filter(e => e.from === currentId);
-    for (const edge of neighbors) {
-      const neighborId = edge.to;
-      const tentativeGScore = gScore[currentId] + edge.cost;
-
-      if (tentativeGScore < (gScore[neighborId] || Infinity)) {
-        cameFrom[neighborId] = currentId;
-        gScore[neighborId] = tentativeGScore;
-        fScore[neighborId] = gScore[neighborId] + getDistance(nodes.find(n => n.id === neighborId), nodes[1]);
-        if (!openSet.includes(neighborId)) openSet.push(neighborId);
+        if (tentativeGScore < (gScore[neighborId] ?? Infinity)) {
+          cameFrom[neighborId] = currentId;
+          gScore[neighborId] = tentativeGScore;
+          
+          const neighborNode = nodes.find(n => n.id === neighborId);
+          fScore[neighborId] = gScore[neighborId] + getDistance(neighborNode, endNode);
+          
+          if (!openSet.includes(neighborId)) openSet.push(neighborId);
+        }
       }
     }
-  }
 
-  return null; // No path found
+    return null;
+  } catch (err) {
+    console.error("A* Routing Error:", err);
+    return null;
+  }
 }
 
 function getDistance(n1, n2) {
-  const R = 6371e3; // metres
+  if (!n1 || !n2) return 0;
+  const R = 6371e3; 
   const φ1 = n1.lat * Math.PI/180;
   const φ2 = n2.lat * Math.PI/180;
   const Δφ = (n2.lat-n1.lat) * Math.PI/180;
@@ -81,18 +110,21 @@ function getDistance(n1, n2) {
 }
 
 function isPointNearNode(p1, p2, node) {
-  // Simple check: is the node center between p1 and p2?
   const d1 = getDistance(p1, node);
   const d2 = getDistance(p2, node);
   const dLine = getDistance(p1, p2);
-  return (d1 + d2) < (dLine + 10); // Within 10m of the direct line
+  // If sum of distances to point is close to distance between endpoints, it's roughly on the line
+  return (d1 + d2) < (dLine + 5); 
 }
 
 function reconstructPath(cameFrom, current, nodes) {
-  const totalPath = [nodes.find(n => n.id === current)];
-  while (cameFrom[current]) {
-    current = cameFrom[current];
-    totalPath.push(nodes.find(n => n.id === current));
+  const path = [];
+  let curr = current;
+  while (curr) {
+    const node = nodes.find(n => n.id === curr);
+    if (node) path.push([node.lat, node.lng]);
+    curr = cameFrom[curr];
+    if (path.length > 100) break; // Safety break
   }
-  return totalPath.reverse().map(n => [n.lat, n.lng]);
+  return path.reverse();
 }

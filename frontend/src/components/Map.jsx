@@ -328,20 +328,22 @@ function FlyToBounds({ bounds }) {
 
 // ── Optimized Smart Route ───────────────────────────────────────────────────
 function SmartRoute({ userPos, temple, crowdData }) {
-  if (!userPos || !temple || !crowdData[temple.id]) return null;
+  const path = React.useMemo(() => {
+    if (!userPos || !temple || !crowdData[temple.id]) return null;
 
-  const zones = temple.zones_config || [
-    { id: 'A', lat: temple.lat + 0.0002, lng: temple.lng + 0.0002, radius: 40 }
-  ];
+    const zones = temple.zones_config || [
+      { id: 'A', lat: temple.lat + 0.0002, lng: temple.lng + 0.0002, radius: 40 }
+    ];
 
-  const path = findOptimizedPath(
-    userPos,
-    [temple.lat, temple.lng],
-    zones,
-    crowdData[temple.id]
-  );
+    return findOptimizedPath(
+      userPos,
+      [temple.lat, temple.lng],
+      zones,
+      crowdData[temple.id]
+    );
+  }, [userPos, temple, crowdData]);
 
-  if (!path) return null;
+  if (!path || path.length < 2) return null;
 
   return (
     <>
@@ -350,7 +352,7 @@ function SmartRoute({ userPos, temple, crowdData }) {
         pathOptions={{
           color: '#3b82f6',
           weight: 8,
-          opacity: 0.2,
+          opacity: 0.15,
           lineCap: 'round',
         }}
       />
@@ -358,20 +360,20 @@ function SmartRoute({ userPos, temple, crowdData }) {
         positions={path}
         pathOptions={{
           color: '#60a5fa',
-          weight: 4,
+          weight: 3.5,
           opacity: 0.8,
-          dashArray: '10 15',
+          dashArray: '12 18',
           lineCap: 'round',
         }}
         className="animate-route-flow"
       />
       <style>{`
         @keyframes route-flow {
-          from { stroke-dashoffset: 50; }
+          from { stroke-dashoffset: 60; }
           to { stroke-dashoffset: 0; }
         }
         .animate-route-flow {
-          animation: route-flow 2s linear infinite;
+          animation: route-flow 3s linear infinite;
         }
       `}</style>
     </>
