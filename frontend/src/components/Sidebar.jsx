@@ -182,16 +182,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
             }}
           />
           <button
-            onClick={() => {
-              const temple = temples
-                .find(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
-              if (temple) {
-                onSelect(temple);
-                setSelectedState(temple.state || 'Other');
-                setSearchQuery(`${temple.name} (${temple.lat.toFixed(4)}, ${temple.lng.toFixed(4)})`);
-                setShowSuggestions(false);
-              }
-            }}
+            onClick={handleSearchClick}
             style={{
               background: '#3b82f6', color: 'white', border: 'none', borderRadius: 8,
               padding: '0 14px', fontSize: 11, fontWeight: 800, cursor: 'pointer',
@@ -212,24 +203,26 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
               maxHeight: 220, overflowY: 'auto', zIndex: 50,
               boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
             }}>
-              {temples
-                .filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                .slice(0, 50)
-                .map(t => (
-                  <div
-                    key={t.id}
-                    onClick={() => handleSelectTemple(t)}
-                    style={{ padding: '10px 12px', borderBottom: '1px solid rgba(148,163,184,0.08)', cursor: 'pointer' }}
-                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
-                    onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
-                  >
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: 12, fontWeight: 700, color: '#f1f5f9' }}>{t.name}</span>
-                      <span style={{ fontSize: 9, fontWeight: 700, color: cfg.color, background: cfg.bg, padding: '2px 6px', borderRadius: 99, border: `1px solid ${cfg.border}` }}>{status}</span>
+              {suggestions.map(t => {
+                  const d = crowdData[t.id];
+                  const status = d?.status?.toUpperCase() || 'LOW';
+                  const cfg = STATUS_CFG[status] || STATUS_CFG['LOW'];
+                  return (
+                    <div
+                      key={t.id}
+                      onClick={() => handleSelectTemple(t)}
+                      style={{ padding: '10px 12px', borderBottom: '1px solid rgba(148,163,184,0.08)', cursor: 'pointer' }}
+                      onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.06)'}
+                      onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{ fontSize: 12, fontWeight: 700, color: '#f1f5f9' }}>{t.name}</span>
+                        <span style={{ fontSize: 9, fontWeight: 700, color: cfg.color, background: cfg.bg, padding: '2px 6px', borderRadius: 99, border: `1px solid ${cfg.border}` }}>{status}</span>
+                      </div>
+                      <div style={{ fontSize: 10, color: '#64748b', marginTop: 2 }}>📍 {t.state || 'Unknown'}</div>
                     </div>
-                    <div style={{ fontSize: 10, color: '#64748b', marginTop: 2 }}>📍 {t.state || 'Unknown'}</div>
-                  </div>
-                ))}
+                  );
+                })}
             </div>
           )}
         </div>
