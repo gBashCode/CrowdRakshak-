@@ -30,8 +30,8 @@ function StatBox({ icon: Icon, label, value, color }) {
 const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
   const [downloading, setDownloading] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
-  const status = data?.status || 'LOW';
-  const cfg    = STATUS_CFG[status];
+  const status = data?.status?.toUpperCase() || 'LOW';
+  const cfg    = STATUS_CFG[status] || STATUS_CFG['LOW'];
   const count  = data?.total_count ?? 0;
   const prev   = prevData?.total_count;
   const delta  = prev !== undefined ? count - prev : 0;
@@ -262,6 +262,7 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
