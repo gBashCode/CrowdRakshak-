@@ -368,3 +368,48 @@ Found 865 temples. Opening database...
 [x] Aundha Nagnath Temple: Coordinates not found.
 [x] Babulnath Temple, Mumbai: Coordinates not found.
 [✓] Ballaleshwar Pali: 18.535215, 73.2238557
+[x] Bhagwant Temple, Barshi: Coordinates not found.
+[✓] Bhimashankar Temple: 19.0719964, 73.5360388
+[x] Bhuleshwar Temple: Coordinates not found.
+[x] Birla Mandir, Shahad: Coordinates not found.
+[✓] BAPS Shri Swaminarayan: 21.2480457, 75.2771495
+[x] Red Jogeshwari Temple: Coordinates not found.
+[x] Chakreshwar Mahadev Mandir: Coordinates not found.
+[x] Chandika Devi Temple, Juchandra: Coordinates not found.
+[✓] Chaturshringi Temple: 18.5379131, 73.8300459
+[x] Chintamani Temple, Theur: Coordinates not found.
+[x] Dagadusheth Halwai Ganapati Temple: Coordinates not found.
+[x] Dashabhuja Temple: Coordinates not found.
+[✓] Durgadi Fort: 19.2452962, 73.1186797
+[x] Ekvira Mata Mandir: Coordinates not found.
+[✓] Elephanta Caves: 18.9630478, 72.931902
+[x] Kailash Temple: Coordinates not found.
+[x] Ganapati Temple, Redi: Coordinates not found.
+[✓] Moreshwar Temple, Morgaon: 18.2781417, 74.3174717
+[x] Ganpati Temple, Tasgaon: Coordinates not found.
+[✓] Ganpatipule: 17.1466952, 73.2697524
+[x] Girijatmaj Temple of Lenyadri: Coordinates not found.
+[✓] Gondeshwar Temple, Sinnar: 19.8510869, 74.002131
+[x] Nagra Temple, Gondia: Coordinates not found.
+[x] Grishneshwar temple: Coordinates not found.
+[x] Harihareshwara Temple: Coordinates not found.
+[✓] Harishchandragad: 19.386652, 73.7770085
+[x] Palasnath Temple, Indapur: Coordinates not found.
+[✓] ISKCON Temple, Pune: 18.5200118, 73.8794776
+[x] Jivdani Mata Temple: Coordinates not found.
+[✓] Jogeshwari: 19.1348994, 72.8488199
+[x] Jyotiba Temple at Wadi: Coordinates not found.
+[x] Kala Ram Temple: Coordinates not found.
+[x] Kasba Ganapati: Coordinates not found.
+[✓] Khandoba Mandir: 18.5176567, 73.7682867
+[x] Khandoba Temple, Jejuri: Coordinates not found.
+[x] Khidkaleshwar Mandir: Coordinates not found.
+[x] Kopineshwar Mandir, Thane: Coordinates not found.
+[x] Kukdeshwar Temple: Coordinates not found.
+[x] Mahalakshmi Temple, Dahanu: Coordinates not found.
+[✓] Mahalakshmi Temple, Kolhapur: 16.6948575, 74.2228947
+[✓] Mahalakshmi Temple, Mahalakshmi, Mumbai: 18.9773651, 72.8064639
+[✓] Mahur: 19.8479785, 77.9217634
+[x] Mandher Devi Temple in Mandhradevi: Coordinates not found.
+[x] Mankeshwar temple, Zodage: Coordinates not found.
+[x] Markanda Mahadev, Chamorshi: Coordinates not found.
