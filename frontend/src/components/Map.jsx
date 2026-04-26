@@ -600,7 +600,6 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
       }}>
         {/* Bottom Left Utility Buttons */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-<<<<<<< HEAD
           {activeSOS ? (
             <button
               onClick={() => setActiveSOS(null)}
