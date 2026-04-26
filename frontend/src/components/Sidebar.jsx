@@ -183,16 +183,21 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
           />
           <button
             onClick={handleSearchClick}
+            className="search-btn"
             style={{
               background: '#3b82f6', color: 'white', border: 'none', borderRadius: 8,
               padding: '0 14px', fontSize: 11, fontWeight: 800, cursor: 'pointer',
               display: 'flex', alignItems: 'center', gap: 4,
+              transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)',
             }}
-            onMouseOver={(e) => e.currentTarget.style.background = '#2563eb'}
-            onMouseOut={(e) => e.currentTarget.style.background = '#3b82f6'}
           >
             <Search size={13} />
           </button>
+          <style>{`
+            .search-btn:hover { background: #2563eb; transform: scale(1.05); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5); }
+            .search-btn:active { transform: scale(0.95); }
+          `}</style>
 
           {/* Suggestions dropdown */}
           {showSuggestions && suggestions.length > 0 && (

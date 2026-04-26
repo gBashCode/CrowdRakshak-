@@ -580,81 +580,94 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
               </div>
               <button
                 onClick={() => setPendingSOS('Medical')}
+                className="sos-btn medical"
                 style={{
-                  background: 'rgba(225, 29, 72, 0.15)', border: '1px solid rgba(225, 29, 72, 0.3)',
-                  color: '#fb7185', borderRadius: 8, padding: '8px 12px', fontSize: 11, fontWeight: 700,
-                  cursor: 'pointer', transition: 'all 0.2s'
+                  background: 'rgba(225, 29, 72, 0.12)', border: '1px solid rgba(225, 29, 72, 0.3)',
+                  color: '#fb7185', borderRadius: 10, padding: '10px 14px', fontSize: 11, fontWeight: 700,
+                  cursor: 'pointer', transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
                 }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(225, 29, 72, 0.3)'; }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(225, 29, 72, 0.15)'; }}
               >
                 MEDICAL SOS
               </button>
               <button
                 onClick={() => setPendingSOS('Fire')}
+                className="sos-btn fire"
                 style={{
-                  background: 'rgba(234, 88, 12, 0.15)', border: '1px solid rgba(234, 88, 12, 0.3)',
-                  color: '#fdba74', borderRadius: 8, padding: '8px 12px', fontSize: 11, fontWeight: 700,
-                  cursor: 'pointer', transition: 'all 0.2s'
+                  background: 'rgba(234, 88, 12, 0.12)', border: '1px solid rgba(234, 88, 12, 0.3)',
+                  color: '#fdba74', borderRadius: 10, padding: '10px 14px', fontSize: 11, fontWeight: 700,
+                  cursor: 'pointer', transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
                 }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(234, 88, 12, 0.3)'; }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(234, 88, 12, 0.15)'; }}
               >
                 FIRE DEPT
               </button>
               <button
                 onClick={() => setPendingSOS('Stampede')}
+                className="sos-btn stampede"
                 style={{
-                  background: 'rgba(147, 51, 234, 0.15)', border: '1px solid rgba(147, 51, 234, 0.3)',
-                  color: '#d8b4fe', borderRadius: 8, padding: '8px 12px', fontSize: 11, fontWeight: 700,
-                  cursor: 'pointer', transition: 'all 0.2s'
+                  background: 'rgba(147, 51, 234, 0.12)', border: '1px solid rgba(147, 51, 234, 0.3)',
+                  color: '#d8b4fe', borderRadius: 10, padding: '10px 14px', fontSize: 11, fontWeight: 700,
+                  cursor: 'pointer', transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
                 }}
-                onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(147, 51, 234, 0.3)'; }}
-                onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(147, 51, 234, 0.15)'; }}
               >
                 STAMPEDE RISK
               </button>
             </div>
           )}
           
+          <style>{`
+            .sos-btn:hover { transform: translateY(-2px); filter: brightness(1.2); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+            .sos-btn:active { transform: translateY(0) scale(0.96); }
+            .sos-btn.medical:hover { background: rgba(225, 29, 72, 0.25) !important; border-color: rgba(225, 29, 72, 0.5) !important; }
+            .sos-btn.fire:hover { background: rgba(234, 88, 12, 0.25) !important; border-color: rgba(234, 88, 12, 0.5) !important; }
+            .sos-btn.stampede:hover { background: rgba(147, 51, 234, 0.25) !important; border-color: rgba(147, 51, 234, 0.5) !important; }
+          `}</style>
+
           {/* Building Map Button */}
           {isMobile ? (
             <button
               onClick={() => setShowBuildingMap(true)}
+              className="map-ctrl-btn"
               style={{
-                width: 44, height: 44, borderRadius: '50%', background: 'rgba(8,15,35,0.72)',
+                width: 48, height: 48, borderRadius: '50%', background: 'rgba(8,15,35,0.72)',
                 border: '1px solid rgba(148,163,184,0.1)', color: '#3b82f6',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.4)', cursor: 'pointer',
                 backdropFilter: 'blur(16px)',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
-              <MapIcon size={20} />
+              <MapIcon size={22} />
             </button>
           ) : (
             <button
               onClick={() => setShowBuildingMap(true)}
+              className="map-ctrl-btn-rect"
               style={{
                 background: 'rgba(8,15,35,0.72)',
                 backdropFilter: 'blur(16px)',
                 border: '1px solid rgba(148,163,184,0.1)',
-                borderRadius: 14, padding: '12px 16px',
+                borderRadius: 16, padding: '14px 20px',
                 display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8,
                 color: '#e2e8f0', cursor: 'pointer',
-                transition: 'all 0.2s',
+                transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                 boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
                 height: 'fit-content',
               }}
-              onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(30,41,59,0.8)'; }}
-              onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(8,15,35,0.72)'; }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <MapIcon size={18} color="#3b82f6" />
-                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em' }}>STRUCTURAL MAP</span>
+                <MapIcon size={20} color="#3b82f6" />
+                <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.08em' }}>STRUCTURAL MAP</span>
               </div>
-              <span style={{ fontSize: 9, color: '#94a3b8' }}>View Building Plan</span>
+              <span style={{ fontSize: 9, color: '#94a3b8', fontWeight: 600 }}>Interactive Building Plan</span>
             </button>
           )}
+          <style>{`
+            .map-ctrl-btn:hover, .map-ctrl-btn-rect:hover { transform: scale(1.08) translateY(-3px); background: rgba(30,41,59,0.85) !important; border-color: rgba(59,130,246,0.3) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+            .map-ctrl-btn:active, .map-ctrl-btn-rect:active { transform: scale(0.94); }
+          `}</style>
         </div>
 
         {/* Legend overlay */}
