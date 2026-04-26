@@ -683,31 +683,6 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         )}
       </div>
 
-      {/* Download button */}
-      {!isMobile && (
-        <button
-          onClick={handleDownload}
-          disabled={downloading}
-          style={{
-            position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)',
-            zIndex: 1000,
-            display: 'flex', alignItems: 'center', gap: 8,
-            padding: '10px 20px', borderRadius: 99,
-            background: 'rgba(8,15,35,0.72)',
-            backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(168,85,247,0.3)',
-            color: downloading ? '#475569' : '#c4b5fd',
-            fontFamily: 'Inter,sans-serif', fontSize: 12, fontWeight: 600,
-            cursor: downloading ? 'not-allowed' : 'pointer',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-            transition: 'all 0.2s',
-          }}
-        >
-          <Download size={14} />
-          {downloading ? 'Capturing...' : 'Download Offline Map'}
-        </button>
-      )}
-
       {/* Building Map Modal Overlay */}
       {showBuildingMap && (
         <div style={{
