@@ -67,6 +67,9 @@ function HeatmapLayer({ temples, crowdData, selected }) {
     if (!temples || !crowdData) return;
 
     const points = [];
+    
+    // Gaussian-like distribution function
+    const gRand = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
 
     temples.forEach(temple => {
       let cfg_zones = temple.zones_config;
@@ -83,18 +86,24 @@ function HeatmapLayer({ temples, crowdData, selected }) {
         const zoneCfg = cfg_zones.find((z) => z.id === zone.id) || cfg_zones[0];
         if (!zoneCfg) return;
         
-        // Intensity 0 to 1 based on people count
-        const intensity = Math.min(zone.count / 200, 1);
-        
-        // More points for selected temple for detail, fewer for others for performance
-        const numPoints = isSelected ? Math.min(zone.count * 4, 300) : Math.min(zone.count, 50);
+        const intensity = Math.min(zone.count / 180, 1);
+        // More points for realism, but capped for performance
+        const numPoints = isSelected ? Math.min(zone.count * 6, 450) : Math.min(zone.count * 1.5, 80);
 
         for (let i = 0; i < numPoints; i++) {
-          const spread = (zoneCfg.radius / 111320) * (0.3 + Math.random() * 0.7);
+          // Gaussian spread makes it denser at center
+          const dist   = (zoneCfg.radius / 111320) * (0.1 + Math.abs(gRand()) * 0.9);
           const angle  = Math.random() * Math.PI * 2;
-          const lat    = zoneCfg.lat + spread * Math.cos(angle);
-          const lng    = zoneCfg.lng + spread * Math.sin(angle) * 1.2;
-          points.push([lat, lng, intensity]);
+          
+          // Add "organic" jitter to the position
+          const jitter = (zoneCfg.radius / 111320) * 0.15;
+          const lat    = zoneCfg.lat + dist * Math.cos(angle) + gRand() * jitter;
+          const lng    = zoneCfg.lng + dist * Math.sin(angle) * 1.1 + gRand() * jitter;
+          
+          // Slight intensity variation per point
+          const pIntensity = Math.max(0.1, intensity * (0.8 + Math.random() * 0.4));
+          
+          points.push([lat, lng, pIntensity]);
         }
       });
     });
@@ -103,15 +112,16 @@ function HeatmapLayer({ temples, crowdData, selected }) {
       heatRef.current.setLatLngs(points);
     } else {
       heatRef.current = L.heatLayer(points, {
-        radius:  25,
-        blur:    15,
+        radius:  28,
+        blur:    18,
         maxZoom: 18,
         gradient: {
-          0.1: 'rgba(34,197,94,0)',
-          0.2: '#22c55e', // Green (Low)
-          0.4: '#fbbf24', // Yellow (Moderate)
-          0.7: '#ef4444', // Red (High)
-          1.0: '#991b1b', // Maroon (Extreme)
+          0.15: 'rgba(34,197,94,0)',
+          0.25: '#22c55e', // Safe (Green)
+          0.45: '#fbbf24', // Moderate (Amber)
+          0.65: '#f97316', // Crowded (Orange)
+          0.85: '#ef4444', // Heavy (Red)
+          1.0:  '#7f1d1d', // Critical (Deep Red)
         },
       }).addTo(map);
     }
