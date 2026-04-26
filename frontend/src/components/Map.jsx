@@ -4,7 +4,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.heat';
 import html2canvas from 'html2canvas';
-import { Download, Map as MapIcon, X, List } from 'lucide-react';
+import { Download, Map as MapIcon, X, List, Navigation2 } from 'lucide-react';
+import { findOptimizedPath } from '../utils/router';
 
 // ── Fix default icons ──────────────────────────────────────────────────────────
 delete L.Icon.Default.prototype._getIconUrl;
@@ -277,7 +278,7 @@ function ZoneOverlay({ temples, crowdData }) {
 }
 
 // ── User live location ────────────────────────────────────────────────────────
-function UserLocation() {
+function UserLocation({ onLocationUpdate }) {
   const [pos, setPos] = useState(null);
   const [err, setErr] = useState(false);
   const map = useMap();
@@ -289,6 +290,7 @@ function UserLocation() {
       ({ coords }) => {
         const latlng = [coords.latitude, coords.longitude];
         setPos(latlng);
+        if (onLocationUpdate) onLocationUpdate(latlng);
       },
       () => setErr(true),
       { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
@@ -324,6 +326,58 @@ function FlyToBounds({ bounds }) {
   return null;
 }
 
+// ── Optimized Smart Route ───────────────────────────────────────────────────
+function SmartRoute({ userPos, temple, crowdData }) {
+  if (!userPos || !temple || !crowdData[temple.id]) return null;
+
+  const zones = temple.zones_config || [
+    { id: 'A', lat: temple.lat + 0.0002, lng: temple.lng + 0.0002, radius: 40 }
+  ];
+
+  const path = findOptimizedPath(
+    userPos,
+    [temple.lat, temple.lng],
+    zones,
+    crowdData[temple.id]
+  );
+
+  if (!path) return null;
+
+  return (
+    <>
+      <Polyline
+        positions={path}
+        pathOptions={{
+          color: '#3b82f6',
+          weight: 8,
+          opacity: 0.2,
+          lineCap: 'round',
+        }}
+      />
+      <Polyline
+        positions={path}
+        pathOptions={{
+          color: '#60a5fa',
+          weight: 4,
+          opacity: 0.8,
+          dashArray: '10 15',
+          lineCap: 'round',
+        }}
+        className="animate-route-flow"
+      />
+      <style>{`
+        @keyframes route-flow {
+          from { stroke-dashoffset: 50; }
+          to { stroke-dashoffset: 0; }
+        }
+        .animate-route-flow {
+          animation: route-flow 2s linear infinite;
+        }
+      `}</style>
+    </>
+  );
+}
+
 // ── Main MapView ──────────────────────────────────────────────────────────────
 const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveSOS, isMobile, fitBounds, onSelectTemple }) => {
   const [downloading, setDownloading] = useState(false);
@@ -332,6 +386,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
   const [pendingSOS, setPendingSOS] = useState(null);
   const [showSOSMenu, setShowSOSMenu] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
+  const [userPos, setUserPos] = useState(null);
 
   // Close modal and reset error when selected temple changes
   useEffect(() => {
@@ -380,8 +435,11 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         {/* Exit routes for all temples */}
         <ExitRoutes temples={temples} />
 
+        {/* Smart Optimized Route (A* Algo) */}
+        <SmartRoute userPos={userPos} temple={selected} crowdData={crowdData} />
+
         {/* Live user location */}
-        <UserLocation />
+        <UserLocation onLocationUpdate={setUserPos} />
 
         {/* Temple markers (all temples, dim non-selected) */}
         {temples.map((temple) => {
