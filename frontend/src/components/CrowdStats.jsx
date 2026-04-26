@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Users, TrendingUp, TrendingDown, Minus, Navigation, AlertTriangle, Clock, Download, Layers } from 'lucide-react';
+import { Users, TrendingUp, TrendingDown, Minus, Navigation, AlertTriangle, Clock, Download, Layers, Cloud, Droplets, Wind, Thermometer } from 'lucide-react';
 import html2canvas from 'html2canvas';
+import { useWeather } from '../useWeather';
 
 const STATUS_CFG = {
   HIGH:     { color: '#ef4444', border: 'rgba(239,68,68,0.25)',  bg: 'rgba(239,68,68,0.10)',  bar: 'linear-gradient(90deg,#ef4444,#f97316)', label: '🚨 HIGH'     },
@@ -30,6 +31,7 @@ function StatBox({ icon: Icon, label, value, color }) {
 const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
   const [downloading, setDownloading] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const { weather, loading: weatherLoading } = useWeather(temple?.lat, temple?.lng);
   const status = data?.status?.toUpperCase() || 'LOW';
   const cfg    = STATUS_CFG[status] || STATUS_CFG['LOW'];
   const count  = data?.total_count ?? 0;
@@ -195,6 +197,75 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
                 </div>
               </div>
             ))}
+          </div>
+        )}
+
+        {/* ── Live Weather ── */}
+        {weather && (
+          <div style={{ marginBottom: 14 }}>
+            <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
+              🌤️ Live Weather
+            </p>
+            <div style={{
+              display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6,
+            }}>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '8px 10px', borderRadius: 10,
+                background: 'rgba(59,130,246,0.08)',
+                border: '1px solid rgba(59,130,246,0.12)',
+              }}>
+                <Thermometer size={13} color="#60a5fa" />
+                <div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: '#f1f5f9' }}>{weather.temp}°C</div>
+                  <div style={{ fontSize: 8, color: '#94a3b8' }}>Feels {weather.feels_like}°C</div>
+                </div>
+              </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '8px 10px', borderRadius: 10,
+                background: 'rgba(34,197,94,0.08)',
+                border: '1px solid rgba(34,197,94,0.12)',
+              }}>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                  alt={weather.description}
+                  style={{ width: 32, height: 32, margin: -4 }}
+                />
+                <div style={{ fontSize: 10, fontWeight: 600, color: '#e2e8f0', textTransform: 'capitalize', lineHeight: 1.3 }}>
+                  {weather.description}
+                </div>
+              </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '8px 10px', borderRadius: 10,
+                background: 'rgba(168,85,247,0.08)',
+                border: '1px solid rgba(168,85,247,0.12)',
+              }}>
+                <Droplets size={13} color="#c084fc" />
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: '#f1f5f9' }}>{weather.humidity}%</div>
+                  <div style={{ fontSize: 8, color: '#94a3b8' }}>Humidity</div>
+                </div>
+              </div>
+              <div style={{
+                display: 'flex', alignItems: 'center', gap: 6,
+                padding: '8px 10px', borderRadius: 10,
+                background: 'rgba(245,158,11,0.08)',
+                border: '1px solid rgba(245,158,11,0.12)',
+              }}>
+                <Wind size={13} color="#fbbf24" />
+                <div>
+                  <div style={{ fontSize: 14, fontWeight: 800, color: '#f1f5f9' }}>{weather.wind_speed} km/h</div>
+                  <div style={{ fontSize: 8, color: '#94a3b8' }}>Wind</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+        {weatherLoading && (
+          <div style={{ marginBottom: 14, fontSize: 10, color: '#94a3b8', textAlign: 'center' }}>
+            Loading weather data...
           </div>
         )}
 
