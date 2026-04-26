@@ -59,29 +59,36 @@ function FlyTo({ lat, lng }) {
 }
 
 // ── Leaflet.heat heatmap layer ────────────────────────────────────────────────
-function HeatmapLayer({ temple, crowdData }) {
+function HeatmapLayer({ temples, crowdData }) {
   const map     = useMap();
   const heatRef = useRef(null);
 
   useEffect(() => {
-    const cfg_zones = temple.zones_config;
-    const data = crowdData[temple.id];
-    if (!Array.isArray(cfg_zones) || cfg_zones.length === 0 || !data) return;
-
     const points = [];
-    data.zones.forEach((zone) => {
-      const zoneCfg = cfg_zones.find((z) => z.id === zone.id) || cfg_zones[0];
-      if (!zoneCfg) return;
-      const intensity = Math.min(zone.count / 160, 1);
-      const numPoints = Math.min(zone.count * 4, 400);
 
-      for (let i = 0; i < numPoints; i++) {
-        const spread = (zoneCfg.radius / 111320) * (0.4 + Math.random() * 0.6);
-        const angle  = Math.random() * Math.PI * 2;
-        const lat    = zoneCfg.lat + spread * Math.cos(angle);
-        const lng    = zoneCfg.lng + spread * Math.sin(angle) * 1.2;
-        points.push([lat, lng, intensity]);
+    temples.forEach(temple => {
+      let cfg_zones = temple.zones_config;
+      if (!Array.isArray(cfg_zones) || cfg_zones.length === 0) {
+        cfg_zones = [{ id: 'A', label: 'Main Area', lat: temple.lat, lng: temple.lng, radius: 50 }];
       }
+
+      const data = crowdData[temple.id];
+      if (!data) return;
+
+      data.zones.forEach((zone) => {
+        const zoneCfg = cfg_zones.find((z) => z.id === zone.id) || cfg_zones[0];
+        if (!zoneCfg) return;
+        const intensity = Math.min(zone.count / 160, 1);
+        const numPoints = Math.min(zone.count * 4, 400);
+
+        for (let i = 0; i < numPoints; i++) {
+          const spread = (zoneCfg.radius / 111320) * (0.4 + Math.random() * 0.6);
+          const angle  = Math.random() * Math.PI * 2;
+          const lat    = zoneCfg.lat + spread * Math.cos(angle);
+          const lng    = zoneCfg.lng + spread * Math.sin(angle) * 1.2;
+          points.push([lat, lng, intensity]);
+        }
+      });
     });
 
     if (heatRef.current) {
@@ -107,95 +114,143 @@ function HeatmapLayer({ temple, crowdData }) {
         heatRef.current = null;
       }
     };
-  }, [crowdData, temple, map]);
+  }, [crowdData, temples, map]);
 
   return null;
 }
 
 // ── Exit routes as animated polylines ────────────────────────────────────────
-function ExitRoutes({ temple }) {
-  const routes = temple.exit_routes_config;
-  if (!Array.isArray(routes) || routes.length === 0) return null;
+function ExitRoutes({ temples }) {
+  if (!temples) return null;
 
   return (
     <>
-      {routes.map((route) => (
-        <React.Fragment key={route.id}>
-          {/* Route shadow */}
-          <Polyline
-            positions={route.points}
-            pathOptions={{ color: 'rgba(0,0,0,0.4)', weight: 6, opacity: 1 }}
-          />
-          {/* Route line */}
-          <Polyline
-            positions={route.points}
-            pathOptions={{
-              color:     route.color,
-              weight:    3,
-              opacity:   0.9,
-              dashArray: route.dashed ? '10 8' : null,
-              lineCap:   'round',
-              lineJoin:  'round',
-            }}
-          />
-          {/* Arrow marker at endpoint */}
-          <Circle
-            center={route.points[route.points.length - 1]}
-            radius={12}
-            pathOptions={{
-              color:       route.color,
-              fillColor:   route.color,
-              fillOpacity: 0.8,
-              weight:      2,
-            }}
-          >
-            <Popup>
-              <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 600, fontSize: 12 }}>
-                {route.label}
-              </div>
-            </Popup>
-          </Circle>
-        </React.Fragment>
-      ))}
+      {temples.map((temple) => {
+        let routes = temple.exit_routes_config;
+        if (!Array.isArray(routes) || routes.length === 0) {
+          routes = [
+            {
+              id: 'exit-main-fallback',
+              label: 'Main Safe Exit',
+              color: '#22c55e', // Green
+              points: [
+                [temple.lat, temple.lng],
+                [temple.lat - 0.0006, temple.lng + 0.0003],
+                [temple.lat - 0.0012, temple.lng + 0.0006],
+              ],
+              dashed: false
+            },
+            {
+              id: 'exit-secondary-fallback',
+              label: 'Secondary Exit',
+              color: '#3b82f6', // Blue
+              points: [
+                [temple.lat, temple.lng],
+                [temple.lat + 0.0006, temple.lng + 0.0005],
+                [temple.lat + 0.0012, temple.lng + 0.0009],
+              ],
+              dashed: false
+            },
+            {
+              id: 'exit-emergency-fallback',
+              label: 'Emergency Evacuation',
+              color: '#f59e0b', // Amber
+              points: [
+                [temple.lat, temple.lng],
+                [temple.lat + 0.0005, temple.lng - 0.0004],
+                [temple.lat + 0.0010, temple.lng - 0.0008],
+              ],
+              dashed: true
+            }
+          ];
+        }
+
+        return routes.map((route) => (
+          <React.Fragment key={`${temple.id}-${route.id}`}>
+            {/* Route shadow */}
+            <Polyline
+              positions={route.points}
+              pathOptions={{ color: 'rgba(0,0,0,0.4)', weight: 6, opacity: 1 }}
+            />
+            {/* Route line */}
+            <Polyline
+              positions={route.points}
+              pathOptions={{
+                color:     route.color,
+                weight:    3,
+                opacity:   0.9,
+                dashArray: route.dashed ? '10 8' : null,
+                lineCap:   'round',
+                lineJoin:  'round',
+              }}
+            />
+            {/* Arrow marker at endpoint */}
+            <Circle
+              center={route.points[route.points.length - 1]}
+              radius={12}
+              pathOptions={{
+                color:       route.color,
+                fillColor:   route.color,
+                fillOpacity: 0.8,
+                weight:      2,
+              }}
+            >
+              <Popup>
+                <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 600, fontSize: 12 }}>
+                  {route.label} ({temple.name})
+                </div>
+              </Popup>
+            </Circle>
+          </React.Fragment>
+        ));
+      })}
     </>
   );
 }
 
 // ── Zone label circles ────────────────────────────────────────────────────────
-function ZoneOverlay({ temple, crowdData }) {
-  const zones_cfg = temple.zones_config;
-  const data = crowdData[temple.id];
-  if (!Array.isArray(zones_cfg) || zones_cfg.length === 0 || !data) return null;
+function ZoneOverlay({ temples, crowdData }) {
+  if (!temples || !crowdData) return null;
 
   return (
     <>
-      {zones_cfg.map((zone) => {
-        const zoneData = data.zones.find((z) => z.id === zone.id);
-        const count    = zoneData?.count ?? 0;
-        const density  = Math.min(count / 160, 1);
-        const color    = density > 0.7 ? '#ef4444' : density > 0.4 ? '#a855f7' : '#22c55e';
-        return (
-          <Circle
-            key={zone.id}
-            center={[zone.lat, zone.lng]}
-            radius={zone.radius}
-            pathOptions={{
-              color:       color,
-              fillColor:   color,
-              fillOpacity: 0.08,
-              weight:      1.5,
-              opacity:     0.5,
-              dashArray:   '6 4',
-            }}
-          >
-            <Popup>
-              <div style={{ fontFamily: 'Inter,sans-serif', minWidth: 130 }}>
-                <strong style={{ fontSize: 13 }}>{zone.label}</strong>
-                <div style={{ color, fontWeight: 700, marginTop: 3 }}>{count} people</div>
-              </div>
-            </Popup>
-          </Circle>
-        );
+      {temples.map((temple) => {
+        let zones_cfg = temple.zones_config;
+        if (!Array.isArray(zones_cfg) || zones_cfg.length === 0) {
+          zones_cfg = [{ id: 'A', label: 'Main Area', lat: temple.lat, lng: temple.lng, radius: 50 }];
+        }
+
+        const data = crowdData[temple.id];
+        if (!data) return null;
+
+        return zones_cfg.map((zone) => {
+          const zoneData = data.zones.find((z) => z.id === zone.id);
+          const count    = zoneData?.count ?? 0;
+          const density  = Math.min(count / 160, 1);
+          const color    = density > 0.7 ? '#ef4444' : density > 0.4 ? '#a855f7' : '#22c55e';
+          return (
+            <Circle
+              key={`${temple.id}-${zone.id}`}
+              center={[zone.lat, zone.lng]}
+              radius={zone.radius}
+              pathOptions={{
+                color:       color,
+                fillColor:   color,
+                fillOpacity: 0.08,
+                weight:      1.5,
+                opacity:     0.5,
+                dashArray:   '6 4',
+              }}
+            >
+              <Popup>
+                <div style={{ fontFamily: 'Inter,sans-serif', minWidth: 130 }}>
+                  <strong style={{ fontSize: 13 }}>{zone.label} ({temple.name})</strong>
+                  <div style={{ color, fontWeight: 700, marginTop: 3 }}>{count} people</div>
+                </div>
+              </Popup>
+            </Circle>
+          );
+        });
       })}
     </>
   );
@@ -296,14 +351,14 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
           <FlyTo lat={selected.lat} lng={selected.lng} />
         )}
 
-        {/* Heatmap for selected temple only */}
-        <HeatmapLayer temple={selected} crowdData={crowdData} />
+        {/* Heatmap for all temples */}
+        <HeatmapLayer temples={temples} crowdData={crowdData} />
 
-        {/* Zone boundary circles */}
-        <ZoneOverlay temple={selected} crowdData={crowdData} />
+        {/* Zone boundary circles for all temples */}
+        <ZoneOverlay temples={temples} crowdData={crowdData} />
 
-        {/* Exit routes */}
-        <ExitRoutes temple={selected} />
+        {/* Exit routes for all temples */}
+        <ExitRoutes temples={temples} />
 
         {/* Live user location */}
         <UserLocation />
