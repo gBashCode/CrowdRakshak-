@@ -260,6 +260,10 @@ export default function App() {
           setActiveSOS={setActiveSOS}
           isMobile={isMobile}
           fitBounds={fitBounds}
+          onSelectTemple={(t) => {
+            setSelected(t);
+            setFitBounds(null);
+          }}
         />
 
         {/* ── Mobile Hamburger Menu ── */}

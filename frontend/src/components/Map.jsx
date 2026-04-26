@@ -250,7 +250,7 @@ function FlyToBounds({ bounds }) {
 }
 
 // ── Main MapView ──────────────────────────────────────────────────────────────
-const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveSOS, isMobile, fitBounds }) => {
+const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveSOS, isMobile, fitBounds, onSelectTemple }) => {
   const [downloading, setDownloading] = useState(false);
   const [showBuildingMap, setShowBuildingMap] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -331,6 +331,11 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
                 icon={templeIcon(status)}
                 opacity={isSelected ? 1 : 0.45}
                 zIndexOffset={isSelected ? 500 : 0}
+                eventHandlers={{
+                  click: () => {
+                    if (onSelectTemple) onSelectTemple(temple);
+                  }
+                }}
               >
                 <Popup>
                   <div style={{ fontFamily: 'Inter,sans-serif', minWidth: 160 }}>
@@ -343,6 +348,17 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
                     </div>
                     <div style={{ color: '#94a3b8', fontSize: 11, marginTop: 4 }}>
                       {(temple.exit_routes_config?.length ?? 0)} exit routes mapped
+                    </div>
+                    <div
+                      onClick={() => { if (onSelectTemple) onSelectTemple(temple); }}
+                      style={{
+                        marginTop: 8, padding: '5px 10px', borderRadius: 6,
+                        background: '#3b82f6', color: 'white', fontSize: 11,
+                        fontWeight: 700, cursor: 'pointer', textAlign: 'center',
+                        display: 'inline-block',
+                      }}
+                    >
+                      View Details →
                     </div>
                   </div>
                 </Popup>
