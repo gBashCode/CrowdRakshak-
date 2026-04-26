@@ -59,14 +59,16 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
       }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-            <div style={{
-              width: 42, height: 42, borderRadius: 14, flexShrink: 0,
-              background: 'linear-gradient(135deg,#7c3aed,#db2777)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 4px 16px rgba(124,58,237,0.45)',
-            }}>
-              <Users size={20} color="white" />
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="CrowdRakshak Logo"
+              style={{
+                width: 46, height: 46, borderRadius: '50%', flexShrink: 0,
+                boxShadow: '0 4px 16px rgba(0,0,0,0.45)',
+                objectFit: 'cover',
+                background: '#f1f5f9'
+              }}
+            />
             <div>
               <h1 style={{ fontSize: 16, fontWeight: 900, color: '#f1f5f9', letterSpacing: '-0.02em' }}>
                 CrowdRakshak
