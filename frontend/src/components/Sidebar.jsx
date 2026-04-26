@@ -222,10 +222,12 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
               maxHeight: 220, overflowY: 'auto', zIndex: 50,
               boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
             }}>
-              {suggestions.map(t => {
-                  const d = crowdData[t.id];
-                  const status = d?.status?.toUpperCase() || 'LOW';
-                  const cfg = STATUS_CFG[status] || STATUS_CFG['LOW'];
+              {stateFiltered
+                .filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                .slice(0, 50)
+                .map(t => {
+                  const tStatus = (crowdData[t.id]?.status || 'LOW').toUpperCase();
+                  const tCfg = STATUS_CFG[tStatus] || STATUS_CFG['LOW'];
                   return (
                     <div
                       key={t.id}
@@ -236,7 +238,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
                     >
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <span style={{ fontSize: 12, fontWeight: 700, color: '#f1f5f9' }}>{t.name}</span>
-                        <span style={{ fontSize: 9, fontWeight: 700, color: cfg.color, background: cfg.bg, padding: '2px 6px', borderRadius: 99, border: `1px solid ${cfg.border}` }}>{status}</span>
+                        <span style={{ fontSize: 9, fontWeight: 700, color: tCfg.color, background: tCfg.bg, padding: '2px 6px', borderRadius: 99, border: `1px solid ${tCfg.border}` }}>{tStatus}</span>
                       </div>
                       <div style={{ fontSize: 10, color: '#64748b', marginTop: 2 }}>📍 {t.state || 'Unknown'}</div>
                     </div>
