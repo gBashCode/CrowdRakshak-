@@ -41,6 +41,10 @@ class ConnectionManager:
 
 manager = ConnectionManager()
 
+@app.get("/")
+def read_root():
+    return {"status": "online", "message": "CrowdRakshak API is running", "docs": "/docs"}
+
 
 @app.get("/temples")
 def get_temples():
