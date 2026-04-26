@@ -6,6 +6,7 @@ import SplashScreen from './components/SplashScreen';
 import { createDataEngine } from './dataEngine';
 import { Bell, X, AlertTriangle, Menu } from 'lucide-react';
 import axios from 'axios';
+import BUNDLED_TEMPLES from './templeData';
 
 const UPDATE_INTERVAL = 12_000; // 12 seconds — realistic, not jittery
 
@@ -126,8 +127,17 @@ export default function App() {
       }
     };
 
+    // Always start immediately with bundled data (works on all devices, no backend needed)
+    const bundledData = BUNDLED_TEMPLES.map(t => ({
+      ...t,
+      lat: t.latitude,
+      lng: t.longitude
+    })).filter(t => !isNaN(t.lat) && !isNaN(t.lng));
+    initializeData(bundledData);
+
+    // Optionally try API for live/updated data (only if backend is running)
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-    axios.get(`${API_URL}/temples`).then(res => {
+    axios.get(`${API_URL}/temples`, { timeout: 3000 }).then(res => {
       const data = res.data
         .map(t => ({
           ...t,
@@ -135,9 +145,12 @@ export default function App() {
           lng: parseFloat(t.longitude)
         }))
         .filter(t => !isNaN(t.lat) && !isNaN(t.lng));
-      initializeData(data);
-    }).catch(err => {
-      console.warn("Failed to load temples from API, falling back to local simulation data.");
+      if (data.length > bundledData.length) {
+        // API returned more data — use it
+        initializeData(data);
+      }
+    }).catch(() => {
+      console.info('Backend not available — using bundled temple data (253 temples).');
       const data = FALLBACK_TEMPLES.map(t => ({
         ...t,
         lat: t.latitude,
