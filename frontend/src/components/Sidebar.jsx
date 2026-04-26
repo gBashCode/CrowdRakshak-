@@ -135,7 +135,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
           }}>
             <span style={{ position: 'relative', display: 'inline-flex', width: 7, height: 7 }}>
               <span style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: '#4ade80', opacity: 0.7, animation: 'ping 1.2s cubic-bezier(0,0,0.2,1) infinite' }} />
-              <span style={{ position: 'relative', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }} />
+              <span style={{ relative: 'relative', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }} />
             </span>
             <span style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Live Monitoring</span>
           </div>
@@ -145,6 +145,62 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
             <X size={22} />
           </button>
         )}
+      </div>
+
+      {/* ── Cultural Snapshot Animation ── */}
+      <div style={{
+        margin: '12px 18px 6px',
+        height: 140, // Increased from 100
+        borderRadius: 16,
+        overflow: 'hidden',
+        position: 'relative',
+        boxShadow: '0 12px 32px rgba(0,0,0,0.5)',
+        border: '1px solid rgba(148,163,184,0.15)',
+        background: '#0f172a'
+      }}>
+        <div 
+          key={selectedState} 
+          className="cultural-image-transition"
+          style={{
+            position: 'absolute', inset: 0,
+            backgroundImage: `url('/cultural/${encodeURIComponent(selectedState)}.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            display: 'flex', alignItems: 'flex-end',
+            padding: '14px 16px',
+          }}
+        >
+          <div style={{ 
+            position: 'absolute', inset: 0, 
+            background: 'linear-gradient(to top, rgba(8,15,35,0.95) 0%, rgba(8,15,35,0.2) 60%, transparent 100%)' 
+          }} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+              <div style={{ width: 12, height: 1, background: '#3b82f6' }} />
+              <p style={{ fontSize: 9, fontWeight: 800, color: '#3b82f6', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Cultural Hub</p>
+            </div>
+            <h2 style={{ fontSize: 16, fontWeight: 900, color: '#fff', textShadow: '0 2px 8px rgba(0,0,0,0.8)', letterSpacing: '-0.01em' }}>{selectedState}</h2>
+          </div>
+        </div>
+        
+        {/* Fallback pattern for states without images */}
+        <div style={{ 
+          position: 'absolute', inset: 0, zIndex: -1,
+          background: 'radial-gradient(circle at top right, #1e293b, #0f172a)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0.4
+        }}>
+          <MapPin size={32} color="#1e293b" />
+        </div>
+
+        <style>{`
+          .cultural-image-transition {
+            animation: slideUpFade 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+          }
+          @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(15px) scale(1.05); filter: blur(4px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+          }
+        `}</style>
       </div>
 
       {/* Search & Filter */}
