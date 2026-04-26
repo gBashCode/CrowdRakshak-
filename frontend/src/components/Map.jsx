@@ -465,75 +465,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
-      {/* ── SOS Top Left Buttons ── */}
-      <div style={{
-        position: 'absolute',
-        top: isMobile ? 80 : 20,
-        left: isMobile ? 16 : 336,
-        zIndex: 1001,
-        display: 'flex',
-        gap: 8,
-      }}>
-        {activeSOS ? (
-          <button
-            onClick={() => setActiveSOS(null)}
-            style={{
-              background: '#ef4444',
-              border: '2px solid #fca5a5',
-              borderRadius: 12, padding: '10px 20px',
-              color: 'white', fontWeight: 900, fontSize: 13,
-              cursor: 'pointer', boxShadow: '0 4px 20px rgba(239,68,68,0.5)',
-              animation: 'pulse-sos 1.5s infinite',
-              display: 'flex', alignItems: 'center', gap: 8,
-            }}
-          >
-            <X size={18} /> END EMERGENCY SOS
-          </button>
-        ) : (
-          <>
-            <button
-              onClick={() => setPendingSOS('Medical')}
-              style={{
-                background: 'rgba(225, 29, 72, 0.9)', border: '1px solid #fb7185',
-                color: 'white', borderRadius: 10, padding: '8px 14px', fontSize: 11, fontWeight: 800,
-                cursor: 'pointer', backdropFilter: 'blur(10px)', boxShadow: '0 4px 15px rgba(225,29,72,0.3)',
-                display: 'flex', alignItems: 'center', gap: 6, transition: 'transform 0.2s'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-            >
-              🚑 MEDICAL
-            </button>
-            <button
-              onClick={() => setPendingSOS('Fire')}
-              style={{
-                background: 'rgba(234, 88, 12, 0.9)', border: '1px solid #fdba74',
-                color: 'white', borderRadius: 10, padding: '8px 14px', fontSize: 11, fontWeight: 800,
-                cursor: 'pointer', backdropFilter: 'blur(10px)', boxShadow: '0 4px 15px rgba(234,88,12,0.3)',
-                display: 'flex', alignItems: 'center', gap: 6, transition: 'transform 0.2s'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-            >
-              🔥 FIRE
-            </button>
-            <button
-              onClick={() => setPendingSOS('Stampede')}
-              style={{
-                background: 'rgba(147, 51, 234, 0.9)', border: '1px solid #d8b4fe',
-                color: 'white', borderRadius: 10, padding: '8px 14px', fontSize: 11, fontWeight: 800,
-                cursor: 'pointer', backdropFilter: 'blur(10px)', boxShadow: '0 4px 15px rgba(147,51,234,0.3)',
-                display: 'flex', alignItems: 'center', gap: 6, transition: 'transform 0.2s'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-              onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
-            >
-              🏃 STAMPEDE
-            </button>
-          </>
-        )}
-      </div>
-
+      
       {/* ── Top Floating SOS Button ── */}
       <div style={{
         position: 'absolute',
