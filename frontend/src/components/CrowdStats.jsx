@@ -29,6 +29,7 @@ function StatBox({ icon: Icon, label, value, color }) {
 
 const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
   const [downloading, setDownloading] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const status = data?.status || 'LOW';
   const cfg    = STATUS_CFG[status];
   const count  = data?.total_count ?? 0;
@@ -92,7 +93,23 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
       {/* Color accent bar */}
       <div style={{ height: 3, background: cfg.bar, width: '100%' }} />
 
-      <div style={{ padding: '18px 18px 20px' }}>
+      {/* Mobile drag handle toggle */}
+      {isMobile && (
+        <div 
+          onClick={() => setIsExpanded(!isExpanded)}
+          style={{ 
+            width: '100%', display: 'flex', justifyContent: 'center', 
+            paddingTop: 14, paddingBottom: 4, cursor: 'pointer' 
+          }}
+        >
+          <div style={{ 
+            width: 48, height: 5, background: 'rgba(148,163,184,0.4)', 
+            borderRadius: 99, transition: 'background 0.2s'
+          }} />
+        </div>
+      )}
+
+      <div style={{ padding: isMobile ? '8px 18px 20px' : '18px 18px 20px' }}>
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
           <div style={{ flex: 1, paddingRight: 10 }}>
@@ -123,10 +140,19 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
         </div>
 
         {/* Stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: 14 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: isMobile && !isExpanded ? 0 : 14 }}>
           <StatBox icon={Users}  label="Total"  value={count} color={cfg.color} />
           <StatBox icon={Layers} label="Zones"  value={data?.zones?.length ?? '—'} color="#94a3b8" />
         </div>
+
+        {/* Collapsible Details */}
+        <div style={{
+          display: 'grid',
+          gridTemplateRows: (!isMobile || isExpanded) ? '1fr' : '0fr',
+          transition: 'grid-template-rows 0.3s ease-in-out',
+        }}>
+          <div style={{ overflow: 'hidden' }}>
+            <div style={{ paddingTop: (!isMobile || isExpanded) ? 4 : 0 }}>
 
         {/* Delta indicator */}
         {prev !== undefined && Math.abs(delta) > 0 && (
@@ -232,6 +258,8 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
             <Download size={14} />
             {downloading ? 'Downloading...' : 'Download Offline Map'}
           </button>
+        </div>
+          </div>
         </div>
       </div>
     </div>
