@@ -82,31 +82,58 @@ export default function App() {
 
   // Fetch temples on mount
   useEffect(() => {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
-    axios.get(`${API_URL}/temples`).then(res => {
-      const data = res.data.map(t => ({
-        ...t,
-        lat: t.latitude,
-        lng: t.longitude
-      }));
-      if (data.length > 0) {
+    const fetchTemples = async () => {
+      try {
+        // Try Firebase first
+        const { collection, getDocs } = await import('firebase/firestore');
+        const { db } = await import('./firebase');
+        const querySnapshot = await getDocs(collection(db, "temples"));
+        if (!querySnapshot.empty) {
+          const data = querySnapshot.docs.map(doc => ({
+            ...doc.data(),
+            lat: doc.data().latitude,
+            lng: doc.data().longitude
+          }));
+          setTemples(data);
+          setSelected(data[0]);
+          engine.current = createDataEngine(data);
+          setCrowdData(engine.current.tick());
+          console.log("Loaded temples from Firebase Firestore");
+          return;
+        }
+      } catch (e) {
+        console.warn("Firebase fetch failed (likely missing config). Falling back to backend/simulation...", e.message);
+      }
+
+      // Fallback to old backend or simulation
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+      axios.get(`${API_URL}/temples`).then(res => {
+        const data = res.data.map(t => ({
+          ...t,
+          lat: t.latitude,
+          lng: t.longitude
+        }));
+        if (data.length > 0) {
+          setTemples(data);
+          setSelected(data[0]);
+          engine.current = createDataEngine(data);
+          setCrowdData(engine.current.tick());
+        }
+      }).catch(err => {
+        console.warn("Failed to load temples from API, falling back to local simulation data.");
+        const data = FALLBACK_TEMPLES.map(t => ({
+          ...t,
+          lat: t.latitude,
+          lng: t.longitude
+        }));
         setTemples(data);
         setSelected(data[0]);
         engine.current = createDataEngine(data);
         setCrowdData(engine.current.tick());
-      }
-    }).catch(err => {
-      console.warn("Failed to load temples from API, falling back to local simulation data.");
-      const data = FALLBACK_TEMPLES.map(t => ({
-        ...t,
-        lat: t.latitude,
-        lng: t.longitude
-      }));
-      setTemples(data);
-      setSelected(data[0]);
-      engine.current = createDataEngine(data);
-      setCrowdData(engine.current.tick());
-    });
+      });
+    };
+    
+    fetchTemples();
   }, []);
 
   // ── Try WebSocket; fall back to simulation ──────────────────────────────

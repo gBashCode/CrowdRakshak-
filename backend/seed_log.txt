@@ -1,0 +1,370 @@
+Fetching Wikipedia page...
+Found 865 temples. Opening database...
+[✓] Ahobilam: 15.133751, 78.6748824
+[✓] Alipiri: 13.6458001, 79.4072415
+[x] Amararama: Coordinates not found.
+[✓] Annavaram: 17.2833149, 82.4080348
+[x] Bhavanarayana Temple, Sarpavaram: Coordinates not found.
+[x] Bugga Ramalingeswara Swamy Temple: Coordinates not found.
+[x] Chintalarayaswami Temple: Coordinates not found.
+[x] Draksharama: Coordinates not found.
+[x] Govindaraja Temple, Tirupati: Coordinates not found.
+[✓] Jogulamba Temple, Alampur: 15.8769983, 78.1345936
+[x] Kalyana Venkateswara Temple, Narayanavanam: Coordinates not found.
+[x] Kalyana Venkateswara Temple, Srinivasamangapuram: Coordinates not found.
+[✓] Kanaka Durga Temple: 16.5154058, 80.6065339
+[x] Kapila Theertham: Coordinates not found.
+[x] Kodandarama Temple, Tirupati: Coordinates not found.
+[x] Konetirayala Temple, Keelapatla: Coordinates not found.
+[✓] Kotappakonda: 16.1469667, 80.0354224
+[✓] Ksheerarama: 16.5278671, 81.7309919
+[x] Kulandeshwara Temple: Coordinates not found.
+[✓] Kumararama: 17.0421818, 82.1713115
+[x] Kurmanathaswamy temple, Srikurmam: Coordinates not found.
+[✓] Lakshmi Narasimha Swamy Temple, Penna Ahobilam: 14.8603473, 77.3063808
+[x] Lakshmi Narasimha Temple, Antarvedi: Coordinates not found.
+[x] Lakshmi Narasimha Temple, Mangalagiri: Coordinates not found.
+[✓] Mallikarjuna Temple, Srisailam: 16.0503482, 78.9008675
+[✓] Mantralayam: 15.9413643, 77.4236981
+[✓] Chennakesava Swamy Temple, Markapur: 15.7388892, 79.2716228
+[x] Sri Mukhalingam, Srikakulam: Coordinates not found.
+[x] Padmavathi Temple: Coordinates not found.
+[x] Pallikondeswara Temple, Surutupalle: Coordinates not found.
+[✓] Prasanna Venkateswara Temple, Appalayagunta: 13.5373498, 79.4778578
+[x] Siddeswara kshetram: Coordinates not found.
+[x] Siddheswara Swamy Temple: Coordinates not found.
+[x] Somarama: Coordinates not found.
+[x] Sri Sunama Jakini Matha: Coordinates not found.
+[x] Srikalahasteeswara Temple: Coordinates not found.
+[x] Srungara Vallabha Swamy Temple, Tholi Tirupati: Coordinates not found.
+[✓] Suryanarayana Temple, Arasavalli: 18.2881305, 83.9130594
+[x] Suryanarayana Temple, Gollala Mamidada: Coordinates not found.
+[x] Varaha Lakshmi Narasimha Temple, Simhachalam: Coordinates not found.
+[✓] Varahaswamy Temple, Tirumala: 13.6848751, 79.3476435
+[✓] Vedadri Narasimha Temple: 16.8152045, 80.1242618
+[x] Vedanarayana Temple, Nagalapuram: Coordinates not found.
+[x] Veerabhadra Temple, Lepakshi: Coordinates not found.
+[x] Veeranjaneya Temple, Ardhagiri: Coordinates not found.
+[✓] Venkateswara Temple, Dwaraka Tirumala: 16.9551502, 81.2567672
+[✓] Venkateswara Temple: 17.9355647, 83.4221266
+[✓] Vinayaka Temple, Kanipakam: 13.2770145, 79.0335591
+[✓] Sri Yaganti Uma Maheswara Temple: 15.3505974, 78.1386784
+[x] Parshuram Kund: Coordinates not found.
+[x] Rangnuwk hum: Coordinates not found.
+[x] Bhairabi Temple: Coordinates not found.
+[x] Dah Parvatiya: Coordinates not found.
+[x] Deopani Durga Mandir: Coordinates not found.
+[x] Dhekiakhowa Bornamghar: Coordinates not found.
+[x] Dirgheshwari temple: Coordinates not found.
+[x] Doul Govinda Temple: Coordinates not found.
+[x] Hatimura Temple: Coordinates not found.
+[x] Hayagriva Madhava Temple: Coordinates not found.
+[✓] Kamakhya Temple: 26.165107, 91.7059298
+[x] Ketakeshwar Dewal: Coordinates not found.
+[x] Madhab Than: Coordinates not found.
+[x] Mahabhairav Temple: Coordinates not found.
+[x] Mahamaya Dham: Coordinates not found.
+[✓] Malinithan: 27.6577367, 94.7149447
+[x] Navagraha temples: Coordinates not found.
+[x] Negheriting Shiva Doul: Coordinates not found.
+[x] Rangnath Dol: Coordinates not found.
+[x] Rudreswar Temple: Coordinates not found.
+[x] Sivasagar Sivadol: Coordinates not found.
+[x] Sukreswar Temple: Coordinates not found.
+[x] Tamreswari Temple: Coordinates not found.
+[x] Ugratara Devalaya: Coordinates not found.
+[x] Aami Mandir: Coordinates not found.
+[x] Baba Mukteshwarnath Dham, Deohar: Coordinates not found.
+[x] Baba Garib Sthan Mandir: Coordinates not found.
+[x] Bari Sangat Bihar: Coordinates not found.
+[x] Budhi Mai: Coordinates not found.
+[x] Budhanath Temple, Bhagalpur: Coordinates not found.
+[x] Maa Tara Chandi Temple: Coordinates not found.
+[x] Chandika Sthan, Munger: Coordinates not found.
+[✓] ISKCON Temple Patna: 25.6069713, 85.1334882
+[✓] Kapileshwar Temple: 26.3506103, 86.0005254
+[x] Khudneshwar Asthan Morwa: Coordinates not found.
+[x] Lal Keshwar Shiv Temple: Coordinates not found.
+[✓] Mahavir Hanuman Temple: 25.6040316, 85.1366103
+[✓] Mangla Gauri Temple: 24.7749497, 85.0024913
+[✓] Mittheswarnath Shiv Temple, Darbhanga District: 26.1696574, 85.9090669
+[✓] Mundeshwari Temple: 24.9835105, 83.5646265
+[x] Pataleshwar Mandir, Hajipur: Coordinates not found.
+[x] Maharani sthan: Coordinates not found.
+[x] Patan Devi: Coordinates not found.
+[x] Parasmaninath Temple: Coordinates not found.
+[x] Ramchaura Mandir, Hajipur: Coordinates not found.
+[✓] Shanti Baba Temple, Bhagalpur: 25.2644581, 87.2227106
+[x] Shitla Mata Temple, Patna: Coordinates not found.
+[x] Shri Adinath Akhara: Coordinates not found.
+[✓] Sita Kund: 26.586475, 85.4667332
+[✓] Thawe Mandir: 26.4376334, 84.3949548
+[x] Ugna Mahadev, Bhawanipur: Coordinates not found.
+[x] Viraat Ramayan Mandir: Coordinates not found.
+[x] Vishnudham Mandir: Coordinates not found.
+[✓] Vishnupad Temple: 24.777363, 85.009338
+[✓] Chandi Mandir: 30.7034833, 76.7767945
+[✓] Ashtabhuji Temple: 21.9532232, 83.0248323
+[x] Bambleshwari Temple: Coordinates not found.
+[x] Barfani Dham: Coordinates not found.
+[✓] Bhoramdeo Temple: 22.1154438, 81.1482621
+[✓] Danteshwari Temple: 18.8966345, 81.3449358
+[x] Dudhadhari Temple: Coordinates not found.
+[x] Ganga Maiya: Coordinates not found.
+[x] Maa Bagheshwari Devi Temple: Coordinates not found.
+[✓] Laxman Temple, Sirpur: 21.3531405, 82.1867265
+[x] Maa Pitambara (Bagalamukhi) Temple: Coordinates not found.
+[x] Mahadev Temple, Deobaloda: Coordinates not found.
+[✓] Mahamaya Temple: 22.0253043, 82.9605854
+[✓] Mahamaya Temple: 22.0253043, 82.9605854
+[✓] Mata Kaushalya Temple: 21.3193823, 81.8131187
+[x] Rajiv lochan Vishnu temple, Rajim: Coordinates not found.
+[✓] Sarvamangla: 22.3636048, 82.714584
+[x] Chhatarpur Temple: Coordinates not found.
+[x] Chittaranjan Park Kali Mandir: Coordinates not found.
+[x] Hanuman Temple, Connaught Place: Coordinates not found.
+[✓] ISKCON Temple, Delhi: 28.6006842, 77.0365926
+[✓] Jhandewalan Temple: 28.6491472, 77.2041529
+[x] Kalka Mandir: Coordinates not found.
+[x] New Delhi Kali Bari: Coordinates not found.
+[✓] Nili Chhatri: 28.6626518, 77.2424315
+[✓] Shani Dham Temple: 28.4604339, 77.1908226
+[✓] Swaminarayan Akshardham: 28.6125167, 77.2773184
+[x] Uttara Guruvayurappan Temple: Coordinates not found.
+[x] Uttara Swami Malai Temple: Coordinates not found.
+[✓] Yogmaya Temple: 28.5257019, 77.1822181
+[✓] Mahadev Temple, Tambdi Surla: 15.4390416, 74.2525411
+[x] Mandodari Temple, Betki: Coordinates not found.
+[✓] Shri Damodar Temple: 15.1866069, 74.0945996
+[x] Ahmedabad Kali Bari: Coordinates not found.
+[x] Bahuchara Mata: Coordinates not found.
+[x] Becharaji: Coordinates not found.
+[x] Bhalka: Coordinates not found.
+[x] Bhavnath Temple, Mau: Coordinates not found.
+[✓] Bhavnath: 21.5278609, 70.5010271
+[x] Camp Hanuman Temple: Coordinates not found.
+[✓] Chotila: 22.4243903, 71.1992399
+[✓] Dwarkadhish Temple: 22.2377737, 68.9675115
+[x] EME Temple: Coordinates not found.
+[x] Girnar: Coordinates not found.
+[x] Gorthiya Mahadev Temple: Coordinates not found.
+[✓] Hanuman temple, Salangpur: 22.1588943, 71.7710351
+[✓] Jagannath Temple, Ahmedabad: 23.0114213, 72.5810755
+[x] Kalika Mata Temple, Pavagadh: Coordinates not found.
+[x] Nageshvara Jyotirlinga: Coordinates not found.
+[✓] Navlakha temple: 21.8836442, 69.7616776
+[x] Neminath Jain Temple, Girnar: Coordinates not found.
+[x] New Swaminarayan temple, Bhuj: Coordinates not found.
+[x] Radha Damodar Temple, Junagadh: Coordinates not found.
+[x] Rudra Mahalaya Temple: Coordinates not found.
+[x] Rukmini Devi Temple: Coordinates not found.
+[x] Sadhimataji temple: Coordinates not found.
+[✓] Santram Mandir: 22.6897828, 72.8638679
+[✓] Shamlaji: 23.6878592, 73.3861398
+[✓] Shiva temple, Kera: 23.0881279, 69.5936944
+[x] Shri Keshavraiji Temple, Bet Dwarka: Coordinates not found.
+[x] Someshwar Mahadev Temple: Coordinates not found.
+[x] Somnath temple: Coordinates not found.
+[✓] Sun Temple, Modhera: 23.5834213, 72.1330777
+[x] Swaminarayan Akshardham (Gandhinagar): Coordinates not found.
+[x] Swaminarayan Mandir, Gadhada: Coordinates not found.
+[✓] Swaminarayan Temple, Ahmedabad: 23.0028816, 72.5575885
+[x] Umiya Mata Temple: Coordinates not found.
+[✓] Agroha Dham: 29.332216, 75.625477
+[x] Bhuteshwar Temple: Coordinates not found.
+[✓] Brahma Sarovar: 29.9612772, 76.8274
+[✓] Jyotisar: 29.9635209, 76.7718268
+[x] Kartikeya Temple, Pehowa: Coordinates not found.
+[x] Mata Mansa Devi Mandir: Coordinates not found.
+[x] Pindara Temple: Coordinates not found.
+[x] Sannihit Sarovar: Coordinates not found.
+[✓] Sthaneshwar Mahadev Temple: 29.9812784, 76.8277945
+[✓] Aadi Himani Chamunda: 32.1926888, 76.4504114
+[x] Baba Balak Nath: Coordinates not found.
+[✓] Baglamukhi Temple, Bankhandi: 31.9677806, 76.2050489
+[x] Baijnath Temple: Coordinates not found.
+[x] Bajreshwari Mata Temple: Coordinates not found.
+[x] Banni Mata Temple: Coordinates not found.
+[x] Bathu Temples: Coordinates not found.
+[x] Bhalei Mata Temple: Coordinates not found.
+[x] Bhimakali Mandir: Coordinates not found.
+[✓] Bijli Mahadev: 31.9388881, 77.1470644
+[✓] Chaurasi Temple: 32.6215238, 76.4035663
+[x] Chintpurni Mandir: Coordinates not found.
+[✓] Dhingu Mata Temple: 31.1044384, 77.2006164
+[x] Hatkoti Mandir: Coordinates not found.
+[x] Hidimba Devi Temple: Coordinates not found.
+[x] Jakhu Temple: Coordinates not found.
+[x] Jwala Ji: Coordinates not found.
+[✓] Kali Bari: 32.8665034, 76.5915324
+[x] Kamna Devi Temple: Coordinates not found.
+[x] Kamaksha Temple: Coordinates not found.
+[x] Lakshna Devi Temple: Coordinates not found.
+[x] Maa Bhangayani Temple: Coordinates not found.
+[x] Maa Simsa Temple: Coordinates not found.
+[x] Mamleshwar Mahadev: Coordinates not found.
+[✓] Manikaran: 32.0273214, 77.3464072
+[✓] Manimahesh Kailash Peak: 32.3510368, 76.6524361
+[x] Masrur Temples: Coordinates not found.
+[x] Mata Kuan Rani Temple: Coordinates not found.
+[✓] Mindhal Mata Temple: 32.9950061, 76.4274845
+[✓] Naina Devi: 31.3081912, 76.5362208
+[x] Pohlani Mata Temple: Coordinates not found.
+[x] Raghunath Temple: Coordinates not found.
+[✓] Renuka Ji: 30.6088915, 77.4493668
+[x] Sankat Mochan Temple: Coordinates not found.
+[x] Shali Mata Temple: Coordinates not found.
+[x] Shandilya Rishi Mandir: Coordinates not found.
+[✓] Shikari Devi Temple: 31.4734215, 77.1652358
+[x] Shoolini Devi: Coordinates not found.
+[x] Shri Chamunda Devi Mandir: Coordinates not found.
+[x] Shri Mahaveer Hanuman Mandir Khushala: Coordinates not found.
+[✓] Tara Devi Temple: 32.4260407, 75.9488736
+[✓] Triloknath Temple: 32.684447, 76.6955668
+[✓] Triloknath Temple: 32.684447, 76.6955668
+[x] Trilokpur temple: Coordinates not found.
+[x] Raghunath Mandir: Coordinates not found.
+[x] Vaishno Devi Temple: Coordinates not found.
+[x] Amarnath Cave Temple: Coordinates not found.
+[x] Hari Parbat: Coordinates not found.
+[x] Kheer Bhawani Temple: Coordinates not found.
+[x] Khrew: Coordinates not found.
+[x] Martand Sun Temple: Coordinates not found.
+[x] Shankaracharya Temple: Coordinates not found.
+[x] Baidyanath Temple: Coordinates not found.
+[x] Basukinath Temple, Dumka: Coordinates not found.
+[x] Bindudham: Coordinates not found.
+[✓] Chhinnamasta Temple: 23.6322495, 85.7106648
+[x] Gayatri Gyan Temple: Coordinates not found.
+[✓] Harihar Dham: 24.0702801, 85.8216674
+[✓] Jagannath Temple: 23.3168885, 85.2818038
+[x] Karneshwar Dham: Coordinates not found.
+[x] Maa Dewri Temple: Coordinates not found.
+[✓] Maluti temples: 24.159622, 87.6748896
+[x] Shree Banshidhar Radhika Ji Mandir: Coordinates not found.
+[x] Sri Sri Kalika Maharani Temple: Coordinates not found.
+[x] Aihole: Coordinates not found.
+[x] Amrutesvara Temple, Amruthapura: Coordinates not found.
+[✓] Annapoorneshwari Temple: 12.9791072, 74.9006001
+[✓] Badami cave temples: 15.9183722, 75.6843849
+[x] Badami: Coordinates not found.
+[x] Bhoganandishwara Temple: Coordinates not found.
+[x] Bhutanatha group of temples, Badami: Coordinates not found.
+[x] Chamundeshwari Temple: Coordinates not found.
+[x] Cheluvanarayana Swamy Temple: Coordinates not found.
+[x] Chennakeshava Temple, Belur: Coordinates not found.
+[x] Chennakeshava Temple, Somanathapura: Coordinates not found.
+[x] Devarayanadurga: Coordinates not found.
+[✓] Dharmaraya Swamy Temple: 12.9655211, 77.5831867
+[✓] Dharmasthala Temple: 12.9503752, 75.3806509
+[x] Dodda Basavana Gudi: Coordinates not found.
+[x] Doddabasappa Temple: Coordinates not found.
+[x] Domlur Chokkanathaswamy temple: Coordinates not found.
+[✓] Gavi Gangadhareshwara Temple: 12.9482055, 77.5629917
+[✓] Ghati Subramanya: 13.4091833, 77.5296324
+[x] Gokarna: Coordinates not found.
+[x] Halebidu: Coordinates not found.
+[✓] Hampi: 15.3358, 76.4610201
+[✓] Hoysaleswara Temple: 13.2124476, 75.9942568
+[✓] ISKCON Temple, Bangalore: 13.0116837, 77.5516458
+[x] Jnanakshi Rajarajeshwari Temple: Coordinates not found.
+[x] Kadri Manjunath Temple: Coordinates not found.
+[✓] Kateel: 13.0450256, 74.8700656
+[x] Kodlamane Shree Vishnumurthy Temple: Coordinates not found.
+[x] Kukke Subramanya Temple: Coordinates not found.
+[x] Lakshmi Narasimha Temple, Bhadravati: Coordinates not found.
+[✓] Mahadeshwara Temple: 12.6790505, 77.5835424
+[✓] Mookambika temple: 13.8637235, 74.8145495
+[✓] Murudeshwara: 14.1008191, 74.505423
+[x] Nagadevatha: Coordinates not found.
+[x] Nellitheertha Cave Temple: Coordinates not found.
+[✓] Pattadakal: 15.9484334, 75.8159703
+[x] Polali Rajarajeshwari temple: Coordinates not found.
+[x] Ragigudda Anjaneya Temple: Coordinates not found.
+[x] Ranganathaswamy Temple, Srirangapatna: Coordinates not found.
+[x] Shree Vishnumurthy Temple: Coordinates not found.
+[x] Sirsi Marikamba Temple: Coordinates not found.
+[x] Sri Sai Mandir, Belgaum: Coordinates not found.
+[✓] Sri Venkataramana Temple, Karkala: 13.2157741, 74.9927827
+[x] Srikanteshwara Temple, Nanjangud: Coordinates not found.
+[✓] Sharadamba Temple, Sringeri: 13.4161389, 75.2513769
+[x] Udupi Sri Krishna Matha: Coordinates not found.
+[✓] Virupaksha Temple: 15.3351651, 76.4586825
+[x] Ambalappuzha Sri Krishna Temple: Coordinates not found.
+[x] Ananthapura Lake Temple: Coordinates not found.
+[x] Aranmula Parthasarathy Temple: Coordinates not found.
+[✓] Arattupuzha Temple: 9.3283262, 76.6483652
+[✓] Attukal Temple: 8.4697972, 76.9555129
+[✓] Chakkulathukavu Temple: 9.3670788, 76.5147674
+[✓] Chettikulangara Devi Temple: 9.2275927, 76.5172569
+[✓] Chottanikkara Temple: 9.9333162, 76.3911605
+[x] Ettumanoor Mahadevar Temple: Coordinates not found.
+[✓] Ernakulam Shiva Temple: 9.9685159, 76.2820429
+[✓] Guruvayur Temple: 10.5942942, 76.0394112
+[x] Kadampuzha Devi Temple: Coordinates not found.
+[x] Kanadikavu Shree Vishnumaya Kuttichathan Swamy temple: Coordinates not found.
+[x] Kodungallur Bhagavathy Temple: Coordinates not found.
+[x] Koodalmanikyam Temple: Coordinates not found.
+[✓] Kottiyoor Temple: 11.8746725, 75.8629238
+[x] Lokanarkavu Temple: Coordinates not found.
+[x] Mannarasala Snake Temple: Coordinates not found.
+[✓] Muthappan Temple: 10.6177314, 76.1577351
+[x] Oachira Temple: Coordinates not found.
+[✓] Padmanabhaswamy Temple: 8.4827027, 76.9438872
+[x] Parumala Valiya Panayannarkavu Devi Temple: Coordinates not found.
+[x] Payammal Shatrughna Temple: Coordinates not found.
+[x] Pazhavangadi Ganapathy Temple: Coordinates not found.
+[x] Peruvanam Mahadeva Temple: Coordinates not found.
+[✓] Pisharikavu Temple: 11.2974443, 75.7760371
+[✓] Rajarajeshwara Temple: 12.0483999, 75.3557136
+[✓] Sabarimala Temple: 9.4345886, 77.0813869
+[x] Sree Poornathrayeesa Temple: Coordinates not found.
+[✓] Sreenarayanapuram Temple: 8.7425995, 76.7691029
+[x] Tali Shiva Temple: Coordinates not found.
+[✓] Thirumoozhikkulam Lakshmana Perumal Temple: 10.1877731, 76.327102
+[x] Thirunakkara Mahadevar Temple: Coordinates not found.
+[x] Thrikodithanam Mahavishnu Temple: Coordinates not found.
+[x] Thirumandhamkunnu Temple: Coordinates not found.
+[✓] Thirunelli Temple: 11.9082694, 75.9963713
+[✓] Thiruvanchikulam Temple: 10.2102904, 76.2065635
+[✓] Thriprayar Temple: 10.4142269, 76.1152129
+[x] Tirunavaya Temple: Coordinates not found.
+[✓] Vadakkunnathan Temple: 10.5243886, 76.2144851
+[x] Vaikom Mahadevar Temple: Coordinates not found.
+[x] Valayanad Devi Temple: Coordinates not found.
+[x] Vazhappally Maha Siva Temple: Coordinates not found.
+[x] Baba Baijnath Temple, Agar: Coordinates not found.
+[x] Bagalamukhi Temple, Nalkheda: Coordinates not found.
+[x] Bhojeshwar Temple: Coordinates not found.
+[x] Bijasan Mata Temple: Coordinates not found.
+[x] Chaturbhuj Temple (Orchha): Coordinates not found.
+[x] Chintaman Ganesh Temple, Ujjain: Coordinates not found.
+[✓] Dada Darbar: 22.23177, 76.0452095
+[x] Devi Jagadambi Temple: Coordinates not found.
+[x] Devi Vaishini Temple: Coordinates not found.
+[x] Gajanan Maharaj Temple: Coordinates not found.
+[✓] Jatashankar: 22.6275795, 76.3745573
+[x] Kal Bhairav Temple, Ujjain: Coordinates not found.
+[x] Kandariya Mahadeva Temple: Coordinates not found.
+[x] Khajrana Ganesh Temple: Coordinates not found.
+[x] Khajuraho Group of Monuments: Coordinates not found.
+[x] Lakshmi Narayan Temple, Bhopal: Coordinates not found.
+[x] Mahakaleshwar Jyotirlinga Ujjain: Coordinates not found.
+[x] Sharda Devi Temple Maihar satna: Coordinates not found.
+[x] Mohas Hanuman Mandir: Coordinates not found.
+[✓] Omkareshwar Temple: 22.2456636, 76.150782
+[x] Pashupatinath Temple, Mandsaur: Coordinates not found.
+[x] Pitambara Peeth: Coordinates not found.
+[x] Ram Raja Temple: Coordinates not found.
+[x] Sasbahu Temple, Gwalior: Coordinates not found.
+[x] Shri Kala Bhairava Nath Swami Temple: Coordinates not found.
+[x] Shyam Kaka Temple: Coordinates not found.
+[x] Kankali Devi temple: Coordinates not found.
+[x] Tulsi Peeth: Coordinates not found.
+[x] Akkalkot Swami Samarth: Coordinates not found.
+[x] Ambreshwar Temple: Coordinates not found.
+[x] Hiranyakeshi temple: Coordinates not found.
+[x] Amruteshwar Temple: Coordinates not found.
+[x] Aundha Nagnath Temple: Coordinates not found.
+[x] Babulnath Temple, Mumbai: Coordinates not found.
+[✓] Ballaleshwar Pali: 18.535215, 73.2238557
