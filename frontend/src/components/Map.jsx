@@ -59,11 +59,13 @@ function FlyTo({ lat, lng }) {
 }
 
 // ── Leaflet.heat heatmap layer ────────────────────────────────────────────────
-function HeatmapLayer({ temples, crowdData }) {
+function HeatmapLayer({ temples, crowdData, selected }) {
   const map     = useMap();
   const heatRef = useRef(null);
 
   useEffect(() => {
+    if (!temples || !crowdData) return;
+
     const points = [];
 
     temples.forEach(temple => {
@@ -75,14 +77,20 @@ function HeatmapLayer({ temples, crowdData }) {
       const data = crowdData[temple.id];
       if (!data) return;
 
+      const isSelected = selected && temple.id === selected.id;
+
       data.zones.forEach((zone) => {
         const zoneCfg = cfg_zones.find((z) => z.id === zone.id) || cfg_zones[0];
         if (!zoneCfg) return;
-        const intensity = Math.min(zone.count / 160, 1);
-        const numPoints = Math.min(zone.count * 4, 400);
+        
+        // Intensity 0 to 1 based on people count
+        const intensity = Math.min(zone.count / 200, 1);
+        
+        // More points for selected temple for detail, fewer for others for performance
+        const numPoints = isSelected ? Math.min(zone.count * 4, 300) : Math.min(zone.count, 50);
 
         for (let i = 0; i < numPoints; i++) {
-          const spread = (zoneCfg.radius / 111320) * (0.4 + Math.random() * 0.6);
+          const spread = (zoneCfg.radius / 111320) * (0.3 + Math.random() * 0.7);
           const angle  = Math.random() * Math.PI * 2;
           const lat    = zoneCfg.lat + spread * Math.cos(angle);
           const lng    = zoneCfg.lng + spread * Math.sin(angle) * 1.2;
@@ -95,15 +103,15 @@ function HeatmapLayer({ temples, crowdData }) {
       heatRef.current.setLatLngs(points);
     } else {
       heatRef.current = L.heatLayer(points, {
-        radius:  35,
-        blur:    25,
+        radius:  25,
+        blur:    15,
         maxZoom: 18,
         gradient: {
-          0.0: 'rgba(34,197,94,0)',
-          0.2: '#22c55e',
-          0.5: '#a855f7',
-          0.75: '#ef4444',
-          1.0: '#ff0000',
+          0.1: 'rgba(34,197,94,0)',
+          0.2: '#22c55e', // Green (Low)
+          0.4: '#fbbf24', // Yellow (Moderate)
+          0.7: '#ef4444', // Red (High)
+          1.0: '#991b1b', // Maroon (Extreme)
         },
       }).addTo(map);
     }
@@ -114,7 +122,7 @@ function HeatmapLayer({ temples, crowdData }) {
         heatRef.current = null;
       }
     };
-  }, [crowdData, temples, map]);
+  }, [crowdData, temples, selected, map]);
 
   return null;
 }
@@ -180,6 +188,8 @@ function ExitRoutes({ temples }) {
                 weight:    3,
                 opacity:   0.9,
                 dashArray: route.dashed ? '10 8' : null,
+                lineCap:   'round',
+                lineJoin:  'round',
                 lineCap:   'round',
                 lineJoin:  'round',
               }}
@@ -351,8 +361,8 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
           <FlyTo lat={selected.lat} lng={selected.lng} />
         )}
 
-        {/* Heatmap for all temples */}
-        <HeatmapLayer temples={temples} crowdData={crowdData} />
+        {/* Global Heatmap for all temples */}
+        <HeatmapLayer temples={temples} crowdData={crowdData} selected={selected} />
 
         {/* Zone boundary circles for all temples */}
         <ZoneOverlay temples={temples} crowdData={crowdData} />
