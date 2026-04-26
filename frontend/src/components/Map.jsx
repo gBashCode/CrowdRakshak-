@@ -619,87 +619,43 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
               <X size={18} />
               END SOS
             </button>
-          ) : (isMobile && !showSOSMenu) ? (
+          ) : (
             <button
-              onClick={() => setShowSOSMenu(true)}
+              onClick={() => setPendingSOS('Emergency')}
               style={{
-                width: 48, height: 48, borderRadius: '50%', background: 'rgba(220, 38, 38, 0.9)',
-                border: '2px solid rgba(248, 113, 113, 0.8)', color: 'white',
+                width: 52, height: 52, borderRadius: '50%',
+                background: 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)',
+                border: '2px solid rgba(255,255,255,0.4)', color: 'white',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 20px rgba(220,38,38,0.4)', cursor: 'pointer',
-                fontWeight: 800, fontSize: 13,
+                boxShadow: '0 8px 32px rgba(239,68,68,0.5), inset 0 2px 4px rgba(255,255,255,0.3)',
+                cursor: 'pointer',
+                fontWeight: 900, fontSize: 13,
                 animation: 'pulse-sos 1.5s infinite',
                 backdropFilter: 'blur(16px)',
+                position: 'relative', overflow: 'hidden'
               }}
             >
+              <span className="shimmer-sweep" />
               SOS
             </button>
-          ) : (
-            <div style={{
-              background: 'rgba(8,15,35,0.72)',
-              backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(148,163,184,0.1)',
-              borderRadius: 14, padding: '10px',
-              display: 'flex', flexDirection: 'column', gap: 6,
-              boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
-                <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Emergency</p>
-                {isMobile && <X size={14} color="#94a3b8" cursor="pointer" onClick={() => setShowSOSMenu(false)} />}
-              </div>
-              <button
-                onClick={() => setPendingSOS('Medical')}
-                className="premium-sos medical"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(225, 29, 72, 0.25) 0%, rgba(159, 18, 57, 0.4) 100%)',
-                  border: '1px solid rgba(251, 113, 133, 0.4)',
-                  color: '#fff', borderRadius: 12, padding: '12px 16px', fontSize: 10, fontWeight: 900,
-                  cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  letterSpacing: '0.08em', textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  boxShadow: '0 4px 15px rgba(225, 29, 72, 0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
-                  position: 'relative', overflow: 'hidden'
-                }}
-              >
-                <span className="shimmer-sweep" />
-                MEDICAL SOS
-              </button>
-              <button
-                onClick={() => setPendingSOS('Fire')}
-                className="premium-sos fire"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(234, 88, 12, 0.25) 0%, rgba(154, 52, 18, 0.4) 100%)',
-                  border: '1px solid rgba(253, 186, 116, 0.4)',
-                  color: '#fff', borderRadius: 12, padding: '12px 16px', fontSize: 10, fontWeight: 900,
-                  cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  letterSpacing: '0.08em', textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  boxShadow: '0 4px 15px rgba(234, 88, 12, 0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
-                  position: 'relative', overflow: 'hidden'
-                }}
-              >
-                <span className="shimmer-sweep" />
-                FIRE DEPT
-              </button>
-              <button
-                onClick={() => setPendingSOS('Stampede')}
-                className="premium-sos stampede"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.25) 0%, rgba(107, 33, 168, 0.4) 100%)',
-                  border: '1px solid rgba(216, 180, 254, 0.4)',
-                  color: '#fff', borderRadius: 12, padding: '12px 16px', fontSize: 10, fontWeight: 900,
-                  cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-                  letterSpacing: '0.08em', textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-                  boxShadow: '0 4px 15px rgba(147, 51, 234, 0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
-                  position: 'relative', overflow: 'hidden'
-                }}
-              >
-                <span className="shimmer-sweep" />
-                STAMPEDE RISK
-              </button>
-            </div>
           )}
+
+          <style>{`
+            @keyframes pulse-sos {
+              0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+              70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(239,68,68,0); }
+              100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+            }
+            @keyframes shimmer-sweep {
+              0% { transform: translateX(-200%) skewX(-20deg); }
+              20%, 100% { transform: translateX(200%) skewX(-20deg); }
+            }
+            .shimmer-sweep {
+              position: absolute; top: 0; left: 0; width: 60%; height: 100%;
+              background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+              animation: shimmer-sweep 4s infinite;
+            }
+          `}</style>
           
           <style>{`
             @keyframes shimmer-sweep {
