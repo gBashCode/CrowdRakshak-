@@ -649,93 +649,127 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
               </div>
               <button
                 onClick={() => setPendingSOS('Medical')}
-                className="sos-btn medical"
+                className="premium-sos medical"
                 style={{
-                  background: 'rgba(225, 29, 72, 0.12)', border: '1px solid rgba(225, 29, 72, 0.3)',
-                  color: '#fb7185', borderRadius: 10, padding: '10px 14px', fontSize: 11, fontWeight: 700,
-                  cursor: 'pointer', transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+                  background: 'linear-gradient(135deg, rgba(225, 29, 72, 0.25) 0%, rgba(159, 18, 57, 0.4) 100%)',
+                  border: '1px solid rgba(251, 113, 133, 0.4)',
+                  color: '#fff', borderRadius: 12, padding: '12px 16px', fontSize: 10, fontWeight: 900,
+                  cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  letterSpacing: '0.08em', textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                  boxShadow: '0 4px 15px rgba(225, 29, 72, 0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
+                  position: 'relative', overflow: 'hidden'
                 }}
               >
+                <span className="shimmer-sweep" />
                 MEDICAL SOS
               </button>
               <button
                 onClick={() => setPendingSOS('Fire')}
-                className="sos-btn fire"
+                className="premium-sos fire"
                 style={{
-                  background: 'rgba(234, 88, 12, 0.12)', border: '1px solid rgba(234, 88, 12, 0.3)',
-                  color: '#fdba74', borderRadius: 10, padding: '10px 14px', fontSize: 11, fontWeight: 700,
-                  cursor: 'pointer', transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+                  background: 'linear-gradient(135deg, rgba(234, 88, 12, 0.25) 0%, rgba(154, 52, 18, 0.4) 100%)',
+                  border: '1px solid rgba(253, 186, 116, 0.4)',
+                  color: '#fff', borderRadius: 12, padding: '12px 16px', fontSize: 10, fontWeight: 900,
+                  cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  letterSpacing: '0.08em', textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                  boxShadow: '0 4px 15px rgba(234, 88, 12, 0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
+                  position: 'relative', overflow: 'hidden'
                 }}
               >
+                <span className="shimmer-sweep" />
                 FIRE DEPT
               </button>
               <button
                 onClick={() => setPendingSOS('Stampede')}
-                className="sos-btn stampede"
+                className="premium-sos stampede"
                 style={{
-                  background: 'rgba(147, 51, 234, 0.12)', border: '1px solid rgba(147, 51, 234, 0.3)',
-                  color: '#d8b4fe', borderRadius: 10, padding: '10px 14px', fontSize: 11, fontWeight: 700,
-                  cursor: 'pointer', transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+                  background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.25) 0%, rgba(107, 33, 168, 0.4) 100%)',
+                  border: '1px solid rgba(216, 180, 254, 0.4)',
+                  color: '#fff', borderRadius: 12, padding: '12px 16px', fontSize: 10, fontWeight: 900,
+                  cursor: 'pointer', transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  letterSpacing: '0.08em', textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                  boxShadow: '0 4px 15px rgba(147, 51, 234, 0.2), inset 0 1px 1px rgba(255,255,255,0.1)',
+                  position: 'relative', overflow: 'hidden'
                 }}
               >
+                <span className="shimmer-sweep" />
                 STAMPEDE RISK
               </button>
             </div>
           )}
           
           <style>{`
-            .sos-btn:hover { transform: translateY(-2px); filter: brightness(1.2); box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
-            .sos-btn:active { transform: translateY(0) scale(0.96); }
-            .sos-btn.medical:hover { background: rgba(225, 29, 72, 0.25) !important; border-color: rgba(225, 29, 72, 0.5) !important; }
-            .sos-btn.fire:hover { background: rgba(234, 88, 12, 0.25) !important; border-color: rgba(234, 88, 12, 0.5) !important; }
-            .sos-btn.stampede:hover { background: rgba(147, 51, 234, 0.25) !important; border-color: rgba(147, 51, 234, 0.5) !important; }
+            @keyframes shimmer-sweep {
+              0% { transform: translateX(-200%) skewX(-20deg); }
+              20%, 100% { transform: translateX(200%) skewX(-20deg); }
+            }
+            .shimmer-sweep {
+              position: absolute; top: 0; left: 0; width: 60%; height: 100%;
+              background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+              animation: shimmer-sweep 4s infinite;
+            }
+            .premium-sos:hover { 
+              transform: translateY(-3px) scale(1.02); 
+              filter: brightness(1.2); 
+              box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.2); 
+            }
+            .premium-sos:active { transform: translateY(0) scale(0.96); }
           `}</style>
 
           {/* Building Map Button */}
           {isMobile ? (
             <button
               onClick={() => setShowBuildingMap(true)}
-              className="map-ctrl-btn"
+              className="premium-map-btn-mobile"
               style={{
-                width: 48, height: 48, borderRadius: '50%', background: 'rgba(8,15,35,0.72)',
-                border: '1px solid rgba(148,163,184,0.1)', color: '#3b82f6',
+                width: 52, height: 52, borderRadius: '50%', 
+                background: 'linear-gradient(135deg, rgba(30,41,59,0.9) 0%, rgba(15,23,42,0.95) 100%)',
+                border: '1px solid rgba(148,163,184,0.2)', color: '#3b82f6',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.4)', cursor: 'pointer',
-                backdropFilter: 'blur(16px)',
-                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1)', 
+                cursor: 'pointer', backdropFilter: 'blur(16px)',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                position: 'relative', overflow: 'hidden'
               }}
             >
-              <MapIcon size={22} />
+              <span className="shimmer-sweep" />
+              <MapIcon size={24} strokeWidth={2.5} />
             </button>
           ) : (
             <button
               onClick={() => setShowBuildingMap(true)}
-              className="map-ctrl-btn-rect"
+              className="premium-map-btn"
               style={{
-                background: 'rgba(8,15,35,0.72)',
-                backdropFilter: 'blur(16px)',
-                border: '1px solid rgba(148,163,184,0.1)',
-                borderRadius: 16, padding: '14px 20px',
-                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8,
-                color: '#e2e8f0', cursor: 'pointer',
-                transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-                height: 'fit-content',
+                background: 'linear-gradient(135deg, rgba(30,41,59,0.85) 0%, rgba(15,23,42,0.9) 100%)',
+                backdropFilter: 'blur(20px)',
+                border: '1px solid rgba(148,163,184,0.15)',
+                borderRadius: 18, padding: '16px 24px',
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 10,
+                color: '#fff', cursor: 'pointer',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.1)',
+                height: 'fit-content', position: 'relative', overflow: 'hidden'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <MapIcon size={20} color="#3b82f6" />
-                <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.08em' }}>STRUCTURAL MAP</span>
+              <span className="shimmer-sweep" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <MapIcon size={22} color="#3b82f6" strokeWidth={2.5} />
+                <span style={{ fontSize: 11, fontWeight: 900, letterSpacing: '0.12em' }}>STRUCTURAL CONSOLE</span>
               </div>
-              <span style={{ fontSize: 9, color: '#94a3b8', fontWeight: 600 }}>Interactive Building Plan</span>
+              <span style={{ fontSize: 9, color: '#94a3b8', fontWeight: 700, letterSpacing: '0.05em' }}>Interactive Building Schematics</span>
             </button>
           )}
           <style>{`
-            .map-ctrl-btn:hover, .map-ctrl-btn-rect:hover { transform: scale(1.08) translateY(-3px); background: rgba(30,41,59,0.85) !important; border-color: rgba(59,130,246,0.3) !important; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
-            .map-ctrl-btn:active, .map-ctrl-btn-rect:active { transform: scale(0.94); }
+            .premium-map-btn:hover, .premium-map-btn-mobile:hover { 
+              transform: scale(1.06) translateY(-4px); 
+              background: linear-gradient(135deg, rgba(51,65,85,0.9) 0%, rgba(30,41,59,0.95) 100%) !important; 
+              border-color: rgba(59,130,246,0.4) !important; 
+              box-shadow: 0 15px 45px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.2); 
+            }
+            .premium-map-btn:active, .premium-map-btn-mobile:active { transform: scale(0.94); }
           `}</style>
         </div>
 

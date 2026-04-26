@@ -183,20 +183,34 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
           />
           <button
             onClick={handleSearchClick}
-            className="search-btn"
+            className="premium-btn search-btn"
             style={{
-              background: '#3b82f6', color: 'white', border: 'none', borderRadius: 8,
-              padding: '0 14px', fontSize: 11, fontWeight: 800, cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: 4,
-              transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-              boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)',
+              background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+              color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: 10,
+              padding: '0 16px', fontSize: 11, fontWeight: 900, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: 6,
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              boxShadow: '0 4px 12px rgba(37, 99, 235, 0.3), inset 0 1px 1px rgba(255,255,255,0.3)',
+              letterSpacing: '0.05em',
+              position: 'relative',
+              overflow: 'hidden',
             }}
           >
-            <Search size={13} />
+            <Search size={13} strokeWidth={3} />
+            <span style={{ position: 'absolute', top: 0, left: '-100%', width: '50%', height: '100%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)', animation: 'shimmer 3s infinite', pointerEvents: 'none' }} />
           </button>
           <style>{`
-            .search-btn:hover { background: #2563eb; transform: scale(1.05); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5); }
-            .search-btn:active { transform: scale(0.95); }
+            @keyframes shimmer {
+              0% { left: -100%; }
+              20% { left: 100%; }
+              100% { left: 100%; }
+            }
+            .premium-btn:hover { 
+              transform: translateY(-2px) scale(1.02); 
+              box-shadow: 0 8px 20px rgba(37, 99, 235, 0.5), inset 0 1px 1px rgba(255,255,255,0.4);
+              filter: brightness(1.1);
+            }
+            .premium-btn:active { transform: translateY(0) scale(0.96); }
           `}</style>
 
           {/* Suggestions dropdown */}
