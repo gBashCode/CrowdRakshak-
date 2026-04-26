@@ -14,16 +14,16 @@ function StatBox({ icon: Icon, label, value, color }) {
     <div style={{
       background: 'rgba(2,6,23,0.30)',
       border: '1px solid rgba(148,163,184,0.08)',
-      borderRadius: 14,
-      padding: '14px',
+      borderRadius: 12,
+      padding: '10px 12px',
       backdropFilter: 'blur(8px)',
       WebkitBackdropFilter: 'blur(8px)',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-        <Icon size={13} color="#e2e8f0" />
-        <span style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{label}</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4 }}>
+        <Icon size={11} color="#94a3b8" />
+        <span style={{ fontSize: 8, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</span>
       </div>
-      <p style={{ fontSize: 28, fontWeight: 900, color, letterSpacing: '-0.03em' }}>{value}</p>
+      <p style={{ fontSize: 20, fontWeight: 900, color, letterSpacing: '-0.02em' }}>{value}</p>
     </div>
   );
 }
@@ -126,32 +126,29 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
       ) : null}
 
       {/* Full content — always on desktop, collapsible on mobile */}
-      <div style={{
-        display: (!isMobile || isExpanded) ? 'block' : 'none',
-        padding: isMobile ? '4px 14px 16px' : '18px 18px 20px',
-      }}>
+      <div style={{ padding: isMobile ? '8px 12px 14px' : '14px 14px 16px' }}>
         {/* Header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
           <div style={{ flex: 1, paddingRight: 10 }}>
-            <h2 style={{ fontSize: 15, fontWeight: 800, color: '#f1f5f9', lineHeight: 1.3, marginBottom: 4 }}>
+            <h2 style={{ fontSize: 13, fontWeight: 800, color: '#f1f5f9', lineHeight: 1.2, marginBottom: 2 }}>
               {temple.name}
             </h2>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ position: 'relative', display: 'inline-flex', width: 7, height: 7 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+              <span style={{ position: 'relative', display: 'inline-flex', width: 6, height: 6 }}>
                 <span style={{ position: 'absolute', inset: 0, borderRadius: '50%', background: '#4ade80', opacity: 0.6, animation: 'ping 1.2s cubic-bezier(0,0,0.2,1) infinite' }} />
-                <span style={{ position: 'relative', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }} />
+                <span style={{ position: 'relative', width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
               </span>
-              <span style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.1em', textTransform: 'uppercase' }}>LIVE</span>
+              <span style={{ fontSize: 8, fontWeight: 700, color: '#4ade80', letterSpacing: '0.05em', textTransform: 'uppercase' }}>LIVE</span>
               {time && (
-                <span style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 9, color: '#e2e8f0' }}>
-                  <Clock size={9} />
+                <span style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 8, color: '#94a3b8' }}>
+                  <Clock size={8} />
                   {time}
                 </span>
               )}
             </div>
           </div>
           <span style={{
-            fontSize: 10, fontWeight: 800, padding: '5px 10px', borderRadius: 99,
+            fontSize: 9, fontWeight: 800, padding: '3px 8px', borderRadius: 99,
             background: cfg.bg, color: cfg.color, border: `1px solid ${cfg.border}`,
             whiteSpace: 'nowrap',
           }}>
@@ -160,10 +157,68 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
         </div>
 
         {/* Stats */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, marginBottom: isMobile && !isExpanded ? 0 : 14 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, marginBottom: 10 }}>
           <StatBox icon={Users}  label="Total"  value={count} color={cfg.color} />
           <StatBox icon={Layers} label="Zones"  value={data?.zones?.length ?? '—'} color="#94a3b8" />
         </div>
+
+        {/* ── Live Weather (Compact) ── */}
+        {weather && (
+          <div style={{ marginBottom: 10 }}>
+            <div style={{
+              display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 4,
+            }}>
+              <div title="Temperature" style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+                padding: '6px 4px', borderRadius: 8,
+                background: 'rgba(59,130,246,0.06)',
+                border: '1px solid rgba(59,130,246,0.10)',
+              }}>
+                <Thermometer size={10} color="#60a5fa" />
+                <span style={{ fontSize: 11, fontWeight: 800, color: '#f1f5f9' }}>{weather.temp}°</span>
+              </div>
+              
+              <div title={weather.description} style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0,
+                padding: '4px 4px', borderRadius: 8,
+                background: 'rgba(34,197,94,0.06)',
+                border: '1px solid rgba(34,197,94,0.10)',
+              }}>
+                <img
+                  src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+                  alt={weather.description}
+                  style={{ width: 24, height: 24, marginBottom: -4 }}
+                />
+                <span style={{ fontSize: 7, fontWeight: 600, color: '#94a3b8', textTransform: 'capitalize' }}>Sky</span>
+              </div>
+
+              <div title="Humidity" style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+                padding: '6px 4px', borderRadius: 8,
+                background: 'rgba(168,85,247,0.06)',
+                border: '1px solid rgba(168,85,247,0.10)',
+              }}>
+                <Droplets size={10} color="#c084fc" />
+                <span style={{ fontSize: 11, fontWeight: 800, color: '#f1f5f9' }}>{weather.humidity}%</span>
+              </div>
+
+              <div title="Wind Speed" style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2,
+                padding: '6px 4px', borderRadius: 8,
+                background: 'rgba(245,158,11,0.06)',
+                border: '1px solid rgba(245,158,11,0.10)',
+              }}>
+                <Wind size={10} color="#fbbf24" />
+                <span style={{ fontSize: 11, fontWeight: 800, color: '#f1f5f9' }}>{weather.wind_speed}</span>
+              </div>
+            </div>
+          </div>
+        )}
+        {weatherLoading && (
+          <div style={{ marginBottom: 10, fontSize: 8, color: '#94a3b8', textAlign: 'center' }}>
+            Updating weather...
+          </div>
+        )}
 
         {/* Collapsible Details */}
         <div style={{
@@ -215,75 +270,6 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
                 </div>
               </div>
             ))}
-          </div>
-        )}
-
-        {/* ── Live Weather ── */}
-        {weather && (
-          <div style={{ marginBottom: 14 }}>
-            <p style={{ fontSize: 9, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>
-              🌤️ Live Weather
-            </p>
-            <div style={{
-              display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6,
-            }}>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '8px 10px', borderRadius: 10,
-                background: 'rgba(59,130,246,0.08)',
-                border: '1px solid rgba(59,130,246,0.12)',
-              }}>
-                <Thermometer size={13} color="#60a5fa" />
-                <div>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#f1f5f9' }}>{weather.temp}°C</div>
-                  <div style={{ fontSize: 8, color: '#94a3b8' }}>Feels {weather.feels_like}°C</div>
-                </div>
-              </div>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '8px 10px', borderRadius: 10,
-                background: 'rgba(34,197,94,0.08)',
-                border: '1px solid rgba(34,197,94,0.12)',
-              }}>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-                  alt={weather.description}
-                  style={{ width: 32, height: 32, margin: -4 }}
-                />
-                <div style={{ fontSize: 10, fontWeight: 600, color: '#e2e8f0', textTransform: 'capitalize', lineHeight: 1.3 }}>
-                  {weather.description}
-                </div>
-              </div>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '8px 10px', borderRadius: 10,
-                background: 'rgba(168,85,247,0.08)',
-                border: '1px solid rgba(168,85,247,0.12)',
-              }}>
-                <Droplets size={13} color="#c084fc" />
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: '#f1f5f9' }}>{weather.humidity}%</div>
-                  <div style={{ fontSize: 8, color: '#94a3b8' }}>Humidity</div>
-                </div>
-              </div>
-              <div style={{
-                display: 'flex', alignItems: 'center', gap: 6,
-                padding: '8px 10px', borderRadius: 10,
-                background: 'rgba(245,158,11,0.08)',
-                border: '1px solid rgba(245,158,11,0.12)',
-              }}>
-                <Wind size={13} color="#fbbf24" />
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 800, color: '#f1f5f9' }}>{weather.wind_speed} km/h</div>
-                  <div style={{ fontSize: 8, color: '#94a3b8' }}>Wind</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-        {weatherLoading && (
-          <div style={{ marginBottom: 14, fontSize: 10, color: '#94a3b8', textAlign: 'center' }}>
-            Loading weather data...
           </div>
         )}
 

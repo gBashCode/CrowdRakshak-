@@ -86,7 +86,9 @@ function HeatmapLayer({ temples, crowdData }) {
           const angle  = Math.random() * Math.PI * 2;
           const lat    = zoneCfg.lat + spread * Math.cos(angle);
           const lng    = zoneCfg.lng + spread * Math.sin(angle) * 1.2;
-          points.push([lat, lng, intensity]);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            points.push([lat, lng, intensity]);
+          }
         }
       });
     });
@@ -137,7 +139,7 @@ function ExitRoutes({ temples }) {
                 [temple.lat, temple.lng],
                 [temple.lat - 0.0006, temple.lng + 0.0003],
                 [temple.lat - 0.0012, temple.lng + 0.0006],
-              ],
+              ].filter(p => !isNaN(p[0]) && !isNaN(p[1])),
               dashed: false
             },
             {
@@ -148,7 +150,7 @@ function ExitRoutes({ temples }) {
                 [temple.lat, temple.lng],
                 [temple.lat + 0.0006, temple.lng + 0.0005],
                 [temple.lat + 0.0012, temple.lng + 0.0009],
-              ],
+              ].filter(p => !isNaN(p[0]) && !isNaN(p[1])),
               dashed: false
             },
             {
@@ -159,7 +161,7 @@ function ExitRoutes({ temples }) {
                 [temple.lat, temple.lng],
                 [temple.lat + 0.0005, temple.lng - 0.0004],
                 [temple.lat + 0.0010, temple.lng - 0.0008],
-              ],
+              ].filter(p => !isNaN(p[0]) && !isNaN(p[1])),
               dashed: true
             }
           ];
@@ -224,6 +226,7 @@ function ZoneOverlay({ temples, crowdData }) {
         if (!data) return null;
 
         return zones_cfg.map((zone) => {
+          if (isNaN(zone.lat) || isNaN(zone.lng)) return null;
           const zoneData = data.zones.find((z) => z.id === zone.id);
           const count    = zoneData?.count ?? 0;
           const density  = Math.min(count / 160, 1);

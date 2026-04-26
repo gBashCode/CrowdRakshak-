@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 // Sign up at https://openweathermap.org/api to get your free API key
 // Free tier: 1,000 calls/day, 60 calls/minute
 const OWM_API_KEY = import.meta.env.VITE_OWM_API_KEY || '';
+console.log('OWM_API_KEY loaded:', OWM_API_KEY ? 'Yes (starts with ' + OWM_API_KEY.slice(0,4) + ')' : 'No');
 
 // In-memory cache to avoid redundant API calls
 const weatherCache = {};
@@ -34,6 +35,7 @@ export function useWeather(lat, lng) {
     const controller = new AbortController();
     setLoading(true);
 
+    console.log(`Fetching weather for: ${lat}, ${lng}`);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${OWM_API_KEY}&units=metric`,
       { signal: controller.signal }
