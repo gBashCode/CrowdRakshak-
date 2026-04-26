@@ -1,6 +1,6 @@
 fastapi
 uvicorn
-firebase-admin
+sqlalchemy
 websockets
 pydantic
 python-multipart
