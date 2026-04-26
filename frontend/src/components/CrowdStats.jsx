@@ -79,10 +79,11 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
     <div
       className={isMobile ? "animate-slide-up-mobile" : "animate-slide-right"}
       style={{
-        width: isMobile ? '100%' : 300,
-        borderRadius: 24,
+        width: isMobile ? 'calc(100vw - 32px)' : 300,
+        maxWidth: isMobile ? 360 : 300,
+        borderRadius: 20,
         overflow: 'hidden',
-        background: 'rgba(8, 15, 35, 0.45)',
+        background: 'rgba(8, 15, 35, 0.75)',
         backdropFilter: 'blur(28px) saturate(180%)',
         WebkitBackdropFilter: 'blur(28px) saturate(180%)',
         boxShadow: `0 8px 40px rgba(0,0,0,0.5), 0 0 40px ${cfg.color}15, inset 0 1px 0 rgba(255,255,255,0.05)`,
@@ -93,23 +94,40 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
       {/* Color accent bar */}
       <div style={{ height: 3, background: cfg.bar, width: '100%' }} />
 
-      {/* Mobile drag handle toggle */}
-      {isMobile && (
-        <div 
+      {/* Mobile header — always visible, tap to expand */}
+      {isMobile ? (
+        <div
           onClick={() => setIsExpanded(!isExpanded)}
-          style={{ 
-            width: '100%', display: 'flex', justifyContent: 'center', 
-            paddingTop: 14, paddingBottom: 4, cursor: 'pointer' 
+          style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '10px 14px', cursor: 'pointer',
           }}
         >
-          <div style={{ 
-            width: 48, height: 5, background: 'rgba(148,163,184,0.4)', 
-            borderRadius: 99, transition: 'background 0.2s'
-          }} />
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontSize: 13, fontWeight: 800, color: '#f1f5f9', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {temple.name}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 2 }}>
+              <span style={{ fontSize: 10, fontWeight: 700, color: cfg.color }}>{cfg.label}</span>
+              <span style={{ fontSize: 10, color: '#94a3b8' }}>{count} people</span>
+            </div>
+          </div>
+          <div style={{
+            marginLeft: 10, width: 22, height: 22, borderRadius: '50%',
+            background: 'rgba(255,255,255,0.08)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 12, color: '#94a3b8', flexShrink: 0,
+            transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s',
+          }}>▲</div>
         </div>
-      )}
+      ) : null}
 
-      <div style={{ padding: isMobile ? '8px 18px 20px' : '18px 18px 20px' }}>
+      {/* Full content — always on desktop, collapsible on mobile */}
+      <div style={{
+        display: (!isMobile || isExpanded) ? 'block' : 'none',
+        padding: isMobile ? '4px 14px 16px' : '18px 18px 20px',
+      }}>
         {/* Header */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 }}>
           <div style={{ flex: 1, paddingRight: 10 }}>

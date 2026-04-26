@@ -327,10 +327,9 @@ export default function App() {
         {/* ── Stats card ── */}
         <div style={{ 
           position: 'absolute', 
-          top: isMobile ? 'auto' : 16, 
-          bottom: isMobile ? 16 : 'auto',
+          top: isMobile ? 70 : 16,
+          right: isMobile ? 16 : 16,
           left: isMobile ? 16 : 'auto',
-          right: 16, 
           zIndex: 1000 
         }}>
           <CrowdStats
