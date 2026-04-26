@@ -510,10 +510,11 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         position: 'absolute', 
         bottom: isMobile ? 'auto' : 24, 
         top: isMobile ? 70 : 'auto',
-        right: isMobile ? 16 : 24, 
+        left: isMobile ? 'auto' : 340,
+        right: isMobile ? 16 : 'auto', 
         zIndex: 1000,
         display: 'flex', 
-        flexDirection: isMobile ? 'column' : 'row',
+        flexDirection: isMobile ? 'column' : 'row-reverse',
         alignItems: 'flex-end', 
         gap: 16,
       }}>
