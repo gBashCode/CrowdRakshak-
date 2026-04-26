@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MapPin, Users, TrendingUp, TrendingDown, Minus, Info, X } from 'lucide-react';
 
 const STATUS_CFG = {
@@ -23,9 +23,22 @@ const INDIAN_STATES = [
   "Lakshadweep", "Delhi", "Puducherry", "Ladakh", "Jammu and Kashmir"
 ];
 
-const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMobile, onClose }) => {
-  const [selectedState, setSelectedState] = useState('Uttar Pradesh');
-  const filterOptions = INDIAN_STATES.sort();
+const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onStateSelect, isMobile, onClose }) => {
+  const [selectedState, setSelectedState] = useState('All States');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const searchRef = useRef(null);
+  const filterOptions = ['All States', ...INDIAN_STATES.sort()];
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div
@@ -113,11 +126,28 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
         </p>
       </div>
 
-      {/* ── State Filter ── */}
-      <div style={{ padding: '0 18px 10px', flexShrink: 0 }}>
+      {/* ── State Filter & Temple Select ── */}
+      <div style={{ padding: '0 18px 10px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
         <select
           value={selectedState}
-          onChange={(e) => setSelectedState(e.target.value)}
+          onChange={(e) => {
+            const newState = e.target.value;
+            setSelectedState(newState);
+            if (newState !== 'All States' && onStateSelect) {
+              const stateTemples = temples.filter(t => (t.state || 'Other') === newState);
+              if (stateTemples.length > 0) {
+                const lats = stateTemples.map(t => t.lat);
+                const lngs = stateTemples.map(t => t.lng);
+                const bounds = [
+                  [Math.min(...lats), Math.min(...lngs)],
+                  [Math.max(...lats), Math.max(...lngs)]
+                ];
+                onStateSelect(bounds, stateTemples[0]);
+              }
+            } else if (newState === 'All States' && onStateSelect) {
+              onStateSelect([[8.4, 68.7], [37.6, 97.2]], temples[0]);
+            }
+          }}
           style={{
             width: '100%',
             padding: '8px 12px',
@@ -137,145 +167,109 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
             </option>
           ))}
         </select>
-      </div>
+        
+        <div style={{ display: 'flex', gap: 8, position: 'relative' }} ref={searchRef}>
+          <input
+            type="text"
+            placeholder="Search temple name..."
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setShowSuggestions(true);
+            }}
+            onFocus={() => setShowSuggestions(true)}
+            style={{
+              flex: 1,
+              padding: '8px 12px',
+              borderRadius: 8,
+              background: 'rgba(15,23,42,0.6)',
+              color: '#f1f5f9',
+              border: '1px solid rgba(148,163,184,0.2)',
+              fontSize: 12,
+              fontWeight: 500,
+              outline: 'none',
+              minWidth: 0,
+            }}
+          />
+          <button
+            onClick={() => {
+              const temple = temples
+                .filter(t => selectedState === 'All States' || (t.state || 'Other') === selectedState)
+                .find(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
+              if (temple) {
+                onSelect(temple);
+                setSelectedState(temple.state || 'Other');
+                setSearchQuery(`${temple.name} (${temple.lat.toFixed(4)}, ${temple.lng.toFixed(4)})`);
+                setShowSuggestions(false);
+              }
+            }}
+            style={{
+              background: '#3b82f6',
+              color: 'white',
+              border: 'none',
+              borderRadius: 8,
+              padding: '0 14px',
+              fontSize: 11,
+              fontWeight: 800,
+              cursor: 'pointer',
+              letterSpacing: '0.05em',
+              transition: 'background 0.2s',
+            }}
+            onMouseOver={(e) => e.currentTarget.style.background = '#2563eb'}
+            onMouseOut={(e) => e.currentTarget.style.background = '#3b82f6'}
+          >
+            SEARCH
+          </button>
 
-      {/* ── Temple cards ── */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '0 10px 10px' }}>
-        {Object.entries(
-          temples
-            .filter(t => (t.state || 'Other') === selectedState)
-            .reduce((acc, t) => {
-            const state = t.state || 'Other';
-            if (!acc[state]) acc[state] = [];
-            acc[state].push(t);
-            return acc;
-          }, {})
-        ).map(([state, stateTemples]) => (
-          <div key={state} style={{ marginBottom: 16 }}>
-            <div style={{ padding: '0 8px 8px' }}>
-              <span style={{ fontSize: 10, fontWeight: 800, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{state}</span>
+          {/* Suggestions Dropdown */}
+          {showSuggestions && searchQuery.trim().length > 0 && (
+            <div style={{
+              position: 'absolute',
+              top: '100%',
+              left: 0,
+              right: 0,
+              marginTop: 4,
+              background: 'rgba(15,23,42,0.95)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(148,163,184,0.2)',
+              borderRadius: 8,
+              maxHeight: 250,
+              overflowY: 'auto',
+              zIndex: 50,
+              boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
+            }}>
+              {temples
+                .filter(t => selectedState === 'All States' || (t.state || 'Other') === selectedState)
+                .filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                .slice(0, 50)
+                .map(t => (
+                  <div
+                    key={t.id}
+                    onClick={() => {
+                      onSelect(t);
+                      setSelectedState(t.state || 'Other');
+                      setSearchQuery(`${t.name} (${t.lat.toFixed(4)}, ${t.lng.toFixed(4)})`);
+                      setShowSuggestions(false);
+                    }}
+                    style={{
+                      padding: '10px 12px',
+                      borderBottom: '1px solid rgba(148,163,184,0.1)',
+                      cursor: 'pointer',
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+                    onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                  >
+                    <div style={{ fontSize: 12, fontWeight: 700, color: '#f1f5f9' }}>{t.name}</div>
+                    <div style={{ fontSize: 10, color: '#94a3b8', marginTop: 2 }}>
+                       📍 {t.lat.toFixed(4)}, {t.lng.toFixed(4)}
+                    </div>
+                  </div>
+                ))}
             </div>
-            {stateTemples.map((temple) => {
-              const data    = crowdData[temple.id];
-              const prev    = prevCrowdData?.[temple.id];
-              const status  = data?.status || 'LOW';
-              const count   = data?.total_count ?? 0;
-              const cfg     = STATUS_CFG[status];
-              const isSelected = temple.id === selectedId;
-
-          return (
-            <button
-              key={temple.id}
-              onClick={() => onSelect(temple)}
-              style={{
-                width: '100%',
-                textAlign: 'left',
-                padding: 0,
-                marginBottom: 8,
-                borderRadius: 18,
-                cursor: 'pointer',
-                border: isSelected ? `1px solid ${cfg.border}` : '1px solid rgba(148,163,184,0.08)',
-                background: isSelected
-                  ? 'linear-gradient(135deg, rgba(30,41,59,0.7), rgba(15,23,42,0.6))'
-                  : 'linear-gradient(135deg, rgba(30,41,59,0.4), rgba(15,23,42,0.3))',
-                boxShadow: isSelected
-                  ? `0 8px 32px rgba(0,0,0,0.4), 0 0 24px ${cfg.color}18`
-                  : '0 2px 8px rgba(0,0,0,0.2)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                transition: 'all 0.25s cubic-bezier(.16,1,.3,1)',
-                overflow: 'hidden',
-                flexShrink: 0,
-              }}
-            >
-              {/* Color accent bar — same as right card */}
-              <div style={{
-                height: 2.5,
-                background: isSelected ? cfg.bar : 'rgba(100,116,139,0.2)',
-                transition: 'background 0.3s',
-              }} />
-
-              <div style={{ padding: '12px 14px 13px' }}>
-                {/* Top row: name + status badge */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-                  <span style={{
-                    fontSize: 13, fontWeight: 700,
-                    color: isSelected ? '#f1f5f9' : '#94a3b8',
-                    lineHeight: 1.35, flex: 1, paddingRight: 8,
-                    transition: 'color 0.2s',
-                  }}>
-                    {temple.name}
-                  </span>
-                  <span style={{
-                    fontSize: 9, fontWeight: 800, padding: '3px 8px', borderRadius: 99,
-                    background: cfg.bg, color: cfg.color, border: `1px solid ${cfg.border}`,
-                    whiteSpace: 'nowrap', letterSpacing: '0.04em', flexShrink: 0,
-                  }}>
-                    {status}
-                  </span>
-                </div>
-
-                {/* Stat boxes row — mirrors right card's grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, marginBottom: 10 }}>
-                  <div style={{
-                    background: 'rgba(15,23,42,0.5)',
-                    border: '1px solid rgba(148,163,184,0.07)',
-                    borderRadius: 10, padding: '8px 10px',
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-                      <Users size={10} color="#e2e8f0" />
-                      <span style={{ fontSize: 8, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.08em' }}>People</span>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-                      <span style={{ fontSize: 20, fontWeight: 900, color: cfg.color, letterSpacing: '-0.03em' }}>{count}</span>
-                      <TrendIcon current={count} previous={prev?.total_count} />
-                    </div>
-                  </div>
-                  <div style={{
-                    background: 'rgba(15,23,42,0.5)',
-                    border: '1px solid rgba(148,163,184,0.07)',
-                    borderRadius: 10, padding: '8px 10px',
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginBottom: 4 }}>
-                      <MapPin size={10} color="#e2e8f0" />
-                      <span style={{ fontSize: 8, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Location</span>
-                    </div>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: '#e2e8f0' }}>Varanasi</span>
-                  </div>
-                </div>
-
-                {/* Zone density bar — mirrors right card */}
-                {data?.zones && (
-                  <div>
-                    <p style={{ fontSize: 8, fontWeight: 700, color: '#e2e8f0', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 6 }}>
-                      Zone Density
-                    </p>
-                    {data.zones.map((zone) => (
-                      <div key={zone.id} style={{ marginBottom: 5 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10, marginBottom: 3 }}>
-                          <span style={{ color: '#e2e8f0', fontWeight: 500 }}>Zone {zone.id}</span>
-                          <span style={{ color: cfg.color, fontWeight: 700 }}>{zone.count} ppl</span>
-                        </div>
-                        <div style={{ height: 3, width: '100%', background: 'rgba(100,116,139,0.15)', borderRadius: 99, overflow: 'hidden' }}>
-                          <div style={{
-                            height: '100%',
-                            width: `${Math.min((zone.count / 200) * 100, 100)}%`,
-                            background: cfg.bar,
-                            borderRadius: 99,
-                            transition: 'width 1.5s cubic-bezier(.16,1,.3,1)',
-                          }} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </button>
-          );
-        })}
-          </div>
-        ))}
+          )}
+        </div>
       </div>
+      <div style={{ flex: 1 }} />
 
       {/* ── Footer ── */}
       <div style={{
@@ -286,7 +280,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMo
       }}>
         <Info size={12} color="#e2e8f0" />
         <p style={{ fontSize: 10, color: '#e2e8f0' }}>
-          Updates every ~12s · Varanasi, UP
+          Updates every ~12s · {selectedState}
         </p>
       </div>
     </div>

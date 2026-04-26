@@ -66,11 +66,12 @@ function HeatmapLayer({ temple, crowdData }) {
   useEffect(() => {
     const cfg_zones = temple.zones_config;
     const data = crowdData[temple.id];
-    if (!cfg_zones || !data) return;
+    if (!Array.isArray(cfg_zones) || cfg_zones.length === 0 || !data) return;
 
     const points = [];
     data.zones.forEach((zone) => {
       const zoneCfg = cfg_zones.find((z) => z.id === zone.id) || cfg_zones[0];
+      if (!zoneCfg) return;
       const intensity = Math.min(zone.count / 160, 1);
       const numPoints = Math.min(zone.count * 4, 400);
 
@@ -114,7 +115,7 @@ function HeatmapLayer({ temple, crowdData }) {
 // ── Exit routes as animated polylines ────────────────────────────────────────
 function ExitRoutes({ temple }) {
   const routes = temple.exit_routes_config;
-  if (!routes) return null;
+  if (!Array.isArray(routes) || routes.length === 0) return null;
 
   return (
     <>
@@ -164,7 +165,7 @@ function ExitRoutes({ temple }) {
 function ZoneOverlay({ temple, crowdData }) {
   const zones_cfg = temple.zones_config;
   const data = crowdData[temple.id];
-  if (!zones_cfg || !data) return null;
+  if (!Array.isArray(zones_cfg) || zones_cfg.length === 0 || !data) return null;
 
   return (
     <>
@@ -237,8 +238,19 @@ function UserLocation() {
   );
 }
 
+// ── Fly To Bounds ─────────────────────────────────────────────────────────────
+function FlyToBounds({ bounds }) {
+  const map = useMap();
+  useEffect(() => {
+    if (bounds) {
+      map.fitBounds(bounds, { padding: [50, 50], duration: 1.6, easeLinearity: 0.25 });
+    }
+  }, [bounds, map]);
+  return null;
+}
+
 // ── Main MapView ──────────────────────────────────────────────────────────────
-const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveSOS, isMobile }) => {
+const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveSOS, isMobile, fitBounds }) => {
   const [downloading, setDownloading] = useState(false);
   const [showBuildingMap, setShowBuildingMap] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -277,8 +289,12 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-        {/* Fly to selected temple */}
-        <FlyTo lat={selected.lat} lng={selected.lng} />
+        {/* Fly to selected temple or bounds */}
+        {fitBounds ? (
+          <FlyToBounds bounds={fitBounds} />
+        ) : (
+          <FlyTo lat={selected.lat} lng={selected.lng} />
+        )}
 
         {/* Heatmap for selected temple only */}
         <HeatmapLayer temple={selected} crowdData={crowdData} />

@@ -62,6 +62,7 @@ const FALLBACK_TEMPLES = [
 export default function App() {
   const [temples, setTemples] = useState([]);
   const [selected, setSelected] = useState(null);
+  const [fitBounds, setFitBounds] = useState(null);
   
   const engine = useRef(null);
   const mapElRef = useRef(null);
@@ -84,19 +85,57 @@ export default function App() {
 
   // Fetch temples on mount
   useEffect(() => {
+    const initializeData = (data) => {
+      if (data.length === 0) return;
+      setTemples(data);
+      setSelected(data[0]);
+      engine.current = createDataEngine(data);
+      setCrowdData(engine.current.tick());
+
+      // Attempt to find nearest temple based on user location
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition((pos) => {
+          const userLat = pos.coords.latitude;
+          const userLng = pos.coords.longitude;
+          let nearest = data[0];
+          let minDistance = Infinity;
+
+          data.forEach(t => {
+            const dLat = (t.lat - userLat) * Math.PI / 180;
+            const dLon = (t.lng - userLng) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(userLat * Math.PI / 180) * Math.cos(t.lat * Math.PI / 180) *
+                      Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            if (c < minDistance) {
+              minDistance = c;
+              nearest = t;
+            }
+          });
+          setSelected(nearest);
+          
+          // Frame the map around the user's actual physical location
+          const offset = 0.05; // Approx 5km radius bounding box
+          setFitBounds([
+            [userLat - offset, userLng - offset],
+            [userLat + offset, userLng + offset]
+          ]);
+        }, (err) => {
+          console.log("Geolocation permission denied or failed.", err);
+        });
+      }
+    };
+
     const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
     axios.get(`${API_URL}/temples`).then(res => {
-      const data = res.data.map(t => ({
-        ...t,
-        lat: t.latitude,
-        lng: t.longitude
-      }));
-      if (data.length > 0) {
-        setTemples(data);
-        setSelected(data[0]);
-        engine.current = createDataEngine(data);
-        setCrowdData(engine.current.tick());
-      }
+      const data = res.data
+        .map(t => ({
+          ...t,
+          lat: parseFloat(t.latitude),
+          lng: parseFloat(t.longitude)
+        }))
+        .filter(t => !isNaN(t.lat) && !isNaN(t.lng));
+      initializeData(data);
     }).catch(err => {
       console.warn("Failed to load temples from API, falling back to local simulation data.");
       const data = FALLBACK_TEMPLES.map(t => ({
@@ -104,10 +143,7 @@ export default function App() {
         lat: t.latitude,
         lng: t.longitude
       }));
-      setTemples(data);
-      setSelected(data[0]);
-      engine.current = createDataEngine(data);
-      setCrowdData(engine.current.tick());
+      initializeData(data);
     });
   }, []);
 
@@ -223,6 +259,7 @@ export default function App() {
           activeSOS={activeSOS}
           setActiveSOS={setActiveSOS}
           isMobile={isMobile}
+          fitBounds={fitBounds}
         />
 
         {/* ── Mobile Hamburger Menu ── */}
@@ -353,8 +390,13 @@ export default function App() {
               selectedId={selected.id}
               isMobile={isMobile}
               onClose={() => setShowSidebarMobile(false)}
+              onStateSelect={(bounds, firstTemple) => {
+                setFitBounds(bounds);
+                if (firstTemple) setSelected(firstTemple);
+              }}
               onSelect={(t) => {
                 setSelected(t);
+                setFitBounds(null); // clear bounds so FlyTo takes over
                 if (isMobile) setShowSidebarMobile(false);
                 const data = crowdData[t.id];
                 if (data && data.status === 'HIGH') {
