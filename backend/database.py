@@ -31,5 +31,4 @@ def initialize_firebase(service_account_path: str = None):
     _app_initialized = True
 
 def get_db():
-    """Returns a Firestore client instance."""
     return firestore.client()

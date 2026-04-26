@@ -4,7 +4,8 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.heat';
 import html2canvas from 'html2canvas';
-import { Download, Map as MapIcon, X, List } from 'lucide-react';
+import { Download, Map as MapIcon, X, List, Navigation2 } from 'lucide-react';
+import { findOptimizedPath } from '../utils/router';
 
 // ── Fix default icons ──────────────────────────────────────────────────────────
 delete L.Icon.Default.prototype._getIconUrl;
@@ -59,12 +60,17 @@ function FlyTo({ lat, lng }) {
 }
 
 // ── Leaflet.heat heatmap layer ────────────────────────────────────────────────
-function HeatmapLayer({ temples, crowdData }) {
+function HeatmapLayer({ temples, crowdData, selected }) {
   const map     = useMap();
   const heatRef = useRef(null);
 
   useEffect(() => {
+    if (!temples || !crowdData) return;
+
     const points = [];
+    
+    // Gaussian-like distribution function
+    const gRand = () => (Math.random() + Math.random() + Math.random() - 1.5) / 1.5;
 
     temples.forEach(temple => {
       let cfg_zones = temple.zones_config;
@@ -75,19 +81,30 @@ function HeatmapLayer({ temples, crowdData }) {
       const data = crowdData[temple.id];
       if (!data) return;
 
+      const isSelected = selected && temple.id === selected.id;
+
       data.zones.forEach((zone) => {
         const zoneCfg = cfg_zones.find((z) => z.id === zone.id) || cfg_zones[0];
         if (!zoneCfg) return;
-        const intensity = Math.min(zone.count / 160, 1);
-        const numPoints = Math.min(zone.count * 4, 400);
+        
+        const intensity = Math.min(zone.count / 180, 1);
+        // More points for realism, but capped for performance
+        const numPoints = isSelected ? Math.min(zone.count * 6, 450) : Math.min(zone.count * 1.5, 80);
 
         for (let i = 0; i < numPoints; i++) {
-          const spread = (zoneCfg.radius / 111320) * (0.4 + Math.random() * 0.6);
+          // Gaussian spread makes it denser at center
+          const dist   = (zoneCfg.radius / 111320) * (0.1 + Math.abs(gRand()) * 0.9);
           const angle  = Math.random() * Math.PI * 2;
-          const lat    = zoneCfg.lat + spread * Math.cos(angle);
-          const lng    = zoneCfg.lng + spread * Math.sin(angle) * 1.2;
+          // Add "organic" jitter to the position
+          const jitter = (zoneCfg.radius / 111320) * 0.15;
+          const lat    = zoneCfg.lat + dist * Math.cos(angle) + gRand() * jitter;
+          const lng    = zoneCfg.lng + dist * Math.sin(angle) * 1.1 + gRand() * jitter;
+          
+          // Slight intensity variation per point
+          const pIntensity = Math.max(0.1, intensity * (0.8 + Math.random() * 0.4));
+          
           if (!isNaN(lat) && !isNaN(lng)) {
-            points.push([lat, lng, intensity]);
+            points.push([lat, lng, pIntensity]);
           }
         }
       });
@@ -97,15 +114,16 @@ function HeatmapLayer({ temples, crowdData }) {
       heatRef.current.setLatLngs(points);
     } else {
       heatRef.current = L.heatLayer(points, {
-        radius:  35,
-        blur:    25,
+        radius:  28,
+        blur:    18,
         maxZoom: 18,
         gradient: {
-          0.0: 'rgba(34,197,94,0)',
-          0.2: '#22c55e',
-          0.5: '#a855f7',
-          0.75: '#ef4444',
-          1.0: '#ff0000',
+          0.15: 'rgba(34,197,94,0)',
+          0.25: '#22c55e', // Safe (Green)
+          0.45: '#fbbf24', // Moderate (Amber)
+          0.65: '#f97316', // Crowded (Orange)
+          0.85: '#ef4444', // Heavy (Red)
+          1.0:  '#7f1d1d', // Critical (Deep Red)
         },
       }).addTo(map);
     }
@@ -116,7 +134,7 @@ function HeatmapLayer({ temples, crowdData }) {
         heatRef.current = null;
       }
     };
-  }, [crowdData, temples, map]);
+  }, [crowdData, temples, selected, map]);
 
   return null;
 }
@@ -182,6 +200,8 @@ function ExitRoutes({ temples }) {
                 weight:    3,
                 opacity:   0.9,
                 dashArray: route.dashed ? '10 8' : null,
+                lineCap:   'round',
+                lineJoin:  'round',
                 lineCap:   'round',
                 lineJoin:  'round',
               }}
@@ -260,7 +280,7 @@ function ZoneOverlay({ temples, crowdData }) {
 }
 
 // ── User live location ────────────────────────────────────────────────────────
-function UserLocation() {
+function UserLocation({ onLocationUpdate }) {
   const [pos, setPos] = useState(null);
   const [err, setErr] = useState(false);
   const map = useMap();
@@ -272,6 +292,7 @@ function UserLocation() {
       ({ coords }) => {
         const latlng = [coords.latitude, coords.longitude];
         setPos(latlng);
+        if (onLocationUpdate) onLocationUpdate(latlng);
       },
       () => setErr(true),
       { enableHighAccuracy: true, maximumAge: 5000, timeout: 10000 }
@@ -307,6 +328,60 @@ function FlyToBounds({ bounds }) {
   return null;
 }
 
+// ── Optimized Smart Route ───────────────────────────────────────────────────
+function SmartRoute({ userPos, temple, crowdData }) {
+  const path = React.useMemo(() => {
+    if (!userPos || !temple || !crowdData[temple.id]) return null;
+
+    const zones = temple.zones_config || [
+      { id: 'A', lat: temple.lat + 0.0002, lng: temple.lng + 0.0002, radius: 40 }
+    ];
+
+    return findOptimizedPath(
+      userPos,
+      [temple.lat, temple.lng],
+      zones,
+      crowdData[temple.id]
+    );
+  }, [userPos, temple, crowdData]);
+
+  if (!path || path.length < 2) return null;
+
+  return (
+    <>
+      <Polyline
+        positions={path}
+        pathOptions={{
+          color: '#3b82f6',
+          weight: 8,
+          opacity: 0.15,
+          lineCap: 'round',
+        }}
+      />
+      <Polyline
+        positions={path}
+        pathOptions={{
+          color: '#60a5fa',
+          weight: 3.5,
+          opacity: 0.8,
+          dashArray: '12 18',
+          lineCap: 'round',
+        }}
+        className="animate-route-flow"
+      />
+      <style>{`
+        @keyframes route-flow {
+          from { stroke-dashoffset: 60; }
+          to { stroke-dashoffset: 0; }
+        }
+        .animate-route-flow {
+          animation: route-flow 3s linear infinite;
+        }
+      `}</style>
+    </>
+  );
+}
+
 // ── Main MapView ──────────────────────────────────────────────────────────────
 const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveSOS, isMobile, fitBounds, onSelectTemple }) => {
   const [downloading, setDownloading] = useState(false);
@@ -315,6 +390,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
   const [pendingSOS, setPendingSOS] = useState(null);
   const [showSOSMenu, setShowSOSMenu] = useState(false);
   const [showLegend, setShowLegend] = useState(false);
+  const [userPos, setUserPos] = useState(null);
 
   // Close modal and reset error when selected temple changes
   useEffect(() => {
@@ -354,8 +430,8 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
           <FlyTo lat={selected.lat} lng={selected.lng} />
         )}
 
-        {/* Heatmap for all temples */}
-        <HeatmapLayer temples={temples} crowdData={crowdData} />
+        {/* Global Heatmap for all temples */}
+        <HeatmapLayer temples={temples} crowdData={crowdData} selected={selected} />
 
         {/* Zone boundary circles for all temples */}
         <ZoneOverlay temples={temples} crowdData={crowdData} />
@@ -363,8 +439,11 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         {/* Exit routes for all temples */}
         <ExitRoutes temples={temples} />
 
+        {/* Smart Optimized Route (A* Algo) */}
+        <SmartRoute userPos={userPos} temple={selected} crowdData={crowdData} />
+
         {/* Live user location */}
-        <UserLocation />
+        <UserLocation onLocationUpdate={setUserPos} />
 
         {/* Temple markers (all temples, dim non-selected) */}
         {temples.map((temple) => {
