@@ -145,93 +145,132 @@ function HeatmapLayer({ temples, crowdData, selected }) {
   return null;
 }
 
-// ── Exit routes as animated polylines ────────────────────────────────────────
-function ExitRoutes({ temples }) {
-  if (!temples) return null;
+// ── Exit routes as animated street polylines (OSRM) ────────────────────────
+function ExitRoutes({ temples, selected, userPos }) {
+  const map = useMap();
+  const [routesData, setRoutesData] = useState({});
+
+  useEffect(() => {
+    if (!selected) return;
+
+    let routes = selected.exit_routes_config;
+    if (!Array.isArray(routes) || routes.length === 0) {
+      routes = [
+        {
+          id: 'exit-main-fallback',
+          label: 'Main Safe Exit',
+          color: '#22c55e',
+          points: [
+            [selected.lat, selected.lng],
+            [selected.lat - 0.0012, selected.lng + 0.0006],
+          ]
+        },
+        {
+          id: 'exit-secondary-fallback',
+          label: 'Secondary Exit',
+          color: '#3b82f6',
+          points: [
+            [selected.lat, selected.lng],
+            [selected.lat + 0.0012, selected.lng + 0.0009],
+          ]
+        },
+        {
+          id: 'exit-emergency-fallback',
+          label: 'Emergency Evacuation',
+          color: '#f59e0b',
+          points: [
+            [selected.lat, selected.lng],
+            [selected.lat + 0.0010, selected.lng - 0.0008],
+          ],
+          dashed: true
+        }
+      ];
+    }
+
+    // Determine starting position: User if within 100m, else Temple center
+    let startPos = [selected.lat, selected.lng];
+    if (userPos) {
+      const distance = map.distance(userPos, [selected.lat, selected.lng]);
+      if (distance <= 100) {
+        startPos = userPos;
+      }
+    }
+
+    const fetchRoutes = async () => {
+      const newRoutesData = {};
+      
+      for (const route of routes) {
+        // Last point of config is the destination exit
+        const endPos = route.points[route.points.length - 1];
+        if (isNaN(endPos[0]) || isNaN(endPos[1])) continue;
+
+        try {
+          const url = `http://router.project-osrm.org/route/v1/walking/${startPos[1]},${startPos[0]};${endPos[1]},${endPos[0]}?geometries=geojson`;
+          const res = await fetch(url);
+          const data = await res.json();
+
+          if (data.code === 'Ok' && data.routes && data.routes.length > 0) {
+            // OSRM returns [lng, lat], convert to [lat, lng]
+            const coords = data.routes[0].geometry.coordinates.map(c => [c[1], c[0]]);
+            newRoutesData[route.id] = { ...route, points: coords };
+          } else {
+            // Fallback to straight line if routing fails
+            newRoutesData[route.id] = { ...route, points: [startPos, endPos] };
+          }
+        } catch (error) {
+          console.error("OSRM Routing Error:", error);
+          newRoutesData[route.id] = { ...route, points: [startPos, endPos] };
+        }
+      }
+      
+      setRoutesData(newRoutesData);
+    };
+
+    fetchRoutes();
+  }, [selected, userPos, map]);
+
+  if (!selected) return null;
 
   return (
     <>
-      {temples.map((temple) => {
-        let routes = temple.exit_routes_config;
-        if (!Array.isArray(routes) || routes.length === 0) {
-          routes = [
-            {
-              id: 'exit-main-fallback',
-              label: 'Main Safe Exit',
-              color: '#22c55e', // Green
-              points: [
-                [temple.lat, temple.lng],
-                [temple.lat - 0.0006, temple.lng + 0.0003],
-                [temple.lat - 0.0012, temple.lng + 0.0006],
-              ].filter(p => !isNaN(p[0]) && !isNaN(p[1])),
-              dashed: false
-            },
-            {
-              id: 'exit-secondary-fallback',
-              label: 'Secondary Exit',
-              color: '#3b82f6', // Blue
-              points: [
-                [temple.lat, temple.lng],
-                [temple.lat + 0.0006, temple.lng + 0.0005],
-                [temple.lat + 0.0012, temple.lng + 0.0009],
-              ].filter(p => !isNaN(p[0]) && !isNaN(p[1])),
-              dashed: false
-            },
-            {
-              id: 'exit-emergency-fallback',
-              label: 'Emergency Evacuation',
-              color: '#f59e0b', // Amber
-              points: [
-                [temple.lat, temple.lng],
-                [temple.lat + 0.0005, temple.lng - 0.0004],
-                [temple.lat + 0.0010, temple.lng - 0.0008],
-              ].filter(p => !isNaN(p[0]) && !isNaN(p[1])),
-              dashed: true
-            }
-          ];
-        }
-
-        return routes.map((route) => (
-          <React.Fragment key={`${temple.id}-${route.id}`}>
-            {/* Route shadow */}
-            <Polyline
-              positions={route.points}
-              pathOptions={{ color: 'rgba(0,0,0,0.4)', weight: 6, opacity: 1 }}
-            />
-            {/* Route line */}
-            <Polyline
-              positions={route.points}
-              pathOptions={{
-                color:     route.color,
-                weight:    3,
-                opacity:   0.9,
-                dashArray: route.dashed ? '10 8' : null,
-                lineCap:   'round',
-                lineJoin:  'round',
-                lineCap:   'round',
-                lineJoin:  'round',
-              }}
-            />
-            {/* Arrow marker at endpoint */}
-            <Circle
-              center={route.points[route.points.length - 1]}
-              radius={12}
-              pathOptions={{
-                color:       route.color,
-                fillColor:   route.color,
-                fillOpacity: 0.8,
-                weight:      2,
-              }}
-            >
-              <Popup>
-                <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 600, fontSize: 12 }}>
-                  {route.label} ({temple.name})
-                </div>
-              </Popup>
-            </Circle>
-          </React.Fragment>
-        ));
-      })}
+      {Object.values(routesData).map((route) => (
+        <React.Fragment key={`${selected.id}-${route.id}`}>
+          {/* Route shadow */}
+          <Polyline
+            positions={route.points}
+            pathOptions={{ color: 'rgba(0,0,0,0.4)', weight: 6, opacity: 1 }}
+          />
+          {/* Route line */}
+          <Polyline
+            positions={route.points}
+            pathOptions={{
+              color:     route.color,
+              weight:    3,
+              opacity:   0.9,
+              dashArray: route.dashed ? '10 8' : null,
+              lineCap:   'round',
+              lineJoin:  'round',
+            }}
+          />
+          {/* Arrow marker at endpoint */}
+          <Circle
+            center={route.points[route.points.length - 1]}
+            radius={12}
+            pathOptions={{
+              color:       route.color,
+              fillColor:   route.color,
+              fillOpacity: 0.8,
+              weight:      2,
+            }}
+          >
+            <Popup>
+              <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 600, fontSize: 12 }}>
+                {route.label} ({selected.name})
+              </div>
+            </Popup>
+          </Circle>
+        </React.Fragment>
+      ))}
     </>
   );
 }
@@ -516,8 +555,8 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
         {/* Zone boundary circles for all temples */}
         <ZoneOverlay temples={temples} crowdData={crowdData} />
 
-        {/* Exit routes for all temples */}
-        <ExitRoutes temples={temples} />
+        {/* Exit routes for the selected temple (dynamic street routes) */}
+        <ExitRoutes temples={temples} selected={selected} userPos={userPos} />
 
         {/* Smart Optimized Route (A* Algo) */}
         <SmartRoute userPos={userPos} temple={selected} crowdData={crowdData} />
