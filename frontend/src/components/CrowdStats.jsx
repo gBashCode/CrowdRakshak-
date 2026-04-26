@@ -11,19 +11,32 @@ const STATUS_CFG = {
 
 function StatBox({ icon: Icon, label, value, color }) {
   return (
-    <div style={{
-      background: 'rgba(2,6,23,0.30)',
-      border: '1px solid rgba(148,163,184,0.08)',
-      borderRadius: 12,
-      padding: '10px 12px',
-      backdropFilter: 'blur(8px)',
-      WebkitBackdropFilter: 'blur(8px)',
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: 4 }}>
-        <Icon size={11} color="#94a3b8" />
-        <span style={{ fontSize: 8, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</span>
+    <div 
+      className="stat-box-premium"
+      style={{
+        background: 'rgba(2,6,23,0.45)',
+        border: '1px solid rgba(148,163,184,0.12)',
+        borderRadius: 14,
+        padding: '12px 14px',
+        backdropFilter: 'blur(12px)',
+        transition: 'all 0.3s ease',
+        cursor: 'default'
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
+        <Icon size={12} color="#94a3b8" />
+        <span style={{ fontSize: 9, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{label}</span>
       </div>
-      <p style={{ fontSize: 20, fontWeight: 900, color, letterSpacing: '-0.02em' }}>{value}</p>
+      <p style={{ fontSize: 22, fontWeight: 900, color, letterSpacing: '-0.03em', margin: 0 }}>{value}</p>
+      
+      <style>{`
+        .stat-box-premium:hover {
+          background: rgba(30,41,59,0.5) !important;
+          border-color: rgba(148,163,184,0.25) !important;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+      `}</style>
     </div>
   );
 }
@@ -345,18 +358,41 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <button
             onClick={handleNavigate}
+            className="premium-nav-btn"
             style={{
-              width: '100%', padding: '13px 16px', borderRadius: 14,
-              background: 'linear-gradient(135deg,#7c3aed,#db2777)',
-              color: 'white', fontWeight: 700, fontSize: 13,
-              border: 'none', cursor: 'pointer',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-              boxShadow: '0 4px 20px rgba(124,58,237,0.35)',
-              transition: 'all 0.2s',
+              width: '100%', padding: '14px 16px', borderRadius: 16,
+              background: 'linear-gradient(135deg, #7c3aed 0%, #db2777 100%)',
+              color: 'white', fontWeight: 800, fontSize: 13,
+              border: '1px solid rgba(255,255,255,0.2)', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+              boxShadow: '0 8px 25px rgba(124,58,237,0.4), inset 0 1px 1px rgba(255,255,255,0.3)',
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+              position: 'relative',
+              overflow: 'hidden',
+              letterSpacing: '0.02em'
             }}
           >
-            <Navigation size={15} />
+            <span className="shimmer-sweep" />
+            <Navigation size={16} strokeWidth={2.5} />
             Navigate to Temple
+
+            <style>{`
+              @keyframes shimmer-sweep {
+                0% { transform: translateX(-200%) skewX(-20deg); }
+                20%, 100% { transform: translateX(200%) skewX(-20deg); }
+              }
+              .shimmer-sweep {
+                position: absolute; top: 0; left: 0; width: 60%; height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+                animation: shimmer-sweep 4s infinite;
+              }
+              .premium-nav-btn:hover { 
+                transform: translateY(-3px) scale(1.02); 
+                filter: brightness(1.1); 
+                box-shadow: 0 12px 30px rgba(124,58,237,0.5), inset 0 1px 1px rgba(255,255,255,0.4); 
+              }
+              .premium-nav-btn:active { transform: translateY(0) scale(0.96); }
+            `}</style>
           </button>
 
           <button

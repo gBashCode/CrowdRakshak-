@@ -221,9 +221,27 @@ export default function App() {
       height: '100vh',
       overflow: 'hidden',
       fontFamily: "'Inter', system-ui, sans-serif",
+      background: '#020617', // Deep slate base
       boxShadow: activeSOS ? 'inset 0 0 150px rgba(220, 38, 38, 0.45)' : 'none',
       transition: 'box-shadow 0.5s ease-in-out',
     }}>
+      {/* ── Immersive Background (Dynamic Cultural Context) ── */}
+      <div 
+        key={selected.state || 'All States'}
+        style={{
+          position: 'absolute', inset: 0,
+          backgroundImage: `url('/cultural/${encodeURIComponent(selected.state || 'All States')}.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'blur(60px) saturate(140%) brightness(0.25)',
+          opacity: 0.5,
+          transition: 'all 1.5s ease-in-out',
+          zIndex: 0,
+          pointerEvents: 'none',
+        }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, transparent 20%, rgba(2,6,23,0.8) 100%)', zIndex: 1, pointerEvents: 'none' }} />
+
       <style>{`
         @keyframes pulse-sos {
           0%, 100% { opacity: 0.8; }
