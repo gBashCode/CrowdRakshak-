@@ -8,6 +8,56 @@ import axios from 'axios';
 
 const UPDATE_INTERVAL = 12_000; // 12 seconds — realistic, not jittery
 
+const FALLBACK_TEMPLES = [
+  {
+    id: "T1",
+    name: "Kashi Vishwanath Temple",
+    latitude: 25.3109,
+    longitude: 83.0107,
+    state: "Uttar Pradesh",
+    zones_config: [
+      { id: "A", label: "Main Sanctum", lat: 25.3109, lng: 83.0108, radius: 60 },
+      { id: "B", label: "Gyanvapi Gate", lat: 25.3112, lng: 83.0102, radius: 50 },
+      { id: "C", label: "Vishwanath Gali", lat: 25.3106, lng: 83.0115, radius: 70 }
+    ],
+    exit_routes_config: [
+      { id: "exit-main", label: "Main Exit → Dashashwamedh Ghat", color: "#22c55e", points: [[25.3109, 83.0107], [25.3105, 83.0118], [25.3098, 83.0128], [25.3093, 83.0138], [25.3089, 83.0148]] },
+      { id: "exit-north", label: "North Exit → Lahurabir", color: "#3b82f6", points: [[25.3109, 83.0107], [25.3115, 83.0102], [25.3122, 83.0096], [25.3130, 83.0088]] },
+      { id: "exit-emergency", label: "Emergency Exit → Maidagin", color: "#f59e0b", points: [[25.3109, 83.0107], [25.3116, 83.0115], [25.3125, 83.0120], [25.3135, 83.0125]], dashed: true }
+    ]
+  },
+  {
+    id: "T2",
+    name: "Sankat Mochan Temple",
+    latitude: 25.2887,
+    longitude: 82.9996,
+    state: "Uttar Pradesh",
+    zones_config: [
+      { id: "A", label: "Main Shrine", lat: 25.2887, lng: 82.9996, radius: 55 },
+      { id: "B", label: "Outer Courtyard", lat: 25.2882, lng: 83.0002, radius: 65 }
+    ],
+    exit_routes_config: [
+      { id: "exit-assi", label: "Main Gate → Assi Ghat Road", color: "#22c55e", points: [[25.2887, 82.9996], [25.2880, 83.0005], [25.2873, 83.0015], [25.2865, 83.0025]] },
+      { id: "exit-lanka", label: "Side Exit → Lanka", color: "#a855f7", points: [[25.2887, 82.9996], [25.2893, 82.9988], [25.2900, 82.9978]], dashed: true }
+    ]
+  },
+  {
+    id: "T3",
+    name: "Durga Temple",
+    latitude: 25.2802,
+    longitude: 83.0061,
+    state: "Uttar Pradesh",
+    zones_config: [
+      { id: "A", label: "Main Hall", lat: 25.2802, lng: 83.0061, radius: 50 },
+      { id: "B", label: "Durgakund Side", lat: 25.2798, lng: 83.0070, radius: 60 }
+    ],
+    exit_routes_config: [
+      { id: "exit-lanka", label: "Main Gate → Lanka Road", color: "#22c55e", points: [[25.2802, 83.0061], [25.2795, 83.0070], [25.2788, 83.0082]] },
+      { id: "exit-durgakund", label: "Side Exit → Durgakund", color: "#3b82f6", points: [[25.2802, 83.0061], [25.2808, 83.0052], [25.2815, 83.0044]], dashed: true }
+    ]
+  }
+];
+
 export default function App() {
   const [temples, setTemples] = useState([]);
   const [selected, setSelected] = useState(null);
@@ -23,7 +73,8 @@ export default function App() {
 
   // Fetch temples on mount
   useEffect(() => {
-    axios.get('http://localhost:8000/temples').then(res => {
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+    axios.get(`${API_URL}/temples`).then(res => {
       const data = res.data.map(t => ({
         ...t,
         lat: t.latitude,
@@ -36,7 +87,16 @@ export default function App() {
         setCrowdData(engine.current.tick());
       }
     }).catch(err => {
-      console.error("Failed to load temples", err);
+      console.warn("Failed to load temples from API, falling back to local simulation data.");
+      const data = FALLBACK_TEMPLES.map(t => ({
+        ...t,
+        lat: t.latitude,
+        lng: t.longitude
+      }));
+      setTemples(data);
+      setSelected(data[0]);
+      engine.current = createDataEngine(data);
+      setCrowdData(engine.current.tick());
     });
   }, []);
 
@@ -65,7 +125,8 @@ export default function App() {
     }
 
     try {
-      ws = new WebSocket('ws://localhost:8000/ws/crowd');
+      const WS_URL = import.meta.env.VITE_WS_URL || 'ws://localhost:8000/ws/crowd';
+      ws = new WebSocket(WS_URL);
       ws.onopen = () => { setWsConnected(true); };
       ws.onmessage = (e) => {
         const data = JSON.parse(e.data);
