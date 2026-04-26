@@ -31,8 +31,4 @@ def initialize_firebase(service_account_path: str = None):
     _app_initialized = True
 
 def get_db():
-    return _db
-
-def initialize_firebase(path=None):
-    # No-op for JSON DB
-    pass
+    return firestore.client()

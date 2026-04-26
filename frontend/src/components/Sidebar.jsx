@@ -229,8 +229,7 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
                     </div>
                     <div style={{ fontSize: 10, color: '#64748b', marginTop: 2 }}>📍 {t.state || 'Unknown'}</div>
                   </div>
-                );
-              })}
+                ))}
             </div>
           )}
         </div>
