@@ -50,8 +50,12 @@ export function createDataEngine(temples) {
 
       state[t.id] = { count: newCount, zoneRatio: newRatio };
 
+      // Split into 3 zones for realistic multi-blob heatmaps
       const zoneA = Math.round(newCount * newRatio);
-      const zoneB = newCount - zoneA;
+      const remaining = newCount - zoneA;
+      const splitB = 0.45 + (Math.random() - 0.5) * 0.1; // B gets ~40-50% of remainder
+      const zoneB = Math.round(remaining * splitB);
+      const zoneC = remaining - zoneB;
       const status = newCount < 70 ? 'LOW' : newCount < 160 ? 'MODERATE' : 'HIGH';
 
       updated[t.id] = {
@@ -61,6 +65,7 @@ export function createDataEngine(temples) {
         zones: [
           { id: 'A', count: zoneA },
           { id: 'B', count: zoneB },
+          { id: 'C', count: zoneC },
         ],
         status,
       };

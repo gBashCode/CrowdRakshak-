@@ -75,7 +75,13 @@ function HeatmapLayer({ temples, crowdData, selected }) {
     temples.forEach(temple => {
       let cfg_zones = temple.zones_config;
       if (!Array.isArray(cfg_zones) || cfg_zones.length === 0) {
-        cfg_zones = [{ id: 'A', label: 'Main Area', lat: temple.lat, lng: temple.lng, radius: 50 }];
+        // Auto-generate 3 spread-out zones like Kashi Vishwanath for a realistic multi-blob heatmap
+        const spread = 0.0004; // ~44m offset — enough to create distinct overlapping lobes
+        cfg_zones = [
+          { id: 'A', label: 'Main Sanctum',    lat: temple.lat,            lng: temple.lng + spread * 0.3, radius: 60 },
+          { id: 'B', label: 'Outer Courtyard',  lat: temple.lat + spread,   lng: temple.lng - spread * 0.8, radius: 50 },
+          { id: 'C', label: 'Approach Corridor', lat: temple.lat - spread * 0.6, lng: temple.lng + spread * 1.2, radius: 70 },
+        ];
       }
 
       const data = crowdData[temple.id];
@@ -239,7 +245,12 @@ function ZoneOverlay({ temples, crowdData }) {
       {temples.map((temple) => {
         let zones_cfg = temple.zones_config;
         if (!Array.isArray(zones_cfg) || zones_cfg.length === 0) {
-          zones_cfg = [{ id: 'A', label: 'Main Area', lat: temple.lat, lng: temple.lng, radius: 50 }];
+          const spread = 0.0004;
+          zones_cfg = [
+            { id: 'A', label: 'Main Sanctum',    lat: temple.lat,            lng: temple.lng + spread * 0.3, radius: 60 },
+            { id: 'B', label: 'Outer Courtyard',  lat: temple.lat + spread,   lng: temple.lng - spread * 0.8, radius: 50 },
+            { id: 'C', label: 'Approach Corridor', lat: temple.lat - spread * 0.6, lng: temple.lng + spread * 1.2, radius: 70 },
+          ];
         }
 
         const data = crowdData[temple.id];
