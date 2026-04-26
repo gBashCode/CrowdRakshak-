@@ -27,7 +27,7 @@ function StatBox({ icon: Icon, label, value, color }) {
   );
 }
 
-const CrowdStats = ({ data, temple, prevData, mapElRef }) => {
+const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
   const [downloading, setDownloading] = useState(false);
   const status = data?.status || 'LOW';
   const cfg    = STATUS_CFG[status];
@@ -76,9 +76,9 @@ const CrowdStats = ({ data, temple, prevData, mapElRef }) => {
 
   return (
     <div
-      className="animate-slide-right"
+      className={isMobile ? "animate-slide-up-mobile" : "animate-slide-right"}
       style={{
-        width: 300,
+        width: isMobile ? '100%' : 300,
         borderRadius: 24,
         overflow: 'hidden',
         background: 'rgba(8, 15, 35, 0.45)',

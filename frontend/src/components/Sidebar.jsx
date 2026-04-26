@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Users, TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
+import { MapPin, Users, TrendingUp, TrendingDown, Minus, Info, X } from 'lucide-react';
 
 const STATUS_CFG = {
   HIGH:     { color: '#ef4444', border: 'rgba(239,68,68,0.25)',  bg: 'rgba(239,68,68,0.12)',  bar: 'linear-gradient(90deg,#ef4444,#f97316)', accent: '#ef4444' },
@@ -23,14 +23,15 @@ const INDIAN_STATES = [
   "Lakshadweep", "Delhi", "Puducherry", "Ladakh", "Jammu and Kashmir"
 ];
 
-const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect }) => {
+const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, isMobile, onClose }) => {
   const [selectedState, setSelectedState] = useState('Uttar Pradesh');
   const filterOptions = INDIAN_STATES.sort();
 
   return (
     <div
       style={{
-        width: 320,
+        width: isMobile ? '85vw' : 320,
+        maxWidth: 400,
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -52,44 +53,55 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect }) =>
         padding: '20px 18px 16px',
         borderBottom: '1px solid rgba(148,163,184,0.08)',
         flexShrink: 0,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-          <div style={{
-            width: 42, height: 42, borderRadius: 14, flexShrink: 0,
-            background: 'linear-gradient(135deg,#7c3aed,#db2777)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            boxShadow: '0 4px 16px rgba(124,58,237,0.45)',
-          }}>
-            <Users size={20} color="white" />
+        <div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+            <div style={{
+              width: 42, height: 42, borderRadius: 14, flexShrink: 0,
+              background: 'linear-gradient(135deg,#7c3aed,#db2777)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 16px rgba(124,58,237,0.45)',
+            }}>
+              <Users size={20} color="white" />
+            </div>
+            <div>
+              <h1 style={{ fontSize: 16, fontWeight: 900, color: '#f1f5f9', letterSpacing: '-0.02em' }}>
+                CrowdRakshak
+              </h1>
+              <p style={{ fontSize: 10, color: '#64748b', fontWeight: 500 }}>Real-time crowd intelligence</p>
+            </div>
           </div>
-          <div>
-            <h1 style={{ fontSize: 16, fontWeight: 900, color: '#f1f5f9', letterSpacing: '-0.02em' }}>
-              CrowdRakshak
-            </h1>
-            <p style={{ fontSize: 10, color: '#64748b', fontWeight: 500 }}>Real-time crowd intelligence</p>
-          </div>
-        </div>
 
-        {/* Live badge (same as right card) */}
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 6,
-          padding: '6px 10px', borderRadius: 8,
-          background: 'rgba(34,197,94,0.08)',
-          border: '1px solid rgba(34,197,94,0.15)',
-          width: 'fit-content',
-        }}>
-          <span style={{ position: 'relative', display: 'inline-flex', width: 7, height: 7 }}>
-            <span style={{
-              position: 'absolute', inset: 0, borderRadius: '50%',
-              background: '#4ade80', opacity: 0.7,
-              animation: 'ping 1.2s cubic-bezier(0,0,0.2,1) infinite',
-            }} />
-            <span style={{ position: 'relative', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }} />
-          </span>
-          <span style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            Live Monitoring
-          </span>
+          {/* Live badge (same as right card) */}
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            padding: '6px 10px', borderRadius: 8,
+            background: 'rgba(34,197,94,0.08)',
+            border: '1px solid rgba(34,197,94,0.15)',
+            width: 'fit-content',
+          }}>
+            <span style={{ position: 'relative', display: 'inline-flex', width: 7, height: 7 }}>
+              <span style={{
+                position: 'absolute', inset: 0, borderRadius: '50%',
+                background: '#4ade80', opacity: 0.7,
+                animation: 'ping 1.2s cubic-bezier(0,0,0.2,1) infinite',
+              }} />
+              <span style={{ position: 'relative', width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }} />
+            </span>
+            <span style={{ fontSize: 9, fontWeight: 700, color: '#4ade80', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              Live Monitoring
+            </span>
+          </div>
         </div>
+        
+        {isMobile && (
+          <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer', padding: 4 }}>
+            <X size={24} />
+          </button>
+        )}
       </div>
 
       {/* ── Temple section label ── */}

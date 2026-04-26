@@ -140,3 +140,16 @@ body {
   background-size: 200% 100%;
   animation: shimmer 2.5s infinite;
 }
+
+/* ── Responsive Utilities ────────────────────────────────────────── */
+.desktop-only { display: flex; }
+.mobile-only { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-only { display: none !important; }
+  .mobile-only { display: flex !important; }
+  
+  .animate-slide-up-mobile {
+    animation: fade-up 0.4s cubic-bezier(.16,1,.3,1) forwards;
+  }
+}

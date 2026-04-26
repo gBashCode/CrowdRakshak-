@@ -3,7 +3,7 @@ import MapView from './components/Map';
 import Sidebar from './components/Sidebar';
 import CrowdStats from './components/CrowdStats';
 import { createDataEngine } from './dataEngine';
-import { Bell, X, AlertTriangle } from 'lucide-react';
+import { Bell, X, AlertTriangle, Menu } from 'lucide-react';
 import axios from 'axios';
 
 const UPDATE_INTERVAL = 12_000; // 12 seconds — realistic, not jittery
@@ -70,6 +70,15 @@ export default function App() {
   const [notifications, setNotifs] = useState([]);
   const [wsConnected, setWsConnected] = useState(false);
   const [activeSOS, setActiveSOS] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showSidebarMobile, setShowSidebarMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Fetch temples on mount
   useEffect(() => {
@@ -211,11 +220,33 @@ export default function App() {
           mapElRef={mapElRef}
           activeSOS={activeSOS}
           setActiveSOS={setActiveSOS}
+          isMobile={isMobile}
         />
 
-        {/* ── Connection status pill — offset to sit beside sidebar ── */}
+        {/* ── Mobile Hamburger Menu ── */}
+        {isMobile && (
+          <button
+            onClick={() => setShowSidebarMobile(true)}
+            style={{
+              position: 'absolute', top: 16, left: 16, zIndex: 1100,
+              width: 44, height: 44, borderRadius: 14,
+              background: 'rgba(8,15,35,0.72)', backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(148,163,184,0.1)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: '#e2e8f0', boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+              cursor: 'pointer'
+            }}
+          >
+            <Menu size={24} />
+          </button>
+        )}
+
+        {/* ── Connection status pill ── */}
         <div style={{
-          position: 'absolute', top: 16, left: 352, zIndex: 1100,
+          position: 'absolute', 
+          top: 16, 
+          left: isMobile ? 70 : 352, 
+          zIndex: 1100,
           display: 'flex', alignItems: 'center', gap: 6,
           padding: '6px 12px', borderRadius: 99,
           background: 'rgba(8,15,35,0.6)',
@@ -238,20 +269,31 @@ export default function App() {
         </div>
 
         {/* ── Stats card ── */}
-        <div style={{ position: 'absolute', top: 16, right: 16, zIndex: 1000 }}>
+        <div style={{ 
+          position: 'absolute', 
+          top: isMobile ? 'auto' : 16, 
+          bottom: isMobile ? 16 : 'auto',
+          left: isMobile ? 16 : 'auto',
+          right: 16, 
+          zIndex: 1000 
+        }}>
           <CrowdStats
             data={crowdData[selected.id]}
             prevData={prevCrowdData[selected.id]}
             temple={selected}
             mapElRef={mapElRef}
+            isMobile={isMobile}
           />
         </div>
 
         {/* ── Notifications ── */}
         <div style={{
-          position: 'absolute', bottom: 24, left: '50%',
+          position: 'absolute', 
+          bottom: isMobile ? 120 : 24, // Shift up if on mobile so it doesn't overlap CrowdStats
+          left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 1000, display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'center',
+          width: '90%',
         }}>
           {notifications.map((n) => (
             <div
@@ -281,24 +323,46 @@ export default function App() {
       </div>
 
       {/* ── Sidebar overlays map on the left ── */}
-      <div style={{
-        position: 'absolute', top: 16, left: 16, bottom: 16,
-        zIndex: 1000, borderRadius: 24, overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
-      }}>
-        <Sidebar
-          temples={temples}
-          crowdData={crowdData}
-          prevCrowdData={prevCrowdData}
-          selectedId={selected.id}
-          onSelect={(t) => {
-            setSelected(t);
-            const data = crowdData[t.id];
-            if (data && data.status === 'HIGH') {
-              pushNotif(`🚨 Alert: ${t.name} is currently experiencing heavy overcrowding!`);
-            }
-          }}
-        />
-      </div>
+      {(!isMobile || showSidebarMobile) && (
+        <>
+          {isMobile && (
+            <div 
+              style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 1999 }}
+              onClick={() => setShowSidebarMobile(false)}
+            />
+          )}
+          <div 
+            className={isMobile ? "animate-slide-right" : ""}
+            style={{
+              position: 'absolute', 
+              top: isMobile ? 0 : 16, 
+              left: isMobile ? 0 : 16, 
+              bottom: isMobile ? 0 : 16,
+              zIndex: 2000, 
+              borderRadius: isMobile ? 0 : 24, 
+              overflow: 'hidden', 
+              boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
+            }}
+          >
+            <Sidebar
+              temples={temples}
+              crowdData={crowdData}
+              prevCrowdData={prevCrowdData}
+              selectedId={selected.id}
+              isMobile={isMobile}
+              onClose={() => setShowSidebarMobile(false)}
+              onSelect={(t) => {
+                setSelected(t);
+                if (isMobile) setShowSidebarMobile(false);
+                const data = crowdData[t.id];
+                if (data && data.status === 'HIGH') {
+                  pushNotif(`🚨 Alert: ${t.name} is currently experiencing heavy overcrowding!`);
+                }
+              }}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
