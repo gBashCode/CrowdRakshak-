@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, TrendingUp, TrendingDown, Minus, Navigation, AlertTriangle, Clock, Download, Layers, Cloud, Droplets, Wind, Thermometer } from 'lucide-react';
+import { Users, TrendingUp, TrendingDown, Minus, Navigation, AlertTriangle, Clock, Download, Layers, Cloud, Droplets, Wind, Thermometer, ShieldAlert, MapPin, PhoneCall } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import { useWeather } from '../useWeather';
 
@@ -229,7 +229,51 @@ const CrowdStats = ({ data, temple, prevData, mapElRef, isMobile }) => {
           <div style={{ overflow: 'hidden' }}>
             <div style={{ paddingTop: (!isMobile || isExpanded) ? 4 : 0 }}>
 
-        {/* Delta indicator */}
+              {/* Security & Emergency Section */}
+              <div style={{
+                background: 'rgba(30, 41, 59, 0.4)',
+                borderRadius: 16,
+                padding: isMobile ? '10px' : '12px',
+                marginBottom: 14,
+                border: '1px solid rgba(59, 130, 246, 0.1)'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                  <ShieldAlert size={13} color="#60a5fa" />
+                  <span style={{ fontSize: 9, fontWeight: 800, color: '#f1f5f9', letterSpacing: '0.05em' }}>SECURITY & CONTACTS</span>
+                </div>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                    <MapPin size={11} color="#94a3b8" style={{ marginTop: 2 }} />
+                    <div style={{ flex: 1 }}>
+                      <p style={{ fontSize: 7, fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>Address</p>
+                      <p style={{ fontSize: 10, color: '#e2e8f0', lineHeight: 1.3 }}>{temple.address || 'Temple Precinct, Main Road'}</p>
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                    <PhoneCall size={11} color="#4ade80" />
+                    <div style={{ flex: 1 }}>
+                      <p style={{ fontSize: 7, fontWeight: 700, color: '#64748b', textTransform: 'uppercase' }}>Police Station</p>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <p style={{ fontSize: 10, fontWeight: 800, color: '#4ade80' }}>{temple.police_contact || '112 / 100'}</p>
+                        <a 
+                          href={`tel:${temple.police_contact}`}
+                          style={{ 
+                            fontSize: 8, fontWeight: 800, padding: '3px 7px', borderRadius: 5,
+                            background: 'rgba(34, 197, 94, 0.15)', color: '#4ade80',
+                            textDecoration: 'none', border: '1px solid rgba(34, 197, 94, 0.15)'
+                          }}
+                        >
+                          DIAL
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Delta indicator */}
         {prev !== undefined && Math.abs(delta) > 0 && (
           <div style={{
             display: 'flex', alignItems: 'center', gap: 6,

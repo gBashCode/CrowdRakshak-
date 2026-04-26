@@ -9,6 +9,8 @@ const TEMPLE_DATA = [
     "latitude": 25.3109,
     "longitude": 83.0107,
     "state": "Uttar Pradesh",
+    "police_contact": "0522-227034",
+    "address": "Station Road, Near Kashi Vishwanath Temple, Uttar Pradesh",
     "imageLink": "blob:https://gemini.google.com/5bee034d-07b2-42cc-8cc2-55092ba5c6a8",
     "zones_config": [
       {
@@ -116,6 +118,8 @@ const TEMPLE_DATA = [
     "latitude": 25.2887,
     "longitude": 82.9996,
     "state": "Uttar Pradesh",
+    "police_contact": "0522-225480",
+    "address": "Station Road, Near Sankat Mochan Temple, Uttar Pradesh",
     "imageLink": "",
     "zones_config": [
       {
@@ -185,6 +189,8 @@ const TEMPLE_DATA = [
     "latitude": 25.2802,
     "longitude": 83.0061,
     "state": "Uttar Pradesh",
+    "police_contact": "0522-221226",
+    "address": "Station Road, Near Durga Temple, Uttar Pradesh",
     "imageLink": "",
     "zones_config": [
       {
@@ -250,6 +256,8 @@ const TEMPLE_DATA = [
     "latitude": 26.7956,
     "longitude": 82.1943,
     "state": "Uttar Pradesh",
+    "police_contact": "0522-226318",
+    "address": "Station Road, Near Ram Janmabhoomi Mandir, Uttar Pradesh",
     "imageLink": "",
     "zones_config": [
       {
@@ -291,6 +299,8 @@ const TEMPLE_DATA = [
     "latitude": 30.7441,
     "longitude": 79.493,
     "state": "Uttarakhand",
+    "police_contact": "0135-279587",
+    "address": "Station Road, Near Badrinath Temple, Uttarakhand",
     "imageLink": "",
     "zones_config": [
       {
@@ -332,6 +342,8 @@ const TEMPLE_DATA = [
     "latitude": 30.7352,
     "longitude": 79.0669,
     "state": "Uttarakhand",
+    "police_contact": "0135-276327",
+    "address": "Station Road, Near Kedarnath Temple, Uttarakhand",
     "imageLink": "",
     "zones_config": [
       {
@@ -366,6 +378,8 @@ const TEMPLE_DATA = [
     "latitude": 9.9195,
     "longitude": 78.1193,
     "state": "Tamil Nadu",
+    "police_contact": "044-239288",
+    "address": "Station Road, Near Meenakshi Temple, Tamil Nadu",
     "imageLink": "",
     "zones_config": [
       {
@@ -407,6 +421,8 @@ const TEMPLE_DATA = [
     "latitude": 10.7828,
     "longitude": 79.1318,
     "state": "Tamil Nadu",
+    "police_contact": "044-233671",
+    "address": "Station Road, Near Brihadeeswara Temple, Tamil Nadu",
     "imageLink": "",
     "zones_config": [
       {
@@ -448,6 +464,8 @@ const TEMPLE_DATA = [
     "latitude": 19.0169,
     "longitude": 72.8302,
     "state": "Maharashtra",
+    "police_contact": "022-222247",
+    "address": "Station Road, Near Siddhivinayak Temple, Maharashtra",
     "imageLink": "",
     "zones_config": [
       {
@@ -482,6 +500,8 @@ const TEMPLE_DATA = [
     "latitude": 19.9324,
     "longitude": 73.5304,
     "state": "Maharashtra",
+    "police_contact": "022-223607",
+    "address": "Station Road, Near Trimbakeshwar Temple, Maharashtra",
     "imageLink": "",
     "zones_config": [
       {
@@ -516,6 +536,8 @@ const TEMPLE_DATA = [
     "latitude": 15.133751,
     "longitude": 78.6748824,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-246277",
+    "address": "Station Road, Near Ahobilam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -526,6 +548,8 @@ const TEMPLE_DATA = [
     "latitude": 13.6458001,
     "longitude": 79.4072415,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244427",
+    "address": "Station Road, Near Alipiri, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -536,6 +560,8 @@ const TEMPLE_DATA = [
     "latitude": 17.2842006,
     "longitude": 82.4171446,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-242940",
+    "address": "Station Road, Near Annavaram, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -546,6 +572,8 @@ const TEMPLE_DATA = [
     "latitude": 14.9183663,
     "longitude": 78.0100831,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248605",
+    "address": "Station Road, Near Bugga Ramalingeswara Swamy Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -556,6 +584,8 @@ const TEMPLE_DATA = [
     "latitude": 15.133751,
     "longitude": 78.6748824,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-245609",
+    "address": "Station Road, Near Ahobilam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -566,6 +596,8 @@ const TEMPLE_DATA = [
     "latitude": 13.6458001,
     "longitude": 79.4072415,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-249991",
+    "address": "Station Road, Near Alipiri, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -576,6 +608,8 @@ const TEMPLE_DATA = [
     "latitude": 17.2842006,
     "longitude": 82.4171446,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-241318",
+    "address": "Station Road, Near Annavaram, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -586,6 +620,8 @@ const TEMPLE_DATA = [
     "latitude": 14.9183663,
     "longitude": 78.0100831,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244642",
+    "address": "Station Road, Near Bugga Ramalingeswara Swamy Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -596,6 +632,8 @@ const TEMPLE_DATA = [
     "latitude": 16.7972034,
     "longitude": 82.0492126,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-247621",
+    "address": "Station Road, Near Draksharama, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -606,6 +644,8 @@ const TEMPLE_DATA = [
     "latitude": 15.8769983,
     "longitude": 78.1345936,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248216",
+    "address": "Station Road, Near Jogulamba Temple, Alampur, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -616,6 +656,8 @@ const TEMPLE_DATA = [
     "latitude": 16.5154058,
     "longitude": 80.6065339,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244980",
+    "address": "Station Road, Near Kanaka Durga Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -626,6 +668,8 @@ const TEMPLE_DATA = [
     "latitude": 13.6565756,
     "longitude": 79.4210339,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248599",
+    "address": "Station Road, Near Kapila Theertham, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -636,6 +680,8 @@ const TEMPLE_DATA = [
     "latitude": 16.1469667,
     "longitude": 80.0354224,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-247686",
+    "address": "Station Road, Near Kotappakonda, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -646,6 +692,8 @@ const TEMPLE_DATA = [
     "latitude": 16.5278671,
     "longitude": 81.7309919,
     "state": "Unknown",
+    "police_contact": "011-231711",
+    "address": "Station Road, Near Ksheerarama, Unknown",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -656,6 +704,8 @@ const TEMPLE_DATA = [
     "latitude": 17.0421818,
     "longitude": 82.1713115,
     "state": "Unknown",
+    "police_contact": "011-236865",
+    "address": "Station Road, Near Kumararama, Unknown",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -666,6 +716,8 @@ const TEMPLE_DATA = [
     "latitude": 15.133751,
     "longitude": 78.6748824,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248236",
+    "address": "Station Road, Near Ahobilam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -676,6 +728,8 @@ const TEMPLE_DATA = [
     "latitude": 13.6458001,
     "longitude": 79.4072415,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244991",
+    "address": "Station Road, Near Alipiri, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -686,6 +740,8 @@ const TEMPLE_DATA = [
     "latitude": 17.2833149,
     "longitude": 82.4080348,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-241216",
+    "address": "Station Road, Near Annavaram, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -696,6 +752,8 @@ const TEMPLE_DATA = [
     "latitude": 14.9183663,
     "longitude": 78.0100831,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244983",
+    "address": "Station Road, Near Bugga Ramalingeswara Swamy Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -706,6 +764,8 @@ const TEMPLE_DATA = [
     "latitude": 16.7972034,
     "longitude": 82.0492126,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-247337",
+    "address": "Station Road, Near Draksharama, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -716,6 +776,8 @@ const TEMPLE_DATA = [
     "latitude": 15.8769983,
     "longitude": 78.1345936,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244372",
+    "address": "Station Road, Near Jogulamba Temple, Alampur, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -726,6 +788,8 @@ const TEMPLE_DATA = [
     "latitude": 16.5154058,
     "longitude": 80.6065339,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-243076",
+    "address": "Station Road, Near Kanaka Durga Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -736,6 +800,8 @@ const TEMPLE_DATA = [
     "latitude": 13.6565756,
     "longitude": 79.4210339,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-241150",
+    "address": "Station Road, Near Kapila Theertham, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -746,6 +812,8 @@ const TEMPLE_DATA = [
     "latitude": 16.1469667,
     "longitude": 80.0354224,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-243377",
+    "address": "Station Road, Near Kotappakonda, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -756,6 +824,8 @@ const TEMPLE_DATA = [
     "latitude": 16.5278671,
     "longitude": 81.7309919,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-244802",
+    "address": "Station Road, Near Ksheerarama, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -766,6 +836,8 @@ const TEMPLE_DATA = [
     "latitude": 17.0421818,
     "longitude": 82.1713115,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-247829",
+    "address": "Station Road, Near Kumararama, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -776,6 +848,8 @@ const TEMPLE_DATA = [
     "latitude": 14.8603473,
     "longitude": 77.3063808,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-249958",
+    "address": "Station Road, Near Lakshmi Narasimha Swamy Temple, Penna Ahobilam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -786,6 +860,8 @@ const TEMPLE_DATA = [
     "latitude": 16.4337747,
     "longitude": 80.5682689,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-249334",
+    "address": "Station Road, Near Lakshmi Narasimha Temple, Mangalagiri, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -796,6 +872,8 @@ const TEMPLE_DATA = [
     "latitude": 16.0503482,
     "longitude": 78.9008675,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-241013",
+    "address": "Station Road, Near Mallikarjuna Temple, Srisailam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -806,6 +884,8 @@ const TEMPLE_DATA = [
     "latitude": 15.9413643,
     "longitude": 77.4236981,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-242754",
+    "address": "Station Road, Near Mantralayam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -816,6 +896,8 @@ const TEMPLE_DATA = [
     "latitude": 15.7388892,
     "longitude": 79.2716228,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-242032",
+    "address": "Station Road, Near Chennakesava Swamy Temple, Markapur, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -826,6 +908,8 @@ const TEMPLE_DATA = [
     "latitude": 16.5306841,
     "longitude": 80.6123312,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-249767",
+    "address": "Station Road, Near Padmavathi Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -836,6 +920,8 @@ const TEMPLE_DATA = [
     "latitude": 13.5373498,
     "longitude": 79.4778578,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-245594",
+    "address": "Station Road, Near Prasanna Venkateswara Temple, Appalayagunta, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -846,6 +932,8 @@ const TEMPLE_DATA = [
     "latitude": 13.1106742,
     "longitude": 80.2346762,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-246117",
+    "address": "Station Road, Near Somarama, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -856,6 +944,8 @@ const TEMPLE_DATA = [
     "latitude": 18.2881305,
     "longitude": 83.9130594,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-242138",
+    "address": "Station Road, Near Suryanarayana Temple, Arasavalli, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -866,6 +956,8 @@ const TEMPLE_DATA = [
     "latitude": 17.7663167,
     "longitude": 83.2505245,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-249871",
+    "address": "Station Road, Near Varaha Lakshmi Narasimha Temple, Simhachalam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -876,6 +968,8 @@ const TEMPLE_DATA = [
     "latitude": 13.6848751,
     "longitude": 79.3476435,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248394",
+    "address": "Station Road, Near Varahaswamy Temple, Tirumala, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -886,6 +980,8 @@ const TEMPLE_DATA = [
     "latitude": 16.8152045,
     "longitude": 80.1242618,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248011",
+    "address": "Station Road, Near Vedadri Narasimha Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -896,6 +992,8 @@ const TEMPLE_DATA = [
     "latitude": 13.3874663,
     "longitude": 79.7934012,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248683",
+    "address": "Station Road, Near Vedanarayana Temple, Nagalapuram, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -906,6 +1004,8 @@ const TEMPLE_DATA = [
     "latitude": 16.9551502,
     "longitude": 81.2567672,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-246451",
+    "address": "Station Road, Near Venkateswara Temple, Dwaraka Tirumala, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -916,6 +1016,8 @@ const TEMPLE_DATA = [
     "latitude": 17.9355647,
     "longitude": 83.4221266,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-243227",
+    "address": "Station Road, Near Venkateswara Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -926,6 +1028,8 @@ const TEMPLE_DATA = [
     "latitude": 13.2770145,
     "longitude": 79.0335591,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-247319",
+    "address": "Station Road, Near Vinayaka Temple, Kanipakam, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -936,6 +1040,8 @@ const TEMPLE_DATA = [
     "latitude": 15.3505974,
     "longitude": 78.1386784,
     "state": "Andhra Pradesh",
+    "police_contact": "0866-248899",
+    "address": "Station Road, Near Sri Yaganti Uma Maheswara Temple, Andhra Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -946,6 +1052,8 @@ const TEMPLE_DATA = [
     "latitude": 26.6107948,
     "longitude": 92.9972121,
     "state": "Assam",
+    "police_contact": "011-239917",
+    "address": "Station Road, Near Hatimura Temple, Assam",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -956,6 +1064,8 @@ const TEMPLE_DATA = [
     "latitude": 26.2429185,
     "longitude": 91.526535,
     "state": "Assam",
+    "police_contact": "011-234267",
+    "address": "Station Road, Near Hayagriva Madhava Temple, Assam",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -966,6 +1076,8 @@ const TEMPLE_DATA = [
     "latitude": 26.165107,
     "longitude": 91.7059298,
     "state": "Assam",
+    "police_contact": "011-234335",
+    "address": "Station Road, Near Kamakhya Temple, Assam",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -976,6 +1088,8 @@ const TEMPLE_DATA = [
     "latitude": 27.6577367,
     "longitude": 94.7149447,
     "state": "Assam",
+    "police_contact": "011-234711",
+    "address": "Station Road, Near Malinithan, Assam",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -986,6 +1100,8 @@ const TEMPLE_DATA = [
     "latitude": 26.7344803,
     "longitude": 94.0052161,
     "state": "Assam",
+    "police_contact": "011-239418",
+    "address": "Station Road, Near Negheriting Shiva Doul, Assam",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -996,6 +1112,8 @@ const TEMPLE_DATA = [
     "latitude": 25.6069713,
     "longitude": 85.1334882,
     "state": "Bihar",
+    "police_contact": "0612-228269",
+    "address": "Station Road, Near ISKCON Temple Patna, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1006,6 +1124,8 @@ const TEMPLE_DATA = [
     "latitude": 26.3506103,
     "longitude": 86.0005254,
     "state": "Bihar",
+    "police_contact": "0612-221602",
+    "address": "Station Road, Near Kapileshwar Temple, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1016,6 +1136,8 @@ const TEMPLE_DATA = [
     "latitude": 25.6040316,
     "longitude": 85.1366103,
     "state": "Bihar",
+    "police_contact": "0612-229026",
+    "address": "Station Road, Near Mahavir Hanuman Temple, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1026,6 +1148,8 @@ const TEMPLE_DATA = [
     "latitude": 24.7749497,
     "longitude": 85.0024913,
     "state": "Bihar",
+    "police_contact": "0612-229954",
+    "address": "Station Road, Near Mangla Gauri Temple, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1036,6 +1160,8 @@ const TEMPLE_DATA = [
     "latitude": 26.1696574,
     "longitude": 85.9090669,
     "state": "Bihar",
+    "police_contact": "0612-221802",
+    "address": "Station Road, Near Mittheswarnath Shiv Temple, Darbhanga District, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1046,6 +1172,8 @@ const TEMPLE_DATA = [
     "latitude": 24.9835105,
     "longitude": 83.5646265,
     "state": "Bihar",
+    "police_contact": "0612-228259",
+    "address": "Station Road, Near Mundeshwari Temple, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1056,6 +1184,8 @@ const TEMPLE_DATA = [
     "latitude": 27.5367245,
     "longitude": 82.3952928,
     "state": "Bihar",
+    "police_contact": "0612-227558",
+    "address": "Station Road, Near Patan Devi, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1066,6 +1196,8 @@ const TEMPLE_DATA = [
     "latitude": 25.2644581,
     "longitude": 87.2227106,
     "state": "Bihar",
+    "police_contact": "0612-229288",
+    "address": "Station Road, Near Shanti Baba Temple, Bhagalpur, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1076,6 +1208,8 @@ const TEMPLE_DATA = [
     "latitude": 26.586475,
     "longitude": 85.4667332,
     "state": "Bihar",
+    "police_contact": "0612-228698",
+    "address": "Station Road, Near Sita Kund, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1086,6 +1220,8 @@ const TEMPLE_DATA = [
     "latitude": 26.4376334,
     "longitude": 84.3949548,
     "state": "Bihar",
+    "police_contact": "0612-227148",
+    "address": "Station Road, Near Thawe Mandir, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1096,6 +1232,8 @@ const TEMPLE_DATA = [
     "latitude": 24.777363,
     "longitude": 85.009338,
     "state": "Bihar",
+    "police_contact": "0612-226758",
+    "address": "Station Road, Near Vishnupad Temple, Bihar",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1106,6 +1244,8 @@ const TEMPLE_DATA = [
     "latitude": 30.7034833,
     "longitude": 76.7767945,
     "state": "Chandigarh",
+    "police_contact": "011-231633",
+    "address": "Station Road, Near Chandi Mandir, Chandigarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1116,6 +1256,8 @@ const TEMPLE_DATA = [
     "latitude": 21.9532232,
     "longitude": 83.0248323,
     "state": "Chhattisgarh",
+    "police_contact": "011-231362",
+    "address": "Station Road, Near Ashtabhuji Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1126,6 +1268,8 @@ const TEMPLE_DATA = [
     "latitude": 23.1923197,
     "longitude": 77.457458,
     "state": "Chhattisgarh",
+    "police_contact": "011-233072",
+    "address": "Station Road, Near Barfani Dham, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1136,6 +1280,8 @@ const TEMPLE_DATA = [
     "latitude": 22.1154438,
     "longitude": 81.1482621,
     "state": "Chhattisgarh",
+    "police_contact": "011-238645",
+    "address": "Station Road, Near Bhoramdeo Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1146,6 +1292,8 @@ const TEMPLE_DATA = [
     "latitude": 18.8966345,
     "longitude": 81.3449358,
     "state": "Chhattisgarh",
+    "police_contact": "011-233002",
+    "address": "Station Road, Near Danteshwari Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1156,6 +1304,8 @@ const TEMPLE_DATA = [
     "latitude": 32.6943794,
     "longitude": 74.8601614,
     "state": "Chhattisgarh",
+    "police_contact": "011-231612",
+    "address": "Station Road, Near Dudhadhari Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1166,6 +1316,8 @@ const TEMPLE_DATA = [
     "latitude": 26.4906592,
     "longitude": 74.5499885,
     "state": "Chhattisgarh",
+    "police_contact": "011-234664",
+    "address": "Station Road, Near Ganga Maiya, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1176,6 +1328,8 @@ const TEMPLE_DATA = [
     "latitude": 21.3531405,
     "longitude": 82.1867265,
     "state": "Chhattisgarh",
+    "police_contact": "011-234855",
+    "address": "Station Road, Near Laxman Temple, Sirpur, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1186,6 +1340,8 @@ const TEMPLE_DATA = [
     "latitude": 22.0253043,
     "longitude": 82.9605854,
     "state": "Chhattisgarh",
+    "police_contact": "011-239382",
+    "address": "Station Road, Near Mahamaya Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1196,6 +1352,8 @@ const TEMPLE_DATA = [
     "latitude": 22.0253043,
     "longitude": 82.9605854,
     "state": "Chhattisgarh",
+    "police_contact": "011-237443",
+    "address": "Station Road, Near Mahamaya Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1206,6 +1364,8 @@ const TEMPLE_DATA = [
     "latitude": 21.3193823,
     "longitude": 81.8131187,
     "state": "Chhattisgarh",
+    "police_contact": "011-231035",
+    "address": "Station Road, Near Mata Kaushalya Temple, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1216,6 +1376,8 @@ const TEMPLE_DATA = [
     "latitude": 22.3636048,
     "longitude": 82.714584,
     "state": "Chhattisgarh",
+    "police_contact": "011-238713",
+    "address": "Station Road, Near Sarvamangla, Chhattisgarh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1226,6 +1388,8 @@ const TEMPLE_DATA = [
     "latitude": 28.6006842,
     "longitude": 77.0365926,
     "state": "Delhi",
+    "police_contact": "011-239177",
+    "address": "Station Road, Near ISKCON Temple, Delhi, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1236,6 +1400,8 @@ const TEMPLE_DATA = [
     "latitude": 28.6491472,
     "longitude": 77.2041529,
     "state": "Delhi",
+    "police_contact": "011-235609",
+    "address": "Station Road, Near Jhandewalan Temple, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1246,6 +1412,8 @@ const TEMPLE_DATA = [
     "latitude": 23.2705011,
     "longitude": 77.3335162,
     "state": "Delhi",
+    "police_contact": "011-233795",
+    "address": "Station Road, Near Kalka Mandir, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1256,6 +1424,8 @@ const TEMPLE_DATA = [
     "latitude": 28.6626518,
     "longitude": 77.2424315,
     "state": "Delhi",
+    "police_contact": "011-234291",
+    "address": "Station Road, Near Nili Chhatri, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1266,6 +1436,8 @@ const TEMPLE_DATA = [
     "latitude": 28.4604339,
     "longitude": 77.1908226,
     "state": "Delhi",
+    "police_contact": "011-236243",
+    "address": "Station Road, Near Shani Dham Temple, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1276,6 +1448,8 @@ const TEMPLE_DATA = [
     "latitude": 28.6125167,
     "longitude": 77.2773184,
     "state": "Delhi",
+    "police_contact": "011-234874",
+    "address": "Station Road, Near Swaminarayan Akshardham, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1286,6 +1460,8 @@ const TEMPLE_DATA = [
     "latitude": 28.5257019,
     "longitude": 77.1822181,
     "state": "Delhi",
+    "police_contact": "011-235148",
+    "address": "Station Road, Near Yogmaya Temple, Delhi",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1296,6 +1472,8 @@ const TEMPLE_DATA = [
     "latitude": 15.4390416,
     "longitude": 74.2525411,
     "state": "Goa",
+    "police_contact": "011-238633",
+    "address": "Station Road, Near Mahadev Temple, Tambdi Surla, Goa",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1306,6 +1484,8 @@ const TEMPLE_DATA = [
     "latitude": 15.1866069,
     "longitude": 74.0945996,
     "state": "Goa",
+    "police_contact": "011-235156",
+    "address": "Station Road, Near Shri Damodar Temple, Goa",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1316,6 +1496,8 @@ const TEMPLE_DATA = [
     "latitude": 23.5443587,
     "longitude": 72.0851152,
     "state": "Gujarat",
+    "police_contact": "079-236462",
+    "address": "Station Road, Near Becharaji, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1326,6 +1508,8 @@ const TEMPLE_DATA = [
     "latitude": 25.8902075,
     "longitude": 78.6375386,
     "state": "Gujarat",
+    "police_contact": "079-237467",
+    "address": "Station Road, Near Bhalka, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1336,6 +1520,8 @@ const TEMPLE_DATA = [
     "latitude": 21.5278609,
     "longitude": 70.5010271,
     "state": "Gujarat",
+    "police_contact": "079-238882",
+    "address": "Station Road, Near Bhavnath, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1346,6 +1532,8 @@ const TEMPLE_DATA = [
     "latitude": 22.4243903,
     "longitude": 71.1992399,
     "state": "Gujarat",
+    "police_contact": "079-231995",
+    "address": "Station Road, Near Chotila, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1356,6 +1544,8 @@ const TEMPLE_DATA = [
     "latitude": 22.2377737,
     "longitude": 68.9675115,
     "state": "Gujarat",
+    "police_contact": "079-232351",
+    "address": "Station Road, Near Dwarkadhish Temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1366,6 +1556,8 @@ const TEMPLE_DATA = [
     "latitude": 22.3316115,
     "longitude": 73.1917019,
     "state": "Gujarat",
+    "police_contact": "079-238983",
+    "address": "Station Road, Near EME Temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1376,6 +1568,8 @@ const TEMPLE_DATA = [
     "latitude": 21.5271459,
     "longitude": 70.5332374,
     "state": "Gujarat",
+    "police_contact": "079-235305",
+    "address": "Station Road, Near Girnar, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1386,6 +1580,8 @@ const TEMPLE_DATA = [
     "latitude": 23.4323022,
     "longitude": 73.0493573,
     "state": "Gujarat",
+    "police_contact": "079-238229",
+    "address": "Station Road, Near Gorthiya Mahadev Temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1396,6 +1592,8 @@ const TEMPLE_DATA = [
     "latitude": 22.1588943,
     "longitude": 71.7710351,
     "state": "Gujarat",
+    "police_contact": "079-239167",
+    "address": "Station Road, Near Hanuman temple, Salangpur, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1406,6 +1604,8 @@ const TEMPLE_DATA = [
     "latitude": 23.0114213,
     "longitude": 72.5810755,
     "state": "Gujarat",
+    "police_contact": "079-232245",
+    "address": "Station Road, Near Jagannath Temple, Ahmedabad, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1416,6 +1616,8 @@ const TEMPLE_DATA = [
     "latitude": 21.8836442,
     "longitude": 69.7616776,
     "state": "Gujarat",
+    "police_contact": "079-236700",
+    "address": "Station Road, Near Navlakha temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1426,6 +1628,8 @@ const TEMPLE_DATA = [
     "latitude": 21.5267148,
     "longitude": 70.5230931,
     "state": "Gujarat",
+    "police_contact": "079-232582",
+    "address": "Station Road, Near Neminath Jain Temple, Girnar, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1436,6 +1640,8 @@ const TEMPLE_DATA = [
     "latitude": 22.2573308,
     "longitude": 68.9643978,
     "state": "Gujarat",
+    "police_contact": "079-236650",
+    "address": "Station Road, Near Rukmini Devi Temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1446,6 +1652,8 @@ const TEMPLE_DATA = [
     "latitude": 22.6897828,
     "longitude": 72.8638679,
     "state": "Gujarat",
+    "police_contact": "079-237495",
+    "address": "Station Road, Near Santram Mandir, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1456,6 +1664,8 @@ const TEMPLE_DATA = [
     "latitude": 23.6878592,
     "longitude": 73.3861398,
     "state": "Gujarat",
+    "police_contact": "079-236785",
+    "address": "Station Road, Near Shamlaji, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1466,6 +1676,8 @@ const TEMPLE_DATA = [
     "latitude": 23.0881279,
     "longitude": 69.5936944,
     "state": "Gujarat",
+    "police_contact": "079-238414",
+    "address": "Station Road, Near Shiva temple, Kera, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1476,6 +1688,8 @@ const TEMPLE_DATA = [
     "latitude": 29.7799622,
     "longitude": 79.6045134,
     "state": "Gujarat",
+    "police_contact": "079-234665",
+    "address": "Station Road, Near Someshwar Mahadev Temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1486,6 +1700,8 @@ const TEMPLE_DATA = [
     "latitude": 20.8877608,
     "longitude": 70.4013906,
     "state": "Gujarat",
+    "police_contact": "079-236390",
+    "address": "Station Road, Near Somnath temple, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1496,6 +1712,8 @@ const TEMPLE_DATA = [
     "latitude": 23.5834213,
     "longitude": 72.1330777,
     "state": "Gujarat",
+    "police_contact": "079-239623",
+    "address": "Station Road, Near Sun Temple, Modhera, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1506,6 +1724,8 @@ const TEMPLE_DATA = [
     "latitude": 23.2294005,
     "longitude": 72.6740775,
     "state": "Gujarat",
+    "police_contact": "079-232533",
+    "address": "Station Road, Near Swaminarayan Akshardham (Gandhinagar), Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1516,6 +1736,8 @@ const TEMPLE_DATA = [
     "latitude": 23.0028816,
     "longitude": 72.5575885,
     "state": "Gujarat",
+    "police_contact": "079-238984",
+    "address": "Station Road, Near Swaminarayan Temple, Ahmedabad, Gujarat",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1526,6 +1748,8 @@ const TEMPLE_DATA = [
     "latitude": 29.332216,
     "longitude": 75.625477,
     "state": "Haryana",
+    "police_contact": "011-239763",
+    "address": "Station Road, Near Agroha Dham, Haryana",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1536,6 +1760,8 @@ const TEMPLE_DATA = [
     "latitude": 27.4998805,
     "longitude": 77.6684018,
     "state": "Haryana",
+    "police_contact": "011-239804",
+    "address": "Station Road, Near Bhuteshwar Temple, Haryana",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1546,6 +1772,8 @@ const TEMPLE_DATA = [
     "latitude": 29.9612772,
     "longitude": 76.8274,
     "state": "Haryana",
+    "police_contact": "011-234443",
+    "address": "Station Road, Near Brahma Sarovar, Haryana",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1556,6 +1784,8 @@ const TEMPLE_DATA = [
     "latitude": 29.9635209,
     "longitude": 76.7718268,
     "state": "Haryana",
+    "police_contact": "011-236961",
+    "address": "Station Road, Near Jyotisar, Haryana",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1566,6 +1796,8 @@ const TEMPLE_DATA = [
     "latitude": 29.9663642,
     "longitude": 76.8358016,
     "state": "Haryana",
+    "police_contact": "011-231736",
+    "address": "Station Road, Near Sannihit Sarovar, Haryana",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1576,6 +1808,8 @@ const TEMPLE_DATA = [
     "latitude": 29.9812784,
     "longitude": 76.8277945,
     "state": "Haryana",
+    "police_contact": "011-234981",
+    "address": "Station Road, Near Sthaneshwar Mahadev Temple, Haryana",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1586,6 +1820,8 @@ const TEMPLE_DATA = [
     "latitude": 32.1926888,
     "longitude": 76.4504114,
     "state": "Himachal Pradesh",
+    "police_contact": "011-231351",
+    "address": "Station Road, Near Aadi Himani Chamunda, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1596,6 +1832,8 @@ const TEMPLE_DATA = [
     "latitude": 31.4548193,
     "longitude": 76.5400024,
     "state": "Himachal Pradesh",
+    "police_contact": "011-231017",
+    "address": "Station Road, Near Baba Balak Nath, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1606,6 +1844,8 @@ const TEMPLE_DATA = [
     "latitude": 31.9677806,
     "longitude": 76.2050489,
     "state": "Himachal Pradesh",
+    "police_contact": "011-232122",
+    "address": "Station Road, Near Baglamukhi Temple, Bankhandi, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1616,6 +1856,8 @@ const TEMPLE_DATA = [
     "latitude": 29.9072363,
     "longitude": 79.615225,
     "state": "Himachal Pradesh",
+    "police_contact": "011-238164",
+    "address": "Station Road, Near Baijnath Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1626,6 +1868,8 @@ const TEMPLE_DATA = [
     "latitude": 31.9388881,
     "longitude": 77.1470644,
     "state": "Himachal Pradesh",
+    "police_contact": "011-234830",
+    "address": "Station Road, Near Bijli Mahadev, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1636,6 +1880,8 @@ const TEMPLE_DATA = [
     "latitude": 32.6215238,
     "longitude": 76.4035663,
     "state": "Himachal Pradesh",
+    "police_contact": "011-236775",
+    "address": "Station Road, Near Chaurasi Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1646,6 +1892,8 @@ const TEMPLE_DATA = [
     "latitude": 32.2471956,
     "longitude": 76.3097108,
     "state": "Himachal Pradesh",
+    "police_contact": "011-239495",
+    "address": "Station Road, Near Chintpurni Mandir, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1656,6 +1904,8 @@ const TEMPLE_DATA = [
     "latitude": 31.1044384,
     "longitude": 77.2006164,
     "state": "Himachal Pradesh",
+    "police_contact": "011-232779",
+    "address": "Station Road, Near Dhingu Mata Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1666,6 +1916,8 @@ const TEMPLE_DATA = [
     "latitude": 32.8665034,
     "longitude": 76.5915324,
     "state": "Himachal Pradesh",
+    "police_contact": "011-235751",
+    "address": "Station Road, Near Kali Bari, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1676,6 +1928,8 @@ const TEMPLE_DATA = [
     "latitude": 32.0273214,
     "longitude": 77.3464072,
     "state": "Himachal Pradesh",
+    "police_contact": "011-237041",
+    "address": "Station Road, Near Manikaran, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1686,6 +1940,8 @@ const TEMPLE_DATA = [
     "latitude": 32.3510368,
     "longitude": 76.6524361,
     "state": "Himachal Pradesh",
+    "police_contact": "011-232558",
+    "address": "Station Road, Near Manimahesh Kailash Peak, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1696,6 +1952,8 @@ const TEMPLE_DATA = [
     "latitude": 32.9950061,
     "longitude": 76.4274845,
     "state": "Himachal Pradesh",
+    "police_contact": "011-235734",
+    "address": "Station Road, Near Mindhal Mata Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1706,6 +1964,8 @@ const TEMPLE_DATA = [
     "latitude": 31.3081912,
     "longitude": 76.5362208,
     "state": "Himachal Pradesh",
+    "police_contact": "011-231712",
+    "address": "Station Road, Near Naina Devi, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1716,6 +1976,8 @@ const TEMPLE_DATA = [
     "latitude": 25.4525164,
     "longitude": 78.5510155,
     "state": "Himachal Pradesh",
+    "police_contact": "011-231415",
+    "address": "Station Road, Near Raghunath Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1726,6 +1988,8 @@ const TEMPLE_DATA = [
     "latitude": 30.6088915,
     "longitude": 77.4493668,
     "state": "Himachal Pradesh",
+    "police_contact": "011-234848",
+    "address": "Station Road, Near Renuka Ji, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1736,6 +2000,8 @@ const TEMPLE_DATA = [
     "latitude": 26.9511782,
     "longitude": 75.857326,
     "state": "Himachal Pradesh",
+    "police_contact": "011-237007",
+    "address": "Station Road, Near Sankat Mochan Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1746,6 +2012,8 @@ const TEMPLE_DATA = [
     "latitude": 31.4734215,
     "longitude": 77.1652358,
     "state": "Himachal Pradesh",
+    "police_contact": "011-239428",
+    "address": "Station Road, Near Shikari Devi Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1756,6 +2024,8 @@ const TEMPLE_DATA = [
     "latitude": 28.971642,
     "longitude": 79.4057031,
     "state": "Himachal Pradesh",
+    "police_contact": "011-234226",
+    "address": "Station Road, Near Shri Chamunda Devi Mandir, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1766,6 +2036,8 @@ const TEMPLE_DATA = [
     "latitude": 32.4260407,
     "longitude": 75.9488736,
     "state": "Himachal Pradesh",
+    "police_contact": "011-236793",
+    "address": "Station Road, Near Tara Devi Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1776,6 +2048,8 @@ const TEMPLE_DATA = [
     "latitude": 32.684447,
     "longitude": 76.6955668,
     "state": "Himachal Pradesh",
+    "police_contact": "011-232189",
+    "address": "Station Road, Near Triloknath Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1786,6 +2060,8 @@ const TEMPLE_DATA = [
     "latitude": 32.684447,
     "longitude": 76.6955668,
     "state": "Himachal Pradesh",
+    "police_contact": "011-237830",
+    "address": "Station Road, Near Triloknath Temple, Himachal Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1796,6 +2072,8 @@ const TEMPLE_DATA = [
     "latitude": 34.0856652,
     "longitude": 74.8054142,
     "state": "Jammu Division",
+    "police_contact": "011-237369",
+    "address": "Station Road, Near Raghunath Mandir, Jammu Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1806,6 +2084,8 @@ const TEMPLE_DATA = [
     "latitude": 33.0301412,
     "longitude": 74.9479292,
     "state": "Jammu Division",
+    "police_contact": "011-238428",
+    "address": "Station Road, Near Vaishno Devi Temple, Jammu Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1816,6 +2096,8 @@ const TEMPLE_DATA = [
     "latitude": 34.215635,
     "longitude": 75.5038297,
     "state": "Kashmir Division",
+    "police_contact": "011-239430",
+    "address": "Station Road, Near Amarnath Cave Temple, Kashmir Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1826,6 +2108,8 @@ const TEMPLE_DATA = [
     "latitude": 34.1059639,
     "longitude": 74.8163903,
     "state": "Kashmir Division",
+    "police_contact": "011-235408",
+    "address": "Station Road, Near Hari Parbat, Kashmir Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1836,6 +2120,8 @@ const TEMPLE_DATA = [
     "latitude": 34.2211044,
     "longitude": 74.730042,
     "state": "Kashmir Division",
+    "police_contact": "011-236887",
+    "address": "Station Road, Near Kheer Bhawani Temple, Kashmir Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1846,6 +2132,8 @@ const TEMPLE_DATA = [
     "latitude": 34.0198524,
     "longitude": 74.9995393,
     "state": "Kashmir Division",
+    "police_contact": "011-238978",
+    "address": "Station Road, Near Khrew, Kashmir Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1856,6 +2144,8 @@ const TEMPLE_DATA = [
     "latitude": 34.0789645,
     "longitude": 74.8436028,
     "state": "Kashmir Division",
+    "police_contact": "011-231423",
+    "address": "Station Road, Near Shankaracharya Temple, Kashmir Division",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1866,6 +2156,8 @@ const TEMPLE_DATA = [
     "latitude": 23.6322495,
     "longitude": 85.7106648,
     "state": "Jharkhand",
+    "police_contact": "011-238980",
+    "address": "Station Road, Near Chhinnamasta Temple, Jharkhand",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1876,6 +2168,8 @@ const TEMPLE_DATA = [
     "latitude": 24.0702801,
     "longitude": 85.8216674,
     "state": "Jharkhand",
+    "police_contact": "011-232523",
+    "address": "Station Road, Near Harihar Dham, Jharkhand",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1886,6 +2180,8 @@ const TEMPLE_DATA = [
     "latitude": 23.3168885,
     "longitude": 85.2818038,
     "state": "Jharkhand",
+    "police_contact": "011-234867",
+    "address": "Station Road, Near Jagannath Temple, Jharkhand",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1896,6 +2192,8 @@ const TEMPLE_DATA = [
     "latitude": 24.159622,
     "longitude": 87.6748896,
     "state": "Jharkhand",
+    "police_contact": "011-235001",
+    "address": "Station Road, Near Maluti temples, Jharkhand",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1906,6 +2204,8 @@ const TEMPLE_DATA = [
     "latitude": 16.0204269,
     "longitude": 75.8827044,
     "state": "Karnataka",
+    "police_contact": "080-228293",
+    "address": "Station Road, Near Aihole, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1916,6 +2216,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9791072,
     "longitude": 74.9006001,
     "state": "Karnataka",
+    "police_contact": "080-224580",
+    "address": "Station Road, Near Annapoorneshwari Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1926,6 +2228,8 @@ const TEMPLE_DATA = [
     "latitude": 15.9183722,
     "longitude": 75.6843849,
     "state": "Karnataka",
+    "police_contact": "080-229305",
+    "address": "Station Road, Near Badami cave temples, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1936,6 +2240,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9663976,
     "longitude": 77.5865294,
     "state": "Karnataka",
+    "police_contact": "080-226802",
+    "address": "Station Road, Near Badami, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1946,6 +2252,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9674648,
     "longitude": 77.579332,
     "state": "Karnataka",
+    "police_contact": "080-227615",
+    "address": "Station Road, Near Chamundeshwari Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1956,6 +2264,8 @@ const TEMPLE_DATA = [
     "latitude": 13.3726702,
     "longitude": 77.2075933,
     "state": "Karnataka",
+    "police_contact": "080-222088",
+    "address": "Station Road, Near Devarayanadurga, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1966,6 +2276,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9655211,
     "longitude": 77.5831867,
     "state": "Karnataka",
+    "police_contact": "080-228109",
+    "address": "Station Road, Near Dharmaraya Swamy Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1976,6 +2288,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9503752,
     "longitude": 75.3806509,
     "state": "Karnataka",
+    "police_contact": "080-223186",
+    "address": "Station Road, Near Dharmasthala Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1986,6 +2300,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9482055,
     "longitude": 77.5629917,
     "state": "Karnataka",
+    "police_contact": "080-224146",
+    "address": "Station Road, Near Gavi Gangadhareshwara Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -1996,6 +2312,8 @@ const TEMPLE_DATA = [
     "latitude": 13.4091833,
     "longitude": 77.5296324,
     "state": "Karnataka",
+    "police_contact": "080-228715",
+    "address": "Station Road, Near Ghati Subramanya, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2006,6 +2324,8 @@ const TEMPLE_DATA = [
     "latitude": 14.5439629,
     "longitude": 74.3184418,
     "state": "Karnataka",
+    "police_contact": "080-223951",
+    "address": "Station Road, Near Gokarna, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2016,6 +2336,8 @@ const TEMPLE_DATA = [
     "latitude": 12.5923947,
     "longitude": 76.6913469,
     "state": "Karnataka",
+    "police_contact": "080-227967",
+    "address": "Station Road, Near Halebidu, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2026,6 +2348,8 @@ const TEMPLE_DATA = [
     "latitude": 15.3358,
     "longitude": 76.4610201,
     "state": "Karnataka",
+    "police_contact": "080-221753",
+    "address": "Station Road, Near Hampi, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2036,6 +2360,8 @@ const TEMPLE_DATA = [
     "latitude": 13.2124476,
     "longitude": 75.9942568,
     "state": "Karnataka",
+    "police_contact": "080-222493",
+    "address": "Station Road, Near Hoysaleswara Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2046,6 +2372,8 @@ const TEMPLE_DATA = [
     "latitude": 13.0116837,
     "longitude": 77.5516458,
     "state": "Karnataka",
+    "police_contact": "080-228009",
+    "address": "Station Road, Near ISKCON Temple, Bangalore, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2056,6 +2384,8 @@ const TEMPLE_DATA = [
     "latitude": 13.0450256,
     "longitude": 74.8700656,
     "state": "Karnataka",
+    "police_contact": "080-224401",
+    "address": "Station Road, Near Kateel, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2066,6 +2396,8 @@ const TEMPLE_DATA = [
     "latitude": 12.6790505,
     "longitude": 77.5835424,
     "state": "Karnataka",
+    "police_contact": "080-225872",
+    "address": "Station Road, Near Mahadeshwara Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2076,6 +2408,8 @@ const TEMPLE_DATA = [
     "latitude": 13.8637235,
     "longitude": 74.8145495,
     "state": "Karnataka",
+    "police_contact": "080-226155",
+    "address": "Station Road, Near Mookambika temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2086,6 +2420,8 @@ const TEMPLE_DATA = [
     "latitude": 14.1008191,
     "longitude": 74.505423,
     "state": "Karnataka",
+    "police_contact": "080-226670",
+    "address": "Station Road, Near Murudeshwara, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2096,6 +2432,8 @@ const TEMPLE_DATA = [
     "latitude": 17.4412777,
     "longitude": 78.4983217,
     "state": "Karnataka",
+    "police_contact": "080-221401",
+    "address": "Station Road, Near Nagadevatha, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2106,6 +2444,8 @@ const TEMPLE_DATA = [
     "latitude": 15.9484334,
     "longitude": 75.8159703,
     "state": "Karnataka",
+    "police_contact": "080-222412",
+    "address": "Station Road, Near Pattadakal, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2116,6 +2456,8 @@ const TEMPLE_DATA = [
     "latitude": 12.6207093,
     "longitude": 75.1106446,
     "state": "Karnataka",
+    "police_contact": "080-229878",
+    "address": "Station Road, Near Shree Vishnumurthy Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2126,6 +2468,8 @@ const TEMPLE_DATA = [
     "latitude": 14.612194,
     "longitude": 74.8395315,
     "state": "Karnataka",
+    "police_contact": "080-224155",
+    "address": "Station Road, Near Sirsi Marikamba Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2136,6 +2480,8 @@ const TEMPLE_DATA = [
     "latitude": 15.4975695,
     "longitude": 73.8781024,
     "state": "Karnataka",
+    "police_contact": "080-227418",
+    "address": "Station Road, Near Sri Sai Mandir, Belgaum, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2146,6 +2492,8 @@ const TEMPLE_DATA = [
     "latitude": 13.2157741,
     "longitude": 74.9927827,
     "state": "Karnataka",
+    "police_contact": "080-222936",
+    "address": "Station Road, Near Sri Venkataramana Temple, Karkala, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2156,6 +2504,8 @@ const TEMPLE_DATA = [
     "latitude": 13.4161389,
     "longitude": 75.2513769,
     "state": "Karnataka",
+    "police_contact": "080-228415",
+    "address": "Station Road, Near Sharadamba Temple, Sringeri, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2166,6 +2516,8 @@ const TEMPLE_DATA = [
     "latitude": 15.3351651,
     "longitude": 76.4586825,
     "state": "Karnataka",
+    "police_contact": "080-228365",
+    "address": "Station Road, Near Virupaksha Temple, Karnataka",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2176,6 +2528,8 @@ const TEMPLE_DATA = [
     "latitude": 9.3333,
     "longitude": 76.6833,
     "state": "Kerala",
+    "police_contact": "0471-236415",
+    "address": "Station Road, Near Aranmula Parthasarathy Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2186,6 +2540,8 @@ const TEMPLE_DATA = [
     "latitude": 9.3283262,
     "longitude": 76.6483652,
     "state": "Kerala",
+    "police_contact": "0471-233229",
+    "address": "Station Road, Near Arattupuzha Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2196,6 +2552,8 @@ const TEMPLE_DATA = [
     "latitude": 8.4697972,
     "longitude": 76.9555129,
     "state": "Kerala",
+    "police_contact": "0471-236057",
+    "address": "Station Road, Near Attukal Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2206,6 +2564,8 @@ const TEMPLE_DATA = [
     "latitude": 9.3670788,
     "longitude": 76.5147674,
     "state": "Kerala",
+    "police_contact": "0471-235028",
+    "address": "Station Road, Near Chakkulathukavu Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2216,6 +2576,8 @@ const TEMPLE_DATA = [
     "latitude": 9.2275927,
     "longitude": 76.5172569,
     "state": "Kerala",
+    "police_contact": "0471-236433",
+    "address": "Station Road, Near Chettikulangara Devi Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2226,6 +2588,8 @@ const TEMPLE_DATA = [
     "latitude": 9.9333162,
     "longitude": 76.3911605,
     "state": "Kerala",
+    "police_contact": "0471-235408",
+    "address": "Station Road, Near Chottanikkara Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2236,6 +2600,8 @@ const TEMPLE_DATA = [
     "latitude": 9.9685159,
     "longitude": 76.2820429,
     "state": "Kerala",
+    "police_contact": "0471-235192",
+    "address": "Station Road, Near Ernakulam Shiva Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2246,6 +2612,8 @@ const TEMPLE_DATA = [
     "latitude": 10.5942942,
     "longitude": 76.0394112,
     "state": "Kerala",
+    "police_contact": "0471-233227",
+    "address": "Station Road, Near Guruvayur Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2256,6 +2624,8 @@ const TEMPLE_DATA = [
     "latitude": 10.9425883,
     "longitude": 76.0425816,
     "state": "Kerala",
+    "police_contact": "0471-235427",
+    "address": "Station Road, Near Kadampuzha Devi Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2266,6 +2636,8 @@ const TEMPLE_DATA = [
     "latitude": 8.7243586,
     "longitude": 76.9807232,
     "state": "Kerala",
+    "police_contact": "0471-235519",
+    "address": "Station Road, Near Kodungallur Bhagavathy Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2276,6 +2648,8 @@ const TEMPLE_DATA = [
     "latitude": 11.8746725,
     "longitude": 75.8629238,
     "state": "Kerala",
+    "police_contact": "0471-238471",
+    "address": "Station Road, Near Kottiyoor Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2286,6 +2660,8 @@ const TEMPLE_DATA = [
     "latitude": 11.5980427,
     "longitude": 75.6196301,
     "state": "Kerala",
+    "police_contact": "0471-233557",
+    "address": "Station Road, Near Lokanarkavu Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2296,6 +2672,8 @@ const TEMPLE_DATA = [
     "latitude": 10.6177314,
     "longitude": 76.1577351,
     "state": "Kerala",
+    "police_contact": "0471-232148",
+    "address": "Station Road, Near Muthappan Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2306,6 +2684,8 @@ const TEMPLE_DATA = [
     "latitude": 9.135348,
     "longitude": 76.5128451,
     "state": "Kerala",
+    "police_contact": "0471-235577",
+    "address": "Station Road, Near Oachira Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2316,6 +2696,8 @@ const TEMPLE_DATA = [
     "latitude": 8.4827027,
     "longitude": 76.9438872,
     "state": "Kerala",
+    "police_contact": "0471-231715",
+    "address": "Station Road, Near Padmanabhaswamy Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2326,6 +2708,8 @@ const TEMPLE_DATA = [
     "latitude": 10.4373709,
     "longitude": 76.2119988,
     "state": "Kerala",
+    "police_contact": "0471-236869",
+    "address": "Station Road, Near Peruvanam Mahadeva Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2336,6 +2720,8 @@ const TEMPLE_DATA = [
     "latitude": 11.2974443,
     "longitude": 75.7760371,
     "state": "Kerala",
+    "police_contact": "0471-231050",
+    "address": "Station Road, Near Pisharikavu Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2346,6 +2732,8 @@ const TEMPLE_DATA = [
     "latitude": 12.0483999,
     "longitude": 75.3557136,
     "state": "Kerala",
+    "police_contact": "0471-236498",
+    "address": "Station Road, Near Rajarajeshwara Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2356,6 +2744,8 @@ const TEMPLE_DATA = [
     "latitude": 9.4345886,
     "longitude": 77.0813869,
     "state": "Kerala",
+    "police_contact": "0471-232724",
+    "address": "Station Road, Near Sabarimala Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2366,6 +2756,8 @@ const TEMPLE_DATA = [
     "latitude": 8.7425995,
     "longitude": 76.7691029,
     "state": "Kerala",
+    "police_contact": "0471-232401",
+    "address": "Station Road, Near Sreenarayanapuram Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2376,6 +2768,8 @@ const TEMPLE_DATA = [
     "latitude": 10.1877731,
     "longitude": 76.327102,
     "state": "Kerala",
+    "police_contact": "0471-237960",
+    "address": "Station Road, Near Thirumoozhikkulam Lakshmana Perumal Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2386,6 +2780,8 @@ const TEMPLE_DATA = [
     "latitude": 11.9082694,
     "longitude": 75.9963713,
     "state": "Kerala",
+    "police_contact": "0471-235807",
+    "address": "Station Road, Near Thirunelli Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2396,6 +2792,8 @@ const TEMPLE_DATA = [
     "latitude": 10.2102904,
     "longitude": 76.2065635,
     "state": "Kerala",
+    "police_contact": "0471-232301",
+    "address": "Station Road, Near Thiruvanchikulam Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2406,6 +2804,8 @@ const TEMPLE_DATA = [
     "latitude": 10.4142269,
     "longitude": 76.1152129,
     "state": "Kerala",
+    "police_contact": "0471-233361",
+    "address": "Station Road, Near Thriprayar Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2416,6 +2816,8 @@ const TEMPLE_DATA = [
     "latitude": 10.5243886,
     "longitude": 76.2144851,
     "state": "Kerala",
+    "police_contact": "0471-231879",
+    "address": "Station Road, Near Vadakkunnathan Temple, Kerala",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2426,6 +2828,8 @@ const TEMPLE_DATA = [
     "latitude": 22.23177,
     "longitude": 76.0452095,
     "state": "Madhya Pradesh",
+    "police_contact": "011-233052",
+    "address": "Station Road, Near Dada Darbar, Madhya Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2436,6 +2840,8 @@ const TEMPLE_DATA = [
     "latitude": 19.2186187,
     "longitude": 72.9566671,
     "state": "Madhya Pradesh",
+    "police_contact": "011-239253",
+    "address": "Station Road, Near Gajanan Maharaj Temple, Madhya Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2446,6 +2852,8 @@ const TEMPLE_DATA = [
     "latitude": 22.6275795,
     "longitude": 76.3745573,
     "state": "Madhya Pradesh",
+    "police_contact": "011-231876",
+    "address": "Station Road, Near Jatashankar, Madhya Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2456,6 +2864,8 @@ const TEMPLE_DATA = [
     "latitude": 22.2456636,
     "longitude": 76.150782,
     "state": "Madhya Pradesh",
+    "police_contact": "011-231113",
+    "address": "Station Road, Near Omkareshwar Temple, Madhya Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2466,6 +2876,8 @@ const TEMPLE_DATA = [
     "latitude": 12.9620404,
     "longitude": 77.5937144,
     "state": "Madhya Pradesh",
+    "police_contact": "011-231531",
+    "address": "Station Road, Near Ram Raja Temple, Madhya Pradesh",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2476,6 +2888,8 @@ const TEMPLE_DATA = [
     "latitude": 18.535215,
     "longitude": 73.2238557,
     "state": "Maharashtra",
+    "police_contact": "022-222993",
+    "address": "Station Road, Near Ballaleshwar Pali, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2486,6 +2900,8 @@ const TEMPLE_DATA = [
     "latitude": 19.0719964,
     "longitude": 73.5360388,
     "state": "Maharashtra",
+    "police_contact": "022-224017",
+    "address": "Station Road, Near Bhimashankar Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2496,6 +2912,8 @@ const TEMPLE_DATA = [
     "latitude": 18.4359228,
     "longitude": 74.2410847,
     "state": "Maharashtra",
+    "police_contact": "022-221093",
+    "address": "Station Road, Near Bhuleshwar Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2506,6 +2924,8 @@ const TEMPLE_DATA = [
     "latitude": 21.2480457,
     "longitude": 75.2771495,
     "state": "Maharashtra",
+    "police_contact": "022-229297",
+    "address": "Station Road, Near BAPS Shri Swaminarayan, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2516,6 +2936,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5379131,
     "longitude": 73.8300459,
     "state": "Maharashtra",
+    "police_contact": "022-223198",
+    "address": "Station Road, Near Chaturshringi Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2526,6 +2948,8 @@ const TEMPLE_DATA = [
     "latitude": 19.2452962,
     "longitude": 73.1186797,
     "state": "Maharashtra",
+    "police_contact": "022-222942",
+    "address": "Station Road, Near Durgadi Fort, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2536,6 +2960,8 @@ const TEMPLE_DATA = [
     "latitude": 18.9630478,
     "longitude": 72.931902,
     "state": "Maharashtra",
+    "police_contact": "022-224604",
+    "address": "Station Road, Near Elephanta Caves, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2546,6 +2972,8 @@ const TEMPLE_DATA = [
     "latitude": 29.1621254,
     "longitude": 78.0078108,
     "state": "Maharashtra",
+    "police_contact": "022-224312",
+    "address": "Station Road, Near Kailash Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2556,6 +2984,8 @@ const TEMPLE_DATA = [
     "latitude": 18.2781417,
     "longitude": 74.3174717,
     "state": "Maharashtra",
+    "police_contact": "022-226681",
+    "address": "Station Road, Near Moreshwar Temple, Morgaon, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2566,6 +2996,8 @@ const TEMPLE_DATA = [
     "latitude": 17.1466952,
     "longitude": 73.2697524,
     "state": "Maharashtra",
+    "police_contact": "022-227308",
+    "address": "Station Road, Near Ganpatipule, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2576,6 +3008,8 @@ const TEMPLE_DATA = [
     "latitude": 19.8510869,
     "longitude": 74.002131,
     "state": "Maharashtra",
+    "police_contact": "022-228188",
+    "address": "Station Road, Near Gondeshwar Temple, Sinnar, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2586,6 +3020,8 @@ const TEMPLE_DATA = [
     "latitude": 14.5124618,
     "longitude": 75.8020849,
     "state": "Maharashtra",
+    "police_contact": "022-226575",
+    "address": "Station Road, Near Harihareshwara Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2596,6 +3032,8 @@ const TEMPLE_DATA = [
     "latitude": 19.386652,
     "longitude": 73.7770085,
     "state": "Maharashtra",
+    "police_contact": "022-222584",
+    "address": "Station Road, Near Harishchandragad, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2606,6 +3044,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5200118,
     "longitude": 73.8794776,
     "state": "Maharashtra",
+    "police_contact": "022-224883",
+    "address": "Station Road, Near ISKCON Temple, Pune, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2616,6 +3056,8 @@ const TEMPLE_DATA = [
     "latitude": 19.4663799,
     "longitude": 72.8274997,
     "state": "Maharashtra",
+    "police_contact": "022-228306",
+    "address": "Station Road, Near Jivdani Mata Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2626,6 +3068,8 @@ const TEMPLE_DATA = [
     "latitude": 19.1348994,
     "longitude": 72.8488199,
     "state": "Maharashtra",
+    "police_contact": "022-228452",
+    "address": "Station Road, Near Jogeshwari, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2636,6 +3080,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5190304,
     "longitude": 73.8572406,
     "state": "Maharashtra",
+    "police_contact": "022-221069",
+    "address": "Station Road, Near Kasba Ganapati, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2646,6 +3092,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5176567,
     "longitude": 73.7682867,
     "state": "Maharashtra",
+    "police_contact": "022-224275",
+    "address": "Station Road, Near Khandoba Mandir, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2656,6 +3104,8 @@ const TEMPLE_DATA = [
     "latitude": 16.6948575,
     "longitude": 74.2228947,
     "state": "Maharashtra",
+    "police_contact": "022-225446",
+    "address": "Station Road, Near Mahalakshmi Temple, Kolhapur, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2666,6 +3116,8 @@ const TEMPLE_DATA = [
     "latitude": 18.9773651,
     "longitude": 72.8064639,
     "state": "Maharashtra",
+    "police_contact": "022-223042",
+    "address": "Station Road, Near Mahalakshmi Temple, Mahalakshmi, Mumbai, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2676,6 +3128,8 @@ const TEMPLE_DATA = [
     "latitude": 19.8479785,
     "longitude": 77.9217634,
     "state": "Maharashtra",
+    "police_contact": "022-225705",
+    "address": "Station Road, Near Mahur, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2686,6 +3140,8 @@ const TEMPLE_DATA = [
     "latitude": 18.6207718,
     "longitude": 73.7862304,
     "state": "Maharashtra",
+    "police_contact": "022-221929",
+    "address": "Station Road, Near Morya Gosavi, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2696,6 +3152,8 @@ const TEMPLE_DATA = [
     "latitude": 19.1934286,
     "longitude": 73.0188252,
     "state": "Maharashtra",
+    "police_contact": "022-225064",
+    "address": "Station Road, Near Mumbra Devi Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2706,6 +3164,8 @@ const TEMPLE_DATA = [
     "latitude": 16.7655324,
     "longitude": 74.5454546,
     "state": "Maharashtra",
+    "police_contact": "022-225905",
+    "address": "Station Road, Near Narsobawadi, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2716,6 +3176,8 @@ const TEMPLE_DATA = [
     "latitude": 20.8724461,
     "longitude": 75.3939289,
     "state": "Maharashtra",
+    "police_contact": "022-225440",
+    "address": "Station Road, Near Padmalaya, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2726,6 +3188,8 @@ const TEMPLE_DATA = [
     "latitude": 20.722283,
     "longitude": 73.9452234,
     "state": "Maharashtra",
+    "police_contact": "022-228452",
+    "address": "Station Road, Near Parshuram Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2736,6 +3200,8 @@ const TEMPLE_DATA = [
     "latitude": 18.9492092,
     "longitude": 72.7922873,
     "state": "Maharashtra",
+    "police_contact": "022-229314",
+    "address": "Station Road, Near Parvati Hill, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2746,6 +3212,8 @@ const TEMPLE_DATA = [
     "latitude": 19.151023,
     "longitude": 72.8501467,
     "state": "Maharashtra",
+    "police_contact": "022-225446",
+    "address": "Station Road, Near Ram Mandir, Mumbai, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2756,6 +3224,8 @@ const TEMPLE_DATA = [
     "latitude": 19.9818194,
     "longitude": 73.7907427,
     "state": "Maharashtra",
+    "police_contact": "022-225747",
+    "address": "Station Road, Near Saptashrungi, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2766,6 +3236,8 @@ const TEMPLE_DATA = [
     "latitude": 19.3817281,
     "longitude": 74.8578829,
     "state": "Maharashtra",
+    "police_contact": "022-224129",
+    "address": "Station Road, Near Shani Shingnapur, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2776,6 +3248,8 @@ const TEMPLE_DATA = [
     "latitude": 19.7665786,
     "longitude": 74.4772786,
     "state": "Maharashtra",
+    "police_contact": "022-226829",
+    "address": "Station Road, Near Shri Sai Baba Temple, Shirdi, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2786,6 +3260,8 @@ const TEMPLE_DATA = [
     "latitude": 19.1985533,
     "longitude": 73.1766641,
     "state": "Maharashtra",
+    "police_contact": "022-224159",
+    "address": "Station Road, Near Shiv Mandir, Maharashtra, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2796,6 +3272,8 @@ const TEMPLE_DATA = [
     "latitude": 19.2055376,
     "longitude": 72.8454148,
     "state": "Maharashtra",
+    "police_contact": "022-224345",
+    "address": "Station Road, Near Shree Swaminarayan Temple Mumbai, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2806,6 +3284,8 @@ const TEMPLE_DATA = [
     "latitude": 19.1947923,
     "longitude": 72.8466662,
     "state": "Maharashtra",
+    "police_contact": "022-229118",
+    "address": "Station Road, Near Shri Swaminarayan Mandir, Mumbai, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2816,6 +3296,8 @@ const TEMPLE_DATA = [
     "latitude": 18.444367,
     "longitude": 74.726371,
     "state": "Maharashtra",
+    "police_contact": "022-222293",
+    "address": "Station Road, Near Siddhivinayak Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2826,6 +3308,8 @@ const TEMPLE_DATA = [
     "latitude": 18.444367,
     "longitude": 74.726371,
     "state": "Maharashtra",
+    "police_contact": "022-227285",
+    "address": "Station Road, Near Siddhivinayak Temple, Siddhatek, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2836,6 +3320,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5004727,
     "longitude": 73.8390819,
     "state": "Maharashtra",
+    "police_contact": "022-223002",
+    "address": "Station Road, Near Tulja Bhavani Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2846,6 +3332,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5134369,
     "longitude": 73.8555749,
     "state": "Maharashtra",
+    "police_contact": "022-221430",
+    "address": "Station Road, Near Tulshibaug, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2856,6 +3344,8 @@ const TEMPLE_DATA = [
     "latitude": 18.8105037,
     "longitude": 73.3013328,
     "state": "Maharashtra",
+    "police_contact": "022-225073",
+    "address": "Station Road, Near Varadvinayak, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2866,6 +3356,8 @@ const TEMPLE_DATA = [
     "latitude": 18.5097638,
     "longitude": 73.8016254,
     "state": "Maharashtra",
+    "police_contact": "022-221384",
+    "address": "Station Road, Near Vithoba Temple, Maharashtra",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2876,6 +3368,8 @@ const TEMPLE_DATA = [
     "latitude": 24.7978796,
     "longitude": 93.9484723,
     "state": "Manipur",
+    "police_contact": "011-234527",
+    "address": "Station Road, Near Shree Govindajee Temple, Manipur",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2886,6 +3380,8 @@ const TEMPLE_DATA = [
     "latitude": 20.4847504,
     "longitude": 86.4390315,
     "state": "Odisha",
+    "police_contact": "0674-239555",
+    "address": "Station Road, Near Baladevjew Temple, Odisha",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2896,6 +3392,8 @@ const TEMPLE_DATA = [
     "latitude": 19.7826439,
     "longitude": 85.1664729,
     "state": "Odisha",
+    "police_contact": "0674-239515",
+    "address": "Station Road, Near Bhagabati Temple, Banapur, Odisha",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2906,6 +3404,8 @@ const TEMPLE_DATA = [
     "latitude": 20.240516,
     "longitude": 85.8318752,
     "state": "Odisha",
+    "police_contact": "0674-234504",
+    "address": "Station Road, Near Bharati Matha, Odisha",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2916,6 +3416,8 @@ const TEMPLE_DATA = [
     "latitude": 20.8337268,
     "longitude": 86.3381699,
     "state": "Odisha",
+    "police_contact": "0674-233064",
+    "address": "Station Road, Near Biraja Temple, Odisha",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2926,6 +3428,8 @@ const TEMPLE_DATA = [
     "latitude": 20.1923244,
     "longitude": 85.8402492,
     "state": "Odisha",
+    "police_contact": "0674-236397",
+    "address": "Station Road, Near Dhabaleswar, Odisha",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
@@ -2936,6 +3440,8 @@ const TEMPLE_DATA = [
     "latitude": 19.6312499,
     "longitude": 84.6016034,
     "state": "Odisha",
+    "police_contact": "0674-236738",
+    "address": "Station Road, Near Dharakote, Odisha",
     "imageLink": "",
     "zones_config": {},
     "exit_routes_config": {}
