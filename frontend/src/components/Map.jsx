@@ -752,7 +752,6 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
           ))}
         </div>
         )}
-      </div>
 
       {/* Building Map Modal Overlay */}
       {showBuildingMap && (
