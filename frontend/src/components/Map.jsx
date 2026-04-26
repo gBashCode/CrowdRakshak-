@@ -4,7 +4,7 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.heat';
 import html2canvas from 'html2canvas';
-import { Download, Map as MapIcon, X } from 'lucide-react';
+import { Download, Map as MapIcon, X, List } from 'lucide-react';
 
 // ── Fix default icons ──────────────────────────────────────────────────────────
 delete L.Icon.Default.prototype._getIconUrl;
@@ -243,6 +243,8 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
   const [showBuildingMap, setShowBuildingMap] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [pendingSOS, setPendingSOS] = useState(null);
+  const [showSOSMenu, setShowSOSMenu] = useState(false);
+  const [showLegend, setShowLegend] = useState(false);
 
   // Close modal and reset error when selected temple changes
   useEffect(() => {
@@ -367,6 +369,21 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
               <X size={18} />
               END SOS
             </button>
+          ) : (isMobile && !showSOSMenu) ? (
+            <button
+              onClick={() => setShowSOSMenu(true)}
+              style={{
+                width: 44, height: 44, borderRadius: '50%', background: 'rgba(220, 38, 38, 0.9)',
+                border: '2px solid rgba(248, 113, 113, 0.8)', color: 'white',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 4px 20px rgba(220,38,38,0.4)', cursor: 'pointer',
+                fontWeight: 800, fontSize: 13,
+                animation: 'pulse-sos 1.5s infinite',
+                backdropFilter: 'blur(16px)',
+              }}
+            >
+              SOS
+            </button>
           ) : (
             <div style={{
               background: 'rgba(8,15,35,0.72)',
@@ -376,7 +393,10 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
               display: 'flex', flexDirection: 'column', gap: 6,
               boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
             }}>
-              <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', textAlign: 'center', marginBottom: 2 }}>Emergency</p>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
+                <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Emergency</p>
+                {isMobile && <X size={14} color="#94a3b8" cursor="pointer" onClick={() => setShowSOSMenu(false)} />}
+              </div>
               <button
                 onClick={() => setPendingSOS('Medical')}
                 style={{
@@ -417,40 +437,72 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
           )}
           
           {/* Building Map Button */}
-          <button
-            onClick={() => setShowBuildingMap(true)}
-            style={{
-              background: 'rgba(8,15,35,0.72)',
-              backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(148,163,184,0.1)',
-              borderRadius: 14, padding: '12px 16px',
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8,
-              color: '#e2e8f0', cursor: 'pointer',
-              transition: 'all 0.2s',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-              height: 'fit-content',
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(30,41,59,0.8)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(8,15,35,0.72)'; }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <MapIcon size={18} color="#3b82f6" />
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em' }}>STRUCTURAL MAP</span>
-            </div>
-            <span style={{ fontSize: 9, color: '#94a3b8' }}>View Building Plan</span>
-          </button>
+          {isMobile ? (
+            <button
+              onClick={() => setShowBuildingMap(true)}
+              style={{
+                width: 44, height: 44, borderRadius: '50%', background: 'rgba(8,15,35,0.72)',
+                border: '1px solid rgba(148,163,184,0.1)', color: '#3b82f6',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.4)', cursor: 'pointer',
+                backdropFilter: 'blur(16px)',
+              }}
+            >
+              <MapIcon size={20} />
+            </button>
+          ) : (
+            <button
+              onClick={() => setShowBuildingMap(true)}
+              style={{
+                background: 'rgba(8,15,35,0.72)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(148,163,184,0.1)',
+                borderRadius: 14, padding: '12px 16px',
+                display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 8,
+                color: '#e2e8f0', cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+                height: 'fit-content',
+              }}
+              onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(30,41,59,0.8)'; }}
+              onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(8,15,35,0.72)'; }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <MapIcon size={18} color="#3b82f6" />
+                <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.05em' }}>STRUCTURAL MAP</span>
+              </div>
+              <span style={{ fontSize: 9, color: '#94a3b8' }}>View Building Plan</span>
+            </button>
+          )}
         </div>
 
         {/* Legend overlay */}
-        <div style={{
-          background: 'rgba(8,15,35,0.72)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid rgba(148,163,184,0.1)',
-          borderRadius: 14, padding: '12px 14px',
-          display: 'flex', flexDirection: 'column', gap: 6,
-          boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
-        }}>
-          <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 2 }}>Map Legend</p>
+        {(isMobile && !showLegend) ? (
+          <button
+            onClick={() => setShowLegend(true)}
+            style={{
+              width: 44, height: 44, borderRadius: '50%', background: 'rgba(8,15,35,0.72)',
+              border: '1px solid rgba(148,163,184,0.1)', color: '#94a3b8',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.4)', cursor: 'pointer',
+              backdropFilter: 'blur(16px)',
+            }}
+          >
+            <List size={20} />
+          </button>
+        ) : (
+          <div style={{
+            background: 'rgba(8,15,35,0.72)',
+            backdropFilter: 'blur(16px)',
+            border: '1px solid rgba(148,163,184,0.1)',
+            borderRadius: 14, padding: '12px 14px',
+            display: 'flex', flexDirection: 'column', gap: 6,
+            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
+              <p style={{ fontSize: 9, fontWeight: 700, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>Map Legend</p>
+              {isMobile && <X size={14} color="#94a3b8" cursor="pointer" onClick={() => setShowLegend(false)} />}
+            </div>
           {[
             { color: '#22c55e', label: 'Low density / Safe exit' },
             { color: '#a855f7', label: 'Moderate density' },
@@ -464,6 +516,7 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
             </div>
           ))}
         </div>
+        )}
       </div>
 
       {/* Download button */}
