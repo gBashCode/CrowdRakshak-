@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="frontend/public/logo.png" alt="CrowdRakshak Logo" width="200"/>
+</div>
+
 # CrowdRakshak
 
 CrowdRakshak is an end-to-end AI-based crowd monitoring and navigation system designed for religious sites and high-traffic areas. The system provides real-time insights into crowd density, ensures safety through anomaly detection, and guides users with interactive navigation tools.
@@ -7,7 +11,7 @@ CrowdRakshak is an end-to-end AI-based crowd monitoring and navigation system de
 The platform is built as a multi-service architecture comprising:
 
 - **AI Detection Service (`ai-service`)**: Utilizes YOLOv8 for real-time crowd density estimation and object detection.
-- **Backend Service (`backend`)**: A FastAPI-based server providing RESTful APIs and WebSocket support for live data broadcasting and state management.
+- **Backend Service (`backend`)**: A FastAPI-based server providing RESTful APIs, WebSocket support for live data broadcasting, and SQLite for persistent state management.
 - **Frontend Dashboard (`frontend`)**: A React-based operator dashboard featuring the "Jade Terminal" aesthetic (midnight teal and jade color palette, Outfit and JetBrains Mono typography) that visualizes crowd density via interactive Mapbox heatmaps and provides safe navigation guidance.
 
 ## Features
