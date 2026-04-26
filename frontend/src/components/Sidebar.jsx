@@ -193,8 +193,12 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
           />
           <button
             onClick={() => {
-              const temple = temples
-                .find(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()));
+              const temple = temples.find(t => {
+                const matchesSearch = t.name.toLowerCase().includes(searchQuery.toLowerCase());
+                const matchesState  = selectedState === 'All States' || (t.state || 'Other') === selectedState;
+                return matchesSearch && matchesState;
+              });
+              
               if (temple) {
                 onSelect(temple);
                 setSelectedState(temple.state || 'Other');
@@ -238,7 +242,11 @@ const Sidebar = ({ temples, crowdData, prevCrowdData, selectedId, onSelect, onSt
               boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
             }}>
               {temples
-                .filter(t => t.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                .filter(t => {
+                  const matchesSearch = t.name.toLowerCase().includes(searchQuery.toLowerCase());
+                  const matchesState  = selectedState === 'All States' || (t.state || 'Other') === selectedState;
+                  return matchesSearch && matchesState;
+                })
                 .slice(0, 50)
                 .map(t => (
                   <div
