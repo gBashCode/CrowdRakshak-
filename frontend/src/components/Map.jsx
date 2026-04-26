@@ -295,28 +295,41 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
           const status = crowdData[temple.id]?.status || 'LOW';
           const isSelected = temple.id === selected.id;
           return (
-            <Marker
-              key={temple.id}
-              position={[temple.lat, temple.lng]}
-              icon={templeIcon(status)}
-              opacity={isSelected ? 1 : 0.45}
-              zIndexOffset={isSelected ? 500 : 0}
-            >
-              <Popup>
-                <div style={{ fontFamily: 'Inter,sans-serif', minWidth: 160 }}>
-                  <strong style={{ fontSize: 13 }}>{temple.name}</strong>
-                  <div style={{
-                    color: status === 'HIGH' ? '#ef4444' : status === 'MODERATE' ? '#a855f7' : '#22c55e',
-                    fontWeight: 700, marginTop: 4, fontSize: 12
-                  }}>
-                    {status} · {crowdData[temple.id]?.total_count ?? '—'} people
+            <React.Fragment key={temple.id}>
+              {/* Boundary marker with black dashed lines */}
+              <Circle
+                center={[temple.lat, temple.lng]}
+                radius={100}
+                pathOptions={{
+                  color: '#000000',
+                  weight: 2,
+                  dashArray: '8 8',
+                  fillOpacity: 0.0,
+                  opacity: isSelected ? 0.8 : 0.3,
+                }}
+              />
+              <Marker
+                position={[temple.lat, temple.lng]}
+                icon={templeIcon(status)}
+                opacity={isSelected ? 1 : 0.45}
+                zIndexOffset={isSelected ? 500 : 0}
+              >
+                <Popup>
+                  <div style={{ fontFamily: 'Inter,sans-serif', minWidth: 160 }}>
+                    <strong style={{ fontSize: 13 }}>{temple.name}</strong>
+                    <div style={{
+                      color: status === 'HIGH' ? '#ef4444' : status === 'MODERATE' ? '#a855f7' : '#22c55e',
+                      fontWeight: 700, marginTop: 4, fontSize: 12
+                    }}>
+                      {status} · {crowdData[temple.id]?.total_count ?? '—'} people
+                    </div>
+                    <div style={{ color: '#94a3b8', fontSize: 11, marginTop: 4 }}>
+                      {(temple.exit_routes_config?.length ?? 0)} exit routes mapped
+                    </div>
                   </div>
-                  <div style={{ color: '#94a3b8', fontSize: 11, marginTop: 4 }}>
-                    {(temple.exit_routes_config?.length ?? 0)} exit routes mapped
-                  </div>
-                </div>
-              </Popup>
-            </Marker>
+                </Popup>
+              </Marker>
+            </React.Fragment>
           );
         })}
       </MapContainer>
