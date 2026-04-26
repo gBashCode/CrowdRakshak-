@@ -912,35 +912,61 @@ const MapView = ({ temples, selected, crowdData, mapElRef, activeSOS, setActiveS
             <p style={{ fontSize: 14, color: '#94a3b8', marginBottom: 24, lineHeight: 1.5 }}>
               This will immediately alert the corresponding authorities and change the dashboard to emergency mode. Are you sure you want to proceed?
             </p>
-            <div style={{ display: 'flex', gap: 12 }}>
-              <button
-                onClick={() => setPendingSOS(null)}
-                style={{
-                  flex: 1, padding: '12px', borderRadius: 12, border: 'none',
-                  background: 'rgba(255,255,255,0.1)', color: '#e2e8f0',
-                  fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
-                onMouseOut={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => {
-                  setActiveSOS(pendingSOS);
-                  setPendingSOS(null);
-                }}
-                style={{
-                  flex: 1, padding: '12px', borderRadius: 12, border: 'none',
-                  background: '#ef4444', color: 'white',
-                  fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s',
-                  boxShadow: '0 4px 12px rgba(239,68,68,0.4)'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.background = '#dc2626'}
-                onMouseOut={(e) => e.currentTarget.style.background = '#ef4444'}
-              >
-                Confirm SOS
-              </button>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div style={{ display: 'flex', gap: 12 }}>
+                <a
+                  href="tel:112"
+                  style={{
+                    flex: 1, padding: '14px', borderRadius: 12, border: '1px solid rgba(59, 130, 246, 0.3)',
+                    background: 'rgba(59, 130, 246, 0.1)', color: '#60a5fa',
+                    fontWeight: 700, cursor: 'pointer', textAlign: 'center', textDecoration: 'none',
+                    fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+                  }}
+                >
+                  📞 DIAL 112
+                </a>
+                <a
+                  href="tel:108"
+                  style={{
+                    flex: 1, padding: '14px', borderRadius: 12, border: '1px solid rgba(34, 197, 94, 0.3)',
+                    background: 'rgba(34, 197, 94, 0.1)', color: '#4ade80',
+                    fontWeight: 700, cursor: 'pointer', textAlign: 'center', textDecoration: 'none',
+                    fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6
+                  }}
+                >
+                  🚑 DIAL 108
+                </a>
+              </div>
+              
+              <div style={{ display: 'flex', gap: 12, marginTop: 8 }}>
+                <button
+                  onClick={() => setPendingSOS(null)}
+                  style={{
+                    flex: 1, padding: '12px', borderRadius: 12, border: 'none',
+                    background: 'rgba(255,255,255,0.05)', color: '#94a3b8',
+                    fontWeight: 600, cursor: 'pointer', transition: 'all 0.2s'
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={() => {
+                    setActiveSOS(pendingSOS);
+                    const dialNum = pendingSOS === 'Medical' ? '108' : '112';
+                    window.location.href = `tel:${dialNum}`;
+                    setPendingSOS(null);
+                  }}
+                  style={{
+                    flex: 2, padding: '12px', borderRadius: 12, border: 'none',
+                    background: 'linear-gradient(135deg, #ef4444 0%, #b91c1c 100%)', color: 'white',
+                    fontWeight: 800, cursor: 'pointer', transition: 'all 0.2s',
+                    boxShadow: '0 8px 24px rgba(239,68,68,0.4)',
+                    letterSpacing: '0.05em'
+                  }}
+                >
+                  CONFIRM & CALL AUTHORITIES
+                </button>
+              </div>
             </div>
           </div>
         </div>
