@@ -1,35 +1,59 @@
-import firebase_admin
-from firebase_admin import credentials, firestore
+import json
+import os
+from typing import Dict, List, Any, Optional
 
-# Initialize Firebase Admin SDK
-# Option 1: Using a service account key file (recommended for local dev)
-# Download your service account key from Firebase Console:
-#   Project Settings → Service accounts → Generate new private key
-# Then set the path below:
-#
-# cred = credentials.Certificate("serviceAccountKey.json")
-# firebase_admin.initialize_app(cred)
-#
-# Option 2: Using default credentials (for Cloud environments)
-# firebase_admin.initialize_app()
+class SimpleJSONDB:
+    def __init__(self, filename: str = "db.json"):
+        self.filename = filename
+        self.data = {"temples": {}, "crowd_data": []}
+        self.load()
 
-_app_initialized = False
+    def load(self):
+        if os.path.exists(self.filename):
+            try:
+                with open(self.filename, 'r') as f:
+                    content = f.read()
+                    if content:
+                        self.data = json.loads(content)
+            except Exception as e:
+                print(f"Error loading database: {e}")
 
-def initialize_firebase(service_account_path: str = None):
-    """Initialize Firebase. Call once at app startup."""
-    global _app_initialized
-    if _app_initialized:
-        return
-    
-    if service_account_path:
-        cred = credentials.Certificate(service_account_path)
-        firebase_admin.initialize_app(cred)
-    else:
-        # Try default credentials (works on GCP, or with GOOGLE_APPLICATION_CREDENTIALS env var)
-        firebase_admin.initialize_app()
-    
-    _app_initialized = True
+    def save(self):
+        try:
+            with open(self.filename, 'w') as f:
+                json.dump(self.data, f, indent=2)
+        except Exception as e:
+            print(f"Error saving database: {e}")
+
+    def get_temples(self) -> List[Dict]:
+        return list(self.data.get("temples", {}).values())
+
+    def add_temple(self, temple_id: str, data: Dict):
+        self.data["temples"][temple_id] = data
+        self.save()
+
+    def add_crowd_data(self, data: Dict):
+        if "crowd_data" not in self.data:
+            self.data["crowd_data"] = []
+        self.data["crowd_data"].append(data)
+        # Keep only last 1000 entries to save space
+        if len(self.data["crowd_data"]) > 1000:
+            self.data["crowd_data"] = self.data["crowd_data"][-1000:]
+        self.save()
+
+    def get_latest_crowd(self, temple_id: str) -> Optional[Dict]:
+        crowd_data = self.data.get("crowd_data", [])
+        for entry in reversed(crowd_data):
+            if entry.get("temple_id") == temple_id:
+                return entry
+        return None
+
+# Singleton instance
+_db = SimpleJSONDB()
 
 def get_db():
-    """Returns a Firestore client instance."""
-    return firestore.client()
+    return _db
+
+def initialize_firebase(path=None):
+    # No-op for JSON DB
+    pass
